@@ -788,7 +788,20 @@ body{
   white-space:nowrap;
 }
 
-</style></head><body><div class="app"><div class="topbar"><div class="brand"><h1>Game Dashboard</h1><p id="subtitle" aria-hidden="true"></p></div><div class="actions" id="trackerActions"><button class="btn" id="addTaskBtn">＋ 添加待办</button><button class="btn primary" id="addUpdateBtn">＋ 录入游戏更新</button></div></div><div class="layout"><aside class="sidebar"><div class="side-head"><span>游戏</span><span id="gameTotal"></span></div><div class="game-list" id="gameList"></div><div class="side-actions"><button class="add-game" id="addGameBtn">＋ 添加新游戏</button><button class="btn" id="settingsBtn">⚙ 设置</button><button class="btn" id="trackerBtn" style="display:none">← 返回追踪器</button></div></aside><main><section class="page active" id="trackerPage"><div class="tracker-shell"><div class="tracker-main"><div class="metrics"><div class="metric"><div class="label">未完成</div><div class="value" id="pendingCount">0</div></div><div class="metric"><div class="label">活跃更新</div><div class="value" id="updateCount">0</div></div><div class="metric"><div class="label">完成率</div><div class="value" id="completionRate">0%</div></div></div><div class="toolbar"><input class="input search" id="searchInput" placeholder="搜索内容或类别"><select class="select" id="statusFilter"><option value="all" selected>全部</option><option value="pending">未完成</option><option value="done">已完成</option></select><select class="select" id="archiveFilter"><option value="active">活跃更新</option><option value="all">全部更新</option><option value="archived">已归档</option></select></div><div id="mainContent"></div></div><aside class="quicklinks-panel" id="quickLinksPanel"></aside></div></section><section class="page" id="settingsPage"><div class="settings-shell"><div class="settings-games"><div id="settingsGameList"></div></div><div class="settings-main" id="settingsContent"></div></div></section></main></div></div><div class="modal-backdrop" id="modalBackdrop"><div class="modal" id="modal"></div></div><div class="toast" id="toast"></div>
+
+.settings-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:12px;
+}
+.settings-actions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+</style></head><body><div class="app"><div class="topbar"><div class="brand"><h1>Game Dashboard</h1><p id="subtitle" aria-hidden="true"></p></div><div class="actions" id="trackerActions"><button class="btn" id="addTaskBtn">＋ 添加待办</button><button class="btn primary" id="addUpdateBtn">＋ 录入游戏更新</button></div></div><div class="layout"><aside class="sidebar"><div class="side-head"><span>游戏</span><span id="gameTotal"></span></div><div class="game-list" id="gameList"></div><div class="side-actions"><button class="add-game" id="addGameBtn">＋ 添加新游戏</button><button class="btn" id="settingsBtn">⚙ 设置</button><button class="btn" id="trackerBtn" style="display:none">← 返回追踪器</button></div></aside><main><section class="page active" id="trackerPage"><div class="tracker-shell"><div class="tracker-main"><div class="metrics"><div class="metric"><div class="label">未完成</div><div class="value" id="pendingCount">0</div></div><div class="metric"><div class="label">活跃更新</div><div class="value" id="updateCount">0</div></div><div class="metric"><div class="label">完成率</div><div class="value" id="completionRate">0%</div></div></div><div class="toolbar"><input class="input search" id="searchInput" placeholder="搜索内容或类别"><select class="select" id="statusFilter"><option value="all" selected>全部</option><option value="pending">未完成</option><option value="done">已完成</option></select><select class="select" id="archiveFilter"><option value="active">活跃更新</option><option value="all">全部更新</option><option value="archived">已归档</option></select></div><div id="mainContent"></div></div><aside class="quicklinks-panel" id="quickLinksPanel"></aside></div></section><section class="page" id="settingsPage"><div class="settings-shell"><div class="settings-games"><div id="settingsGameList"></div></div><div class="settings-main" id="settingsContent"></div></div></section></main></div></div><div class="modal-backdrop" id="modalBackdrop"><div class="modal" id="modal"></div></div><div class="toast" id="toast"></div><input type="file" id="importDataInput" accept=".json,application/json" style="display:none">
 <script>
 const seed={games:[{id:'azur',name:'碧蓝航线 Azur Lane',categories:['舰船','家具','纪念手册','装备','礼包','剧情']},{id:'ark',name:'明日方舟 Arknights',categories:['干员','家具','蚀刻章','组合包','干员密录','剧情']},{id:'r1999',name:'重返未来：1999',categories:['角色','心相','主题套装','头像','旅券集','剧情']}],updates:[{id:'u-az-0723',game:'azur',name:'2026-07-23 更新',date:'2026-07-23',archived:false},{id:'u-ak-0801',game:'ark',name:'2026-08-01 更新',date:'2026-08-01',archived:false},{id:'u-r-0723',game:'r1999',name:'2026-07-23 更新',date:'2026-07-23',archived:true},{id:'u-r-0802',game:'r1999',name:'2026-08-02 更新',date:'2026-08-02',archived:false}],items:[{id:'a1',game:'azur',updateId:'u-az-0723',category:'舰船',name:'华丽',done:false},{id:'a2',game:'azur',updateId:'u-az-0723',category:'舰船',name:'萨里',done:false},{id:'a3',game:'azur',updateId:'u-az-0723',category:'舰船',name:'格里芬',done:false},{id:'a4',game:'azur',updateId:'u-az-0723',category:'家具',name:'废弃住院部',done:false},{id:'a5',game:'azur',updateId:'u-az-0723',category:'纪念手册',name:'怪谈纪实纪念勋章',done:false},{id:'k1',game:'ark',updateId:'u-ak-0801',category:'干员',name:'予愿安洁莉娜',done:false},{id:'k2',game:'ark',updateId:'u-ak-0801',category:'干员',name:'珊比',done:false},{id:'k3',game:'ark',updateId:'u-ak-0801',category:'干员',name:'嘉辛塔',done:false},{id:'k4',game:'ark',updateId:'u-ak-0801',category:'干员',name:'时隙',done:false},{id:'k5',game:'ark',updateId:'u-ak-0801',category:'家具',name:'安洁莉娜的信笺小屋',done:false},{id:'l1',game:'ark',updateId:'',category:'干员密录',name:'妮芙',done:false},{id:'l2',game:'ark',updateId:'',category:'干员密录',name:'渡桥',done:false},{id:'l3',game:'ark',updateId:'',category:'干员密录',name:'天空盒',done:false},{id:'r1',game:'r1999',updateId:'u-r-0723',category:'角色',name:'双生舞伶',done:true},{id:'r2',game:'r1999',updateId:'u-r-0723',category:'角色',name:'诺拉',done:true},{id:'r8',game:'r1999',updateId:'u-r-0802',category:'旅券集',name:'拉普拉斯变换',done:false}]};
 const STORAGE_KEY='gameDashboardV1';
@@ -882,7 +895,11 @@ function renderSettings(){
     <div class="settings-title">
       <div>
         <h2 style="margin:0">${esc(g.name)}</h2>
-        <div style="color:var(--muted);font-size:13px;margin-top:4px">管理当前游戏的类别和更新版本</div>
+        <div style="color:var(--muted);font-size:13px;margin-top:4px">管理当前游戏的类别、更新版本和常用网站</div>
+      </div>
+      <div class="settings-actions">
+        <button class="btn small" id="exportDataBtn">导出数据</button>
+        <button class="btn small" id="importDataBtn">导入数据</button>
       </div>
     </div>
     <div class="settings-tabs">
@@ -897,6 +914,8 @@ function renderSettings(){
     settingsSection=b.dataset.section;
     renderSettings();
   });
+  $('#exportDataBtn').onclick=exportData;
+  $('#importDataBtn').onclick=()=>$('#importDataInput').click();
 
   if(settingsSection==='updates'){
     renderGameUpdateManager(g);
@@ -1109,9 +1128,77 @@ function deleteUpdateVersion(id){
 }
 function moveCategory(gid,i,d){let g=gameById(gid),j=i+d;if(j<0||j>=g.categories.length)return;[g.categories[i],g.categories[j]]=[g.categories[j],g.categories[i]];save();renderSettings()}function editCategory(gid,i=null){let g=gameById(gid),old=i===null?'':g.categories[i];openModal(`<h3>${i===null?'添加类别':'重命名类别'}</h3><div class="field"><label>类别名称</label><input id="catName" value="${esc(old)}"></div><div class="modal-actions"><button class="btn" data-close>取消</button><button class="btn primary" id="saveCat">保存</button></div>`);$('#saveCat').onclick=()=>{let v=$('#catName').value.trim();if(!v)return;if(i===null){if(!g.categories.includes(v))g.categories.push(v)}else{let prev=g.categories[i];g.categories[i]=v;state.items.filter(x=>x.game===gid&&x.category===prev).forEach(x=>x.category=v)}save();closeModal();renderSettings()}}function deleteCategory(gid,i){let g=gameById(gid),c=g.categories[i],used=state.items.filter(x=>x.game===gid&&x.category===c).length;if(used)return toast(`该类别仍被 ${used} 条待办使用`);g.categories.splice(i,1);save();renderSettings()}
 function editTask(id){let t=state.items.find(i=>i.id===id);openModal(`<h3>编辑待办</h3><div class="form-grid"><div class="field"><label>游戏</label><select id="taskGame">${gameOptions(t.game)}</select></div><div class="field"><label>类别</label><select id="taskCategory"></select></div><div class="field full"><label>内容名称</label><input id="taskName" value="${esc(t.name)}"></div><div class="field full"><label>所属更新</label><select id="taskUpdate"></select></div></div><div class="modal-actions"><button class="btn" data-close>取消</button><button class="btn primary" id="saveTaskEdit">保存</button></div>`);function sync(){let gid=$('#taskGame').value;$('#taskCategory').innerHTML=categoryOptions(gid,t.game===gid?t.category:'');$('#taskUpdate').innerHTML=updateOptions(gid,t.game===gid?t.updateId:'')}sync();$('#taskGame').onchange=sync;$('#saveTaskEdit').onclick=()=>{let name=$('#taskName').value.trim();if(!name)return;t.game=$('#taskGame').value;t.category=$('#taskCategory').value;t.updateId=$('#taskUpdate').value;t.name=name;save();closeModal();render()}}
+
+function normalizeImportedState(raw){
+  const now=Date.now();
+  const games=(Array.isArray(raw?.games)?raw.games:[]).map((g,idx)=>({
+    id:String(g?.id||`g${now}${idx}`),
+    name:String(g?.name||'未命名游戏'),
+    categories:(Array.isArray(g?.categories)&&g.categories.length?g.categories:['其他']).map(x=>String(x)),
+    sites:(Array.isArray(g?.sites)?g.sites:[]).map((s,j)=>({
+      id:String(s?.id||`site${now}${idx}${j}`),
+      name:String(s?.name||'未命名网站'),
+      url:String(s?.url||'')
+    })).filter(s=>s.name&&s.url)
+  }));
+  if(!games.length)throw new Error('导入文件中没有有效的游戏数据');
+  const gameIds=new Set(games.map(g=>g.id));
+  const updates=(Array.isArray(raw?.updates)?raw.updates:[]).filter(u=>gameIds.has(u?.game)).map((u,idx)=>({
+    id:String(u?.id||`u${now}${idx}`),
+    game:String(u.game),
+    name:String(u?.name||'未命名更新'),
+    date:String(u?.date||''),
+    archived:!!u?.archived
+  }));
+  const updateIds=new Set(updates.map(u=>u.id));
+  const items=(Array.isArray(raw?.items)?raw.items:[]).filter(i=>gameIds.has(i?.game)).map((i,idx)=>({
+    id:String(i?.id||`i${now}${idx}`),
+    game:String(i.game),
+    updateId:updateIds.has(i?.updateId)?String(i.updateId):'',
+    category:String(i?.category||'其他'),
+    name:String(i?.name||'未命名待办'),
+    done:!!i?.done
+  }));
+  return {games,updates,items};
+}
+function exportData(){
+  const payload={exportedAt:new Date().toISOString(),app:'Game Dashboard',version:1,data:state};
+  const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json;charset=utf-8'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  const stamp=new Date().toISOString().slice(0,19).replace(/[:T]/g,'-');
+  a.href=url;
+  a.download=`game-dashboard-backup-${stamp}.json`;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+  toast('数据已导出');
+}
+async function handleImportData(file){
+  if(!file)return;
+  try{
+    const text=await file.text();
+    const parsed=JSON.parse(text);
+    const incoming=parsed?.data??parsed;
+    const normalized=normalizeImportedState(incoming);
+    if(!confirm('导入会覆盖当前网页中的现有数据，确定继续吗？'))return;
+    state=normalized;
+    selectedGame='all';
+    settingsGame=state.games[0]?.id||'';
+    settingsSection='categories';
+    save();
+    render();
+    toast('数据已导入');
+  }catch(err){
+    alert('导入失败：文件格式无效或内容不受支持。');
+  }finally{
+    $('#importDataInput').value='';
+  }
+}
 function switchPage(p){currentPage=p;$('#trackerPage').classList.toggle('active',p==='tracker');$('#settingsPage').classList.toggle('active',p==='settings');$('#trackerActions').style.display=p==='tracker'?'flex':'none';$('#settingsBtn').style.display=p==='settings'?'none':'block';$('#trackerBtn').style.display=p==='settings'?'block':'none';$('#subtitle').textContent=p==='tracker'?'你的游戏追踪与常用网站导航。':'管理游戏类别、更新版本和常用网站。';render()}
 $('#addGameBtn').onclick=()=>{openModal(`<h3>添加新游戏</h3><div class="form-grid"><div class="field full"><label>游戏名称</label><input id="newGameName"></div><div class="field full"><label>初始类别（每行一个）</label><textarea id="newGameCategories"></textarea></div></div><div class="modal-actions"><button class="btn" data-close>取消</button><button class="btn primary" id="saveGame">添加</button></div>`);$('#saveGame').onclick=()=>{let name=$('#newGameName').value.trim();if(!name)return;let cats=$('#newGameCategories').value.split(/\n/).map(x=>x.trim()).filter(Boolean);let id='g'+Date.now();state.games.push({id,name,categories:cats.length?cats:['其他'],sites:[]});settingsGame=id;save();closeModal();render()}}
 $('#addTaskBtn').onclick=()=>{let initial=selectedGame==='all'?state.games[0]?.id:selectedGame;openModal(`<h3>添加待办</h3><div class="form-grid"><div class="field"><label>游戏</label><select id="taskGame">${gameOptions(initial)}</select></div><div class="field"><label>类别</label><select id="taskCategory"></select></div><div class="field full"><label>内容名称</label><input id="taskName"></div><div class="field full"><label>所属更新</label><select id="taskUpdate"></select></div></div><div class="modal-actions"><button class="btn" data-close>取消</button><button class="btn primary" id="saveTask">保存</button></div>`);let sync=()=>{let g=$('#taskGame').value;$('#taskCategory').innerHTML=categoryOptions(g);$('#taskUpdate').innerHTML=updateOptions(g)};sync();$('#taskGame').onchange=sync;$('#saveTask').onclick=()=>{let name=$('#taskName').value.trim();if(!name)return;state.items.push({id:'i'+Date.now(),game:$('#taskGame').value,category:$('#taskCategory').value,updateId:$('#taskUpdate').value,name,done:false});save();closeModal();render()}}
 $('#addUpdateBtn').onclick=()=>{let initial=selectedGame==='all'?state.games[0]?.id:selectedGame;openModal(`<h3>录入游戏更新</h3><div class="form-grid"><div class="field"><label>游戏</label><select id="updateGame">${gameOptions(initial)}</select></div><div class="field"><label>实装日期</label><input id="updateDate" type="date"></div><div class="field full"><label>更新名称</label><input id="updateName"></div><div class="field full"><label>批量内容</label><div class="batch-head"><span>类别</span><span>具体名称</span><span></span></div><div id="batchRows"></div><button class="btn small" id="addBatchRow">＋ 添加一行</button></div></div><div class="modal-actions"><button class="btn" data-close>取消</button><button class="btn primary" id="saveUpdate">保存更新</button></div>`);function addRow(cat='',name=''){let row=document.createElement('div');row.className='batch-row';row.innerHTML=`<select class="batch-cat">${categoryOptions($('#updateGame').value,cat)}</select><input class="batch-name" value="${esc(name)}" placeholder="输入具体名称"><button class="btn small danger remove-row">删除</button>`;row.querySelector('.remove-row').onclick=()=>row.remove();$('#batchRows').appendChild(row)}addRow();addRow();$('#addBatchRow').onclick=()=>addRow();$('#updateGame').onchange=()=>$$('.batch-cat').forEach(s=>s.innerHTML=categoryOptions($('#updateGame').value));$('#saveUpdate').onclick=()=>{let rows=$$('.batch-row').map(r=>({category:r.querySelector('.batch-cat').value,name:r.querySelector('.batch-name').value.trim()}));if(rows.some(r=>(r.category&&!r.name)||(!r.category&&r.name)))return toast('请补全未完整的行');rows=rows.filter(r=>r.category&&r.name);if(!rows.length)return toast('请至少添加一项内容');let game=$('#updateGame').value,date=$('#updateDate').value,name=$('#updateName').value.trim()||(date?date+' 更新':'未命名更新'),uid='u'+Date.now();state.updates.push({id:uid,game,name,date,archived:false});rows.forEach((r,i)=>state.items.push({id:'i'+Date.now()+i,game,updateId:uid,category:r.category,name:r.name,done:false}));save();closeModal();render()}}
-$('#settingsBtn').onclick=()=>switchPage('settings');$('#trackerBtn').onclick=()=>switchPage('tracker');$('#searchInput').oninput=renderMain;$('#statusFilter').onchange=renderMain;$('#archiveFilter').onchange=renderMain;$('#modalBackdrop').onclick=e=>{if(e.target===e.currentTarget)closeModal()};$('#statusFilter').value='all';render();
+$('#settingsBtn').onclick=()=>switchPage('settings');$('#trackerBtn').onclick=()=>switchPage('tracker');$('#searchInput').oninput=renderMain;$('#statusFilter').onchange=renderMain;$('#archiveFilter').onchange=renderMain;$('#modalBackdrop').onclick=e=>{if(e.target===e.currentTarget)closeModal()};$('#importDataInput').addEventListener('change',e=>handleImportData(e.target.files?.[0]));$('#statusFilter').value='all';render();
 </script></body></html>
