@@ -801,14 +801,44 @@ body{
   flex-wrap:wrap;
 }
 
-</style></head><body><div class="app"><div class="topbar"><div class="brand"><h1>Game Dashboard</h1><p id="subtitle" aria-hidden="true"></p></div><div class="actions" id="trackerActions"><button class="btn" id="addTaskBtn">＋ 添加待办</button><button class="btn primary" id="addUpdateBtn">＋ 录入游戏更新</button></div></div><div class="layout"><aside class="sidebar"><div class="side-head"><span>游戏</span><span id="gameTotal"></span></div><div class="game-list" id="gameList"></div><div class="side-actions"><button class="add-game" id="addGameBtn">＋ 添加新游戏</button><button class="btn" id="settingsBtn">⚙ 设置</button><button class="btn" id="trackerBtn" style="display:none">← 返回追踪器</button></div></aside><main><section class="page active" id="trackerPage"><div class="tracker-shell"><div class="tracker-main"><div class="metrics"><div class="metric"><div class="label">未完成</div><div class="value" id="pendingCount">0</div></div><div class="metric"><div class="label">活跃更新</div><div class="value" id="updateCount">0</div></div><div class="metric"><div class="label">完成率</div><div class="value" id="completionRate">0%</div></div></div><div class="toolbar"><input class="input search" id="searchInput" placeholder="搜索内容或类别"><select class="select" id="statusFilter"><option value="all" selected>全部</option><option value="pending">未完成</option><option value="done">已完成</option></select><select class="select" id="archiveFilter"><option value="active">活跃更新</option><option value="all">全部更新</option><option value="archived">已归档</option></select></div><div id="mainContent"></div></div><aside class="quicklinks-panel" id="quickLinksPanel"></aside></div></section><section class="page" id="settingsPage"><div class="settings-shell"><div class="settings-games"><div id="settingsGameList"></div></div><div class="settings-main" id="settingsContent"></div></div></section></main></div></div><div class="modal-backdrop" id="modalBackdrop"><div class="modal" id="modal"></div></div><div class="toast" id="toast"></div><input type="file" id="importDataInput" accept=".json,application/json" style="display:none">
+
+/* Performance pass */
+.task{
+  contain:layout paint style;
+}
+.game-btn .count,
+.section-pending-count{
+  font-variant-numeric:tabular-nums;
+}
+
+</style></head><body><div class="app"><div class="topbar"><div class="brand"><h1>Game Dashboard</h1><p id="subtitle" aria-hidden="true"></p></div><div class="actions" id="trackerActions"><button class="btn" id="addTaskBtn">＋ 添加待办</button><button class="btn primary" id="addUpdateBtn">＋ 录入游戏更新</button></div></div><div class="layout"><aside class="sidebar"><div class="side-head"><span>游戏</span><span id="gameTotal"></span></div><div class="game-list" id="gameList"></div><div class="side-actions"><button class="add-game" id="addGameBtn">＋ 添加新游戏</button><button class="btn" id="settingsBtn">⚙ 设置</button><button class="btn" id="trackerBtn" style="display:none">← 返回追踪器</button></div></aside><main><section class="page active" id="trackerPage"><div class="tracker-shell"><div class="tracker-main"><div class="metrics"><div class="metric"><div class="label">未完成</div><div class="value" id="pendingCount">0</div></div><div class="metric"><div class="label">活跃更新</div><div class="value" id="updateCount">0</div></div><div class="metric"><div class="label">完成率</div><div class="value" id="completionRate">0%</div></div></div><div class="toolbar"><input class="input search" id="searchInput" placeholder="搜索内容或类别"><select class="select" id="statusFilter"><option value="all" selected>全部</option><option value="pending">未完成</option><option value="done">已完成</option></select><select class="select" id="archiveFilter"><option value="active">Active</option><option value="all">全部更新</option><option value="archived">Archived</option></select></div><div id="mainContent"></div></div><aside class="quicklinks-panel" id="quickLinksPanel"></aside></div></section><section class="page" id="settingsPage"><div class="settings-shell"><div class="settings-games"><div id="settingsGameList"></div></div><div class="settings-main" id="settingsContent"></div></div></section></main></div></div><div class="modal-backdrop" id="modalBackdrop"><div class="modal" id="modal"></div></div><div class="toast" id="toast"></div><input type="file" id="importDataInput" accept=".json,application/json" style="display:none">
 <script>
 const seed={games:[{id:'azur',name:'碧蓝航线 Azur Lane',categories:['舰船','家具','纪念手册','装备','礼包','剧情']},{id:'ark',name:'明日方舟 Arknights',categories:['干员','家具','蚀刻章','组合包','干员密录','剧情']},{id:'r1999',name:'重返未来：1999',categories:['角色','心相','主题套装','头像','旅券集','剧情']}],updates:[{id:'u-az-0723',game:'azur',name:'2026-07-23 更新',date:'2026-07-23',archived:false},{id:'u-ak-0801',game:'ark',name:'2026-08-01 更新',date:'2026-08-01',archived:false},{id:'u-r-0723',game:'r1999',name:'2026-07-23 更新',date:'2026-07-23',archived:true},{id:'u-r-0802',game:'r1999',name:'2026-08-02 更新',date:'2026-08-02',archived:false}],items:[{id:'a1',game:'azur',updateId:'u-az-0723',category:'舰船',name:'华丽',done:false},{id:'a2',game:'azur',updateId:'u-az-0723',category:'舰船',name:'萨里',done:false},{id:'a3',game:'azur',updateId:'u-az-0723',category:'舰船',name:'格里芬',done:false},{id:'a4',game:'azur',updateId:'u-az-0723',category:'家具',name:'废弃住院部',done:false},{id:'a5',game:'azur',updateId:'u-az-0723',category:'纪念手册',name:'怪谈纪实纪念勋章',done:false},{id:'k1',game:'ark',updateId:'u-ak-0801',category:'干员',name:'予愿安洁莉娜',done:false},{id:'k2',game:'ark',updateId:'u-ak-0801',category:'干员',name:'珊比',done:false},{id:'k3',game:'ark',updateId:'u-ak-0801',category:'干员',name:'嘉辛塔',done:false},{id:'k4',game:'ark',updateId:'u-ak-0801',category:'干员',name:'时隙',done:false},{id:'k5',game:'ark',updateId:'u-ak-0801',category:'家具',name:'安洁莉娜的信笺小屋',done:false},{id:'l1',game:'ark',updateId:'',category:'干员密录',name:'妮芙',done:false},{id:'l2',game:'ark',updateId:'',category:'干员密录',name:'渡桥',done:false},{id:'l3',game:'ark',updateId:'',category:'干员密录',name:'天空盒',done:false},{id:'r1',game:'r1999',updateId:'u-r-0723',category:'角色',name:'双生舞伶',done:true},{id:'r2',game:'r1999',updateId:'u-r-0723',category:'角色',name:'诺拉',done:true},{id:'r8',game:'r1999',updateId:'u-r-0802',category:'旅券集',name:'拉普拉斯变换',done:false}]};
 const STORAGE_KEY='gameDashboardV1';
 let state=JSON.parse(localStorage.getItem(STORAGE_KEY)||localStorage.getItem('gameTrackerV3')||'null')||seed;
 state.games=(state.games||[]).map(g=>({...g,sites:Array.isArray(g.sites)?g.sites:[]}));
 let selectedGame='all',currentPage='tracker',settingsGame=state.games[0]?.id;
-const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],save=()=>localStorage.setItem(STORAGE_KEY,JSON.stringify(state));
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+let indexCache=null;
+function save(){localStorage.setItem(STORAGE_KEY,JSON.stringify(state));indexCache=null}
+function getIndex(){
+  if(indexCache)return indexCache;
+  const gamesById=new Map(state.games.map(g=>[g.id,g]));
+  const updatesById=new Map(state.updates.map(u=>[u.id,u]));
+  const itemsById=new Map();
+  const itemsByGame=new Map(state.games.map(g=>[g.id,[]]));
+  const pendingByGame=new Map(state.games.map(g=>[g.id,0]));
+  const categoryOrderByGame=new Map();
+  state.games.forEach(g=>categoryOrderByGame.set(g.id,new Map((g.categories||[]).map((c,i)=>[c,i]))));
+  for(const item of state.items){
+    itemsById.set(item.id,item);
+    if(!itemsByGame.has(item.game))itemsByGame.set(item.game,[]);
+    itemsByGame.get(item.game).push(item);
+    if(!item.done)pendingByGame.set(item.game,(pendingByGame.get(item.game)||0)+1);
+  }
+  indexCache={gamesById,updatesById,itemsById,itemsByGame,pendingByGame,categoryOrderByGame};
+  return indexCache;
+}
 const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
 function siteFallbackIcon(){
   return 'data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="#BDE7FF"/><path d="M18 21h28M18 32h28M18 43h18" stroke="#F8FCFF" stroke-width="5" stroke-linecap="round"/></svg>');
@@ -844,13 +874,171 @@ function handleFaviconError(img){
   img.src=candidates[next];
 }
 
-function gameById(id){return state.games.find(g=>g.id===id)}function updateById(id){return state.updates.find(u=>u.id===id)}function toast(m){let t=$('#toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1700)}function openModal(h){$('#modal').innerHTML=h;$('#modalBackdrop').classList.add('show');$$('[data-close]').forEach(b=>b.onclick=closeModal)}function closeModal(){$('#modalBackdrop').classList.remove('show')}
+function gameById(id){return getIndex().gamesById.get(id)}function updateById(id){return getIndex().updatesById.get(id)}function toast(m){let t=$('#toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1700)}function openModal(h){$('#modal').innerHTML=h;$('#modalBackdrop').classList.add('show');$$('[data-close]').forEach(b=>b.onclick=closeModal)}function closeModal(){$('#modalBackdrop').classList.remove('show')}
 function gameOptions(sel=''){return state.games.map(g=>`<option value="${g.id}" ${g.id===sel?'selected':''}>${esc(g.name)}</option>`).join('')}function categoryOptions(gid,sel=''){return (gameById(gid)?.categories||[]).map(c=>`<option ${c===sel?'selected':''}>${esc(c)}</option>`).join('')}function updateOptions(gid,sel=''){return `<option value="">不归入具体更新</option>`+state.updates.filter(u=>u.game===gid&&!u.archived).map(u=>`<option value="${u.id}" ${u.id===sel?'selected':''}>${esc(u.name)}</option>`).join('')}
 function render(){renderGames();if(currentPage==='tracker'){renderMain();renderQuickLinks()}else{renderSettings()}}
-function renderGames(){let games=[{id:'all',name:'全部游戏'},...state.games];$('#gameTotal').textContent=state.games.length+' 款';$('#gameList').innerHTML=games.map(g=>{let n=state.items.filter(i=>(g.id==='all'||i.game===g.id)&&!i.done).length;return `<div class="game-row ${g.id==='all'?'all-game':''}" ${g.id==='all'?'':`draggable="true" data-game-id="${g.id}"`} >${g.id==='all'?'':`<span class="game-drag drag" title="拖拽排序">⠿</span>`}<button class="game-btn ${selectedGame===g.id?'active':''}" data-game="${g.id}"><span>${esc(g.name)}</span><span class="count">${n}</span></button>${g.id==='all'?'':`<div class="game-menu"><button class="iconbtn rename-game" data-id="${g.id}" title="重命名">✎</button></div>`}</div>`}).join('');$$('.game-btn').forEach(b=>b.onclick=()=>{selectedGame=b.dataset.game;render()});$$('.rename-game').forEach(b=>b.onclick=e=>{e.stopPropagation();renameGame(b.dataset.id)});let dragId=null;$$('.game-row[draggable=true]').forEach(r=>{r.ondragstart=e=>{dragId=r.dataset.gameId;r.classList.add('dragging');e.dataTransfer.effectAllowed='move'};r.ondragend=()=>{$$('.game-row').forEach(x=>x.classList.remove('dragging','drag-over'));dragId=null};r.ondragover=e=>{e.preventDefault();if(r.dataset.gameId!==dragId)r.classList.add('drag-over')};r.ondragleave=()=>r.classList.remove('drag-over');r.ondrop=e=>{e.preventDefault();r.classList.remove('drag-over');if(!dragId||dragId===r.dataset.gameId)return;let from=state.games.findIndex(g=>g.id===dragId),to=state.games.findIndex(g=>g.id===r.dataset.gameId);if(from<0||to<0)return;let [moved]=state.games.splice(from,1);state.games.splice(to,0,moved);save();render()}})}
+function renderGames(){
+  const idx=getIndex();
+  const games=[{id:'all',name:'全部游戏'},...state.games];
+  const totalPending=state.games.reduce((n,g)=>n+(idx.pendingByGame.get(g.id)||0),0);
+  $('#gameTotal').textContent=state.games.length+' 款';
+  $('#gameList').innerHTML=games.map(g=>{
+    const n=g.id==='all'?totalPending:(idx.pendingByGame.get(g.id)||0);
+    return `<div class="game-row ${g.id==='all'?'all-game':''}" ${g.id==='all'?'':`draggable="true" data-game-id="${g.id}"`} >${g.id==='all'?'':`<span class="game-drag drag" title="拖拽排序">⠿</span>`}<button class="game-btn ${selectedGame===g.id?'active':''}" data-game="${g.id}"><span>${esc(g.name)}</span><span class="count" data-game-count="${g.id}">${n}</span></button>${g.id==='all'?'':`<div class="game-menu"><button class="iconbtn rename-game" data-id="${g.id}" title="重命名">✎</button></div>`}</div>`
+  }).join('');
+  $$('.game-btn').forEach(b=>b.onclick=()=>{selectedGame=b.dataset.game;render()});
+  $$('.rename-game').forEach(b=>b.onclick=e=>{e.stopPropagation();renameGame(b.dataset.id)});
+  let dragId=null;
+  $$('.game-row[draggable=true]').forEach(r=>{
+    r.ondragstart=e=>{dragId=r.dataset.gameId;r.classList.add('dragging');e.dataTransfer.effectAllowed='move'};
+    r.ondragend=()=>{$$('.game-row').forEach(x=>x.classList.remove('dragging','drag-over'));dragId=null};
+    r.ondragover=e=>{e.preventDefault();if(r.dataset.gameId!==dragId)r.classList.add('drag-over')};
+    r.ondragleave=()=>r.classList.remove('drag-over');
+    r.ondrop=e=>{
+      e.preventDefault();r.classList.remove('drag-over');
+      if(!dragId||dragId===r.dataset.gameId)return;
+      let from=state.games.findIndex(g=>g.id===dragId),to=state.games.findIndex(g=>g.id===r.dataset.gameId);
+      if(from<0||to<0)return;
+      let [moved]=state.games.splice(from,1);state.games.splice(to,0,moved);save();render()
+    }
+  })
+}
 function moveGame(id,d){let i=state.games.findIndex(g=>g.id===id),j=i+d;if(j<0||j>=state.games.length)return;[state.games[i],state.games[j]]=[state.games[j],state.games[i]];save();render()}function renameGame(id){let g=gameById(id);openModal(`<h3>修改游戏名称</h3><div class="field"><label>游戏名称</label><input id="renameGameInput" value="${esc(g.name)}"></div><div class="modal-actions"><button class="btn" data-close>取消</button><button class="btn primary" id="saveGameName">保存</button></div>`);$('#saveGameName').onclick=()=>{let v=$('#renameGameInput').value.trim();if(!v)return;g.name=v;save();closeModal();render();toast('游戏名称已更新')}}
-function filtered(){let st=$('#statusFilter').value,ar=$('#archiveFilter').value,q=$('#searchInput').value.trim().toLowerCase();return state.items.filter(i=>{let u=updateById(i.updateId),arch=!!u?.archived;return(selectedGame==='all'||i.game===selectedGame)&&(st==='all'||(st==='done'?i.done:!i.done))&&(ar==='all'||(ar==='archived'?arch:!arch))&&(!q||(i.name+' '+i.category).toLowerCase().includes(q))})}
-function renderMain(){let scope=state.items.filter(i=>selectedGame==='all'||i.game===selectedGame),done=scope.filter(i=>i.done).length;$('#pendingCount').textContent=scope.filter(i=>!i.done).length;$('#updateCount').textContent=state.updates.filter(u=>!u.archived&&(selectedGame==='all'||u.game===selectedGame)).length;$('#completionRate').textContent=scope.length?Math.round(done/scope.length*100)+'%':'0%';let list=filtered();if(!list.length){$('#mainContent').innerHTML='<div class="empty">没有符合当前筛选条件的内容。</div>';return}let html='';for(const g of state.games){let items=list.filter(i=>i.game===g.id);if(!items.length)continue;html+=`<section class="section"><div class="section-head"><h2>${esc(g.name)}</h2><small>${items.filter(i=>!i.done).length} 项未完成</small></div>`;let order=[...state.updates.filter(u=>u.game===g.id).map(u=>u.id),''];for(const uid of order){let tasks=items.filter(i=>i.updateId===uid);if(!tasks.length)continue;let categoryOrder=g.categories||[];tasks.sort((a,b)=>{let ai=categoryOrder.indexOf(a.category),bi=categoryOrder.indexOf(b.category);ai=ai<0?categoryOrder.length:ai;bi=bi<0?categoryOrder.length:bi;return ai-bi});let u=uid?updateById(uid):null,doneN=tasks.filter(i=>i.done).length;html+=`<div class="update-card ${u?.archived?'archived':''}"><div class="update-head"><div><div class="update-title">${esc(u?.name||'未分组待办')}</div>${u?`<div class="update-meta">${esc(u.date||'无日期')} · ${u.archived?'Archived':'Active'}</div>`:''}</div><div class="update-actions">${u?`<button class="btn small rename-update" data-id="${u.id}">重命名</button><button class="btn small archive-update" data-id="${u.id}">${u.archived?'恢复':'Archive'}</button>`:''}</div></div><div class="tasks">${tasks.map(i=>`<div class="task ${i.done?'done':''}"><input class="task-check" type="checkbox" data-id="${i.id}" ${i.done?'checked':''}><span class="tag">${esc(i.category)}</span><span class="task-name">${esc(i.name)}</span><button class="iconbtn edit-task" data-id="${i.id}" title="编辑">✎</button><button class="iconbtn delete-task" data-id="${i.id}" title="删除">🗑</button></div>`).join('')}</div></div>`}html+='</section>'}$('#mainContent').innerHTML=html;$$('.task-check').forEach(c=>c.onchange=()=>{let i=state.items.find(x=>x.id===c.dataset.id);i.done=c.checked;save();render()});$$('.rename-update').forEach(b=>b.onclick=()=>editUpdate(b.dataset.id));$$('.archive-update').forEach(b=>b.onclick=()=>{let u=updateById(b.dataset.id),n=state.items.filter(i=>i.updateId===u.id&&!i.done).length;if(!u.archived&&n&&!confirm(`这一组还有 ${n} 项未完成，仍然归档吗？`))return;u.archived=!u.archived;save();render()});$$('.edit-task').forEach(b=>b.onclick=()=>editTask(b.dataset.id));$$('.delete-task').forEach(b=>b.onclick=()=>{if(!confirm('确定删除这条待办吗？'))return;state.items=state.items.filter(i=>i.id!==b.dataset.id);save();render();toast('待办已删除')})}
+function getMainViewData(){
+  const idx=getIndex();
+  const st=$('#statusFilter').value;
+  const ar=$('#archiveFilter').value;
+  const q=$('#searchInput').value.trim().toLowerCase();
+  const scopeItems=selectedGame==='all'
+    ? state.items
+    : (idx.itemsByGame.get(selectedGame)||[]);
+
+  let total=0,done=0,pending=0;
+  const grouped=new Map();
+
+  for(const item of scopeItems){
+    total++;
+    if(item.done)done++; else pending++;
+
+    const u=item.updateId?idx.updatesById.get(item.updateId):null;
+    const archived=!!u?.archived;
+    if(st!=='all' && (st==='done'?!item.done:item.done))continue;
+    if(ar!=='all' && (ar==='archived'?!archived:archived))continue;
+    if(q && !(item.name+' '+item.category).toLowerCase().includes(q))continue;
+
+    let gameMap=grouped.get(item.game);
+    if(!gameMap){gameMap=new Map();grouped.set(item.game,gameMap)}
+    const uid=item.updateId||'';
+    let bucket=gameMap.get(uid);
+    if(!bucket){bucket=[];gameMap.set(uid,bucket)}
+    bucket.push(item);
+  }
+
+  return {idx,total,done,pending,grouped};
+}
+function updateDashboardCounts(){
+  const idx=getIndex();
+  const scope=selectedGame==='all'?state.items:(idx.itemsByGame.get(selectedGame)||[]);
+  let done=0,pending=0;
+  for(const item of scope){if(item.done)done++;else pending++}
+  $('#pendingCount').textContent=pending;
+  $('#completionRate').textContent=scope.length?Math.round(done/scope.length*100)+'%':'0%';
+
+  let activeUpdates=0;
+  for(const u of state.updates){
+    if(!u.archived&&(selectedGame==='all'||u.game===selectedGame))activeUpdates++;
+  }
+  $('#updateCount').textContent=activeUpdates;
+
+  const totalPending=state.games.reduce((n,g)=>n+(idx.pendingByGame.get(g.id)||0),0);
+  const allBadge=$('[data-game-count="all"]');
+  if(allBadge)allBadge.textContent=totalPending;
+  for(const g of state.games){
+    const el=$(`[data-game-count="${g.id}"]`);
+    if(el)el.textContent=idx.pendingByGame.get(g.id)||0;
+  }
+}
+function renderMain(){
+  const {idx,total,done,pending,grouped}=getMainViewData();
+  $('#pendingCount').textContent=pending;
+  let activeUpdates=0;
+  for(const u of state.updates){
+    if(!u.archived&&(selectedGame==='all'||u.game===selectedGame))activeUpdates++;
+  }
+  $('#updateCount').textContent=activeUpdates;
+  $('#completionRate').textContent=total?Math.round(done/total*100)+'%':'0%';
+
+  if(!grouped.size){
+    $('#mainContent').innerHTML='<div class="empty">没有符合当前筛选条件的内容。</div>';
+    return;
+  }
+
+  let html='';
+  for(const g of state.games){
+    const gameMap=grouped.get(g.id);
+    if(!gameMap||!gameMap.size)continue;
+
+    let visibleCount=0,visiblePending=0;
+    for(const tasks of gameMap.values()){
+      visibleCount+=tasks.length;
+      for(const t of tasks)if(!t.done)visiblePending++;
+    }
+
+    html+=`<section class="section" data-game-section="${g.id}"><div class="section-head"><h2>${esc(g.name)}</h2><small><span class="section-pending-count">${visiblePending}</span> 项未完成</small></div>`;
+
+    const categoryOrder=idx.categoryOrderByGame.get(g.id)||new Map();
+    const updateIds=state.updates.filter(u=>u.game===g.id).map(u=>u.id);
+    updateIds.push('');
+
+    for(const uid of updateIds){
+      const tasks=gameMap.get(uid);
+      if(!tasks?.length)continue;
+
+      tasks.sort((a,b)=>{
+        const ai=categoryOrder.has(a.category)?categoryOrder.get(a.category):categoryOrder.size;
+        const bi=categoryOrder.has(b.category)?categoryOrder.get(b.category):categoryOrder.size;
+        return ai-bi;
+      });
+
+      const u=uid?idx.updatesById.get(uid):null;
+      html+=`<div class="update-card ${u?.archived?'archived':''}" data-update-card="${uid||'ungrouped'}"><div class="update-head"><div><div class="update-title">${esc(u?.name||'未分组待办')}</div>${u?`<div class="update-meta">${esc(u.date||'无日期')} · ${u.archived?'Archived':'Active'}</div>`:''}</div><div class="update-actions">${u?`<button class="btn small rename-update" data-id="${u.id}">重命名</button><button class="btn small archive-update" data-id="${u.id}">${u.archived?'恢复':'Archive'}</button>`:''}</div></div><div class="tasks">${tasks.map(i=>`<div class="task ${i.done?'done':''}" data-task-id="${i.id}"><input class="task-check" type="checkbox" data-id="${i.id}" ${i.done?'checked':''}><span class="tag">${esc(i.category)}</span><span class="task-name">${esc(i.name)}</span><button class="iconbtn edit-task" data-id="${i.id}" title="编辑">✎</button><button class="iconbtn delete-task" data-id="${i.id}" title="删除">🗑</button></div>`).join('')}</div></div>`;
+    }
+    html+='</section>';
+  }
+  $('#mainContent').innerHTML=html;
+}
+function updateTaskDoneFast(id,checked,row){
+  const item=getIndex().itemsById.get(id);
+  if(!item)return;
+  item.done=checked;
+  save();
+
+  const st=$('#statusFilter').value;
+  if(st!=='all'){
+    renderMain();
+    renderGames();
+    return;
+  }
+
+  row?.classList.toggle('done',checked);
+  updateDashboardCounts();
+
+  const section=row?.closest('.section');
+  if(section){
+    const gameId=section.dataset.gameSection;
+    const pending=(getIndex().itemsByGame.get(gameId)||[]).filter(i=>{
+      if(i.done)return false;
+      const u=i.updateId?getIndex().updatesById.get(i.updateId):null;
+      const archived=!!u?.archived;
+      const ar=$('#archiveFilter').value;
+      if(ar!=='all' && (ar==='archived'?!archived:archived))return false;
+      const q=$('#searchInput').value.trim().toLowerCase();
+      return !q||(i.name+' '+i.category).toLowerCase().includes(q);
+    }).length;
+    const label=section.querySelector('.section-pending-count');
+    if(label)label.textContent=pending;
+  }
+}
 function renderQuickLinks(){
   const panel=$('#quickLinksPanel');
   if(!panel)return;
@@ -1200,5 +1388,49 @@ function switchPage(p){currentPage=p;$('#trackerPage').classList.toggle('active'
 $('#addGameBtn').onclick=()=>{openModal(`<h3>添加新游戏</h3><div class="form-grid"><div class="field full"><label>游戏名称</label><input id="newGameName"></div><div class="field full"><label>初始类别（每行一个）</label><textarea id="newGameCategories"></textarea></div></div><div class="modal-actions"><button class="btn" data-close>取消</button><button class="btn primary" id="saveGame">添加</button></div>`);$('#saveGame').onclick=()=>{let name=$('#newGameName').value.trim();if(!name)return;let cats=$('#newGameCategories').value.split(/\n/).map(x=>x.trim()).filter(Boolean);let id='g'+Date.now();state.games.push({id,name,categories:cats.length?cats:['其他'],sites:[]});settingsGame=id;save();closeModal();render()}}
 $('#addTaskBtn').onclick=()=>{let initial=selectedGame==='all'?state.games[0]?.id:selectedGame;openModal(`<h3>添加待办</h3><div class="form-grid"><div class="field"><label>游戏</label><select id="taskGame">${gameOptions(initial)}</select></div><div class="field"><label>类别</label><select id="taskCategory"></select></div><div class="field full"><label>内容名称</label><input id="taskName"></div><div class="field full"><label>所属更新</label><select id="taskUpdate"></select></div></div><div class="modal-actions"><button class="btn" data-close>取消</button><button class="btn primary" id="saveTask">保存</button></div>`);let sync=()=>{let g=$('#taskGame').value;$('#taskCategory').innerHTML=categoryOptions(g);$('#taskUpdate').innerHTML=updateOptions(g)};sync();$('#taskGame').onchange=sync;$('#saveTask').onclick=()=>{let name=$('#taskName').value.trim();if(!name)return;state.items.push({id:'i'+Date.now(),game:$('#taskGame').value,category:$('#taskCategory').value,updateId:$('#taskUpdate').value,name,done:false});save();closeModal();render()}}
 $('#addUpdateBtn').onclick=()=>{let initial=selectedGame==='all'?state.games[0]?.id:selectedGame;openModal(`<h3>录入游戏更新</h3><div class="form-grid"><div class="field"><label>游戏</label><select id="updateGame">${gameOptions(initial)}</select></div><div class="field"><label>实装日期</label><input id="updateDate" type="date"></div><div class="field full"><label>更新名称</label><input id="updateName"></div><div class="field full"><label>批量内容</label><div class="batch-head"><span>类别</span><span>具体名称</span><span></span></div><div id="batchRows"></div><button class="btn small" id="addBatchRow">＋ 添加一行</button></div></div><div class="modal-actions"><button class="btn" data-close>取消</button><button class="btn primary" id="saveUpdate">保存更新</button></div>`);function addRow(cat='',name=''){let row=document.createElement('div');row.className='batch-row';row.innerHTML=`<select class="batch-cat">${categoryOptions($('#updateGame').value,cat)}</select><input class="batch-name" value="${esc(name)}" placeholder="输入具体名称"><button class="btn small danger remove-row">删除</button>`;row.querySelector('.remove-row').onclick=()=>row.remove();$('#batchRows').appendChild(row)}addRow();addRow();$('#addBatchRow').onclick=()=>addRow();$('#updateGame').onchange=()=>$$('.batch-cat').forEach(s=>s.innerHTML=categoryOptions($('#updateGame').value));$('#saveUpdate').onclick=()=>{let rows=$$('.batch-row').map(r=>({category:r.querySelector('.batch-cat').value,name:r.querySelector('.batch-name').value.trim()}));if(rows.some(r=>(r.category&&!r.name)||(!r.category&&r.name)))return toast('请补全未完整的行');rows=rows.filter(r=>r.category&&r.name);if(!rows.length)return toast('请至少添加一项内容');let game=$('#updateGame').value,date=$('#updateDate').value,name=$('#updateName').value.trim()||(date?date+' 更新':'未命名更新'),uid='u'+Date.now();state.updates.push({id:uid,game,name,date,archived:false});rows.forEach((r,i)=>state.items.push({id:'i'+Date.now()+i,game,updateId:uid,category:r.category,name:r.name,done:false}));save();closeModal();render()}}
-$('#settingsBtn').onclick=()=>switchPage('settings');$('#trackerBtn').onclick=()=>switchPage('tracker');$('#searchInput').oninput=renderMain;$('#statusFilter').onchange=renderMain;$('#archiveFilter').onchange=renderMain;$('#modalBackdrop').onclick=e=>{if(e.target===e.currentTarget)closeModal()};$('#importDataInput').addEventListener('change',e=>handleImportData(e.target.files?.[0]));$('#statusFilter').value='all';render();
+$('#settingsBtn').onclick=()=>switchPage('settings');
+$('#trackerBtn').onclick=()=>switchPage('tracker');
+
+let searchTimer=null;
+$('#searchInput').oninput=()=>{
+  clearTimeout(searchTimer);
+  searchTimer=setTimeout(renderMain,120);
+};
+$('#statusFilter').onchange=renderMain;
+$('#archiveFilter').onchange=renderMain;
+
+$('#mainContent').addEventListener('change',e=>{
+  const check=e.target.closest('.task-check');
+  if(check)updateTaskDoneFast(check.dataset.id,check.checked,check.closest('.task'));
+});
+$('#mainContent').addEventListener('click',e=>{
+  const rename=e.target.closest('.rename-update');
+  if(rename){editUpdate(rename.dataset.id);return}
+
+  const archive=e.target.closest('.archive-update');
+  if(archive){
+    const u=updateById(archive.dataset.id);
+    if(!u)return;
+    let n=0;
+    for(const i of state.items)if(i.updateId===u.id&&!i.done)n++;
+    if(!u.archived&&n&&!confirm(`这一组还有 ${n} 项未完成，仍然归档吗？`))return;
+    u.archived=!u.archived;save();render();
+    return;
+  }
+
+  const edit=e.target.closest('.edit-task');
+  if(edit){editTask(edit.dataset.id);return}
+
+  const del=e.target.closest('.delete-task');
+  if(del){
+    if(!confirm('确定删除这条待办吗？'))return;
+    state.items=state.items.filter(i=>i.id!==del.dataset.id);
+    save();render();toast('待办已删除');
+  }
+});
+
+$('#modalBackdrop').onclick=e=>{if(e.target===e.currentTarget)closeModal()};
+$('#importDataInput').addEventListener('change',e=>handleImportData(e.target.files?.[0]));
+$('#statusFilter').value='all';
+render();
 </script></body></html>
