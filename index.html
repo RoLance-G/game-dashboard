@@ -1,109 +1,53 @@
 <!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Game Dashboard</title><link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%0A%3Cdefs%3E%0A%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%228%22%20y1%3D%226%22%20x2%3D%2256%22%20y2%3D%2258%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%0A%20%20%20%20%3Cstop%20stop-color%3D%22%23BDE7FF%22%2F%3E%0A%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%237FC6F2%22%2F%3E%0A%20%20%3C%2FlinearGradient%3E%0A%3C%2Fdefs%3E%0A%3Crect%20x%3D%224%22%20y%3D%224%22%20width%3D%2256%22%20height%3D%2256%22%20rx%3D%2215%22%20fill%3D%22url%28%23g%29%22%2F%3E%0A%3Crect%20x%3D%2215%22%20y%3D%2216%22%20width%3D%2221%22%20height%3D%2221%22%20rx%3D%226%22%20fill%3D%22%23F8FCFF%22%20fill-opacity%3D%22.96%22%2F%3E%0A%3Cpath%20d%3D%22M20%2026.5l4.2%204.2L32%2021.8%22%20fill%3D%22none%22%20stroke%3D%22%2374BCEB%22%20stroke-width%3D%224%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%0A%3Cpath%20d%3D%22M41%2021h9M41%2029h9M41%2037h9M16%2045h34%22%20fill%3D%22none%22%20stroke%3D%22%23F8FCFF%22%20stroke-width%3D%224%22%20stroke-linecap%3D%22round%22%2F%3E%0A%3C%2Fsvg%3E">
-<style>
-:root{--bg:#f6f7fb;--panel:#fff;--text:#1d2433;--muted:#7b8496;--line:#e8ebf1;--primary:#6c63ff;--soft:#efedff;--danger:#d95d67;--shadow:0 12px 34px rgba(29,36,51,.08);--r:18px}*{box-sizing:border-box}body{margin:0;font-family:Inter,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text)}button,input,select,textarea{font:inherit}button{cursor:pointer}.app{max-width:1220px;margin:auto;padding:30px 24px 60px}.topbar{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-bottom:22px}.brand h1{margin:0;font-size:28px}.brand p{margin:6px 0 0;color:var(--muted)}.actions{display:flex;gap:10px;flex-wrap:wrap}.btn{border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 14px;font-weight:650;color:var(--text)}.btn.primary{background:var(--primary);border-color:var(--primary);color:#fff}.btn.small{padding:7px 10px;font-size:13px}.btn.danger{color:var(--danger)}.layout{display:grid;grid-template-columns:260px minmax(0,1fr);gap:22px}.sidebar,.card,.update-card,.settings-shell{background:var(--panel);box-shadow:var(--shadow);border-radius:var(--r)}.sidebar{padding:16px;height:max-content;position:sticky;top:20px}.side-head{display:flex;justify-content:space-between;margin:4px 4px 14px;font-weight:700}.game-list{display:grid;gap:8px}.game-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px;align-items:center}.game-btn{border:0;background:transparent;border-radius:12px;padding:11px 12px;text-align:left;display:flex;justify-content:space-between;gap:8px}.game-btn.active,.game-btn:hover{background:var(--soft);color:var(--primary)}.count{font-size:12px;background:#eef0f4;padding:3px 8px;border-radius:999px;color:var(--muted)}.game-menu{display:flex;gap:4px}.iconbtn{border:0;background:transparent;color:var(--muted);padding:5px;border-radius:8px}.iconbtn:hover{background:#f2f3f7}.side-actions{display:grid;gap:8px;margin-top:12px}.add-game{border:1px dashed #cfd4df;background:transparent;border-radius:12px;padding:11px;color:var(--muted)}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:18px}.metric{background:#fff;border-radius:16px;padding:18px;box-shadow:var(--shadow)}.metric .label{font-size:13px;color:var(--muted)}.metric .value{font-size:28px;font-weight:750;margin-top:8px}.toolbar{background:#fff;border-radius:16px;padding:14px;box-shadow:var(--shadow);display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}.search{flex:1;min-width:200px}.input,.select{border:1px solid var(--line);background:#fafbfc;border-radius:11px;padding:10px 12px}.section-head{display:flex;justify-content:space-between;align-items:center;margin:0 2px 10px}.section-head h2{font-size:18px;margin:0}.section{margin-bottom:18px}.update-card{overflow:hidden;margin-bottom:14px}.update-card.archived{opacity:.68}.update-head{padding:17px 18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:14px}.update-title{font-weight:750}.update-meta{font-size:13px;color:var(--muted);margin-top:4px}.update-actions{display:flex;gap:10px;align-items:center}.tasks{padding:5px 8px 8px}.task{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;gap:12px;align-items:center;padding:11px 10px;border-radius:12px}.task:hover{background:#f8f9fb}.task.done .task-name{text-decoration:line-through;color:#98a0af}.task-check{width:20px;height:20px;accent-color:var(--primary)}.task-main{display:flex;justify-content:space-between;gap:20px;align-items:center}.task-name{font-weight:650}.tag{font-size:12px;color:#5e6680;background:#f0f2f6;border-radius:999px;padding:5px 9px;white-space:nowrap}.empty{text-align:center;padding:46px 20px;color:var(--muted);background:#fff;border-radius:18px;box-shadow:var(--shadow)}.page{display:none}.page.active{display:block}.settings-shell{display:grid;grid-template-columns:230px minmax(0,1fr);overflow:hidden}.settings-games{border-right:1px solid var(--line);padding:16px}.settings-games button{width:100%;text-align:left}.settings-main{padding:20px}.settings-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.category-row{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto auto auto;gap:8px;align-items:center;padding:9px 0;border-top:1px solid var(--line)}.drag{color:var(--muted);cursor:grab}.modal-backdrop{position:fixed;inset:0;background:rgba(20,24,35,.38);display:none;align-items:center;justify-content:center;padding:20px;z-index:20}.modal-backdrop.show{display:flex}.modal{width:min(720px,100%);max-height:90vh;overflow:auto;background:#fff;border-radius:20px;box-shadow:0 24px 80px rgba(0,0,0,.22);padding:22px}.modal h3{margin:0 0 18px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{display:grid;gap:7px}.field.full{grid-column:1/-1}.field label{font-size:13px;color:var(--muted);font-weight:650}.field input,.field select,.field textarea{width:100%;border:1px solid var(--line);border-radius:11px;padding:10px 12px;background:#fafbfc}.modal-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:20px}.batch-head,.batch-row{display:grid;grid-template-columns:220px minmax(0,1fr) auto;gap:10px;align-items:center}.batch-head{font-size:12px;color:var(--muted);margin-bottom:6px}.batch-row{margin-bottom:8px}.toast{position:fixed;right:24px;bottom:24px;background:#202638;color:#fff;padding:12px 16px;border-radius:12px;opacity:0;transform:translateY(10px);transition:.2s;pointer-events:none}.toast.show{opacity:1;transform:none}
-@media(max-width:820px){.layout{grid-template-columns:1fr}.sidebar{position:static}.metrics{grid-template-columns:1fr 1fr}.settings-shell{grid-template-columns:1fr}.settings-games{border-right:0;border-bottom:1px solid var(--line)}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}}@media(max-width:560px){.app{padding:20px 14px 40px}.topbar{display:block}.actions{margin-top:14px}.metrics{grid-template-columns:1fr}.update-head{display:block}.update-actions{margin-top:12px}.task{grid-template-columns:auto minmax(0,1fr) auto}.task-main{display:block}.tag{margin-top:5px;display:inline-block}.task .task-menu{grid-column:3}.batch-head{display:none}.batch-row{grid-template-columns:1fr}.category-row{grid-template-columns:auto minmax(0,1fr) auto auto}}
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow:wght@600;700;800&family=Nunito+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"><style>
+*{box-sizing:border-box;}body{margin:0;}button,input,select,textarea{font:inherit;}button{cursor:pointer;}.app{margin:auto;}.topbar{display:flex;justify-content:space-between;gap:16px;align-items:center;}.brand h1{margin:0;}.brand p{margin:6px 0 0;}.actions{display:flex;flex-wrap:wrap;}.btn{border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 14px;font-weight:650;color:var(--text);}.btn.small{padding:7px 10px;font-size:13px;}.layout{display:grid;}.sidebar,.card,.update-card,.settings-shell{background:var(--panel);box-shadow:var(--shadow);border-radius:var(--r);}.sidebar{height:max-content;}.side-head{display:flex;justify-content:space-between;font-weight:700;}.game-list{display:grid;}.game-btn{border:0;background:transparent;text-align:left;justify-content:space-between;gap:8px;}.game-btn.active,.game-btn:hover{background:var(--soft);color:var(--primary);}.count{font-size:12px;}.game-menu{gap:4px;}.iconbtn{border:0;background:transparent;padding:5px;}.side-actions{display:grid;gap:8px;}.add-game{border:1px dashed #cfd4df;background:transparent;border-radius:12px;}.metrics{display:grid;grid-template-columns:repeat(3,1fr);}.toolbar{display:flex;flex-wrap:wrap;}.search{flex:1;min-width:200px;}.input,.select{border:1px solid var(--line);background:#fafbfc;border-radius:11px;padding:10px 12px;}.section-head{display:flex;justify-content:space-between;align-items:center;}.section-head h2{margin:0;}.section{margin-bottom:18px;}.update-head{display:flex;justify-content:space-between;align-items:center;gap:14px;}.update-actions{display:flex;align-items:center;}.task{display:grid;align-items:center;}.task.done .task-name{text-decoration:line-through;}.task-main{display:flex;justify-content:space-between;gap:20px;align-items:center;}.tag{white-space:nowrap;}.empty{text-align:center;}.page{display:none;}.page.active{display:block;}.settings-shell{display:grid;overflow:hidden;}.settings-games button{width:100%;text-align:left;}.settings-title{margin-bottom:14px;}.category-row{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto auto auto;gap:8px;align-items:center;}.drag{cursor:grab;}.modal-backdrop{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:20px;z-index:20;}.modal-backdrop.show{display:flex;}.modal{width:min(720px,100%);max-height:90vh;overflow:auto;padding:22px;}.modal h3{margin:0 0 18px;}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}.field{display:grid;gap:7px;}.field.full{grid-column:1/-1;}.field label{font-size:13px;}.field input,.field select,.field textarea{width:100%;border:1px solid var(--line);border-radius:11px;padding:10px 12px;background:#fafbfc;}.modal-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:20px;}.batch-head,.batch-row{display:grid;grid-template-columns:220px minmax(0,1fr) auto;gap:10px;align-items:center;}.batch-head{font-size:12px;color:var(--muted);margin-bottom:6px;}.batch-row{margin-bottom:8px;}.toast{position:fixed;right:24px;bottom:24px;color:#fff;padding:12px 16px;opacity:0;transform:translateY(10px);transition:.2s;pointer-events:none;}.toast.show{opacity:1;transform:none;}
+@media(max-width:820px){.layout{grid-template-columns:1fr;}.sidebar{position:static;}.metrics{grid-template-columns:1fr 1fr;}.settings-shell{grid-template-columns:1fr;}.settings-games{border-right:0;border-bottom:1px solid var(--line);}.form-grid{grid-template-columns:1fr;}.field.full{grid-column:auto;}}@media(max-width:560px){.app{padding:20px 14px 40px;}.topbar{display:block;}.actions{margin-top:14px;}.metrics{grid-template-columns:1fr;}.update-head{display:block;}.update-actions{margin-top:12px;}.task{grid-template-columns:auto minmax(0,1fr) auto;}.task-main{display:block;}.tag{margin-top:5px;display:inline-block;}.task .task-menu{grid-column:3;}.batch-head{display:none;}.batch-row{grid-template-columns:1fr;}.category-row{grid-template-columns:auto minmax(0,1fr) auto auto;}}
 
-/* Desktop industrial naval UI theme */
-:root{
-  --bg:#d6d4cf;--panel:#f4f2ed;--text:#292929;--muted:#77736d;--line:#99958e;
-  --primary:#e88a21;--soft:#fff0dc;--danger:#c94c46;--shadow:0 2px 4px rgba(28,28,28,.24),inset 0 1px 0 rgba(255,255,255,.9);--r:7px;
-}
-html{min-width:1100px;background:#c7c4be}
-body{min-width:1100px;font-family:"Microsoft YaHei UI","Microsoft YaHei","PingFang SC","Noto Sans CJK SC",sans-serif;background:
- linear-gradient(rgba(255,255,255,.18),rgba(255,255,255,0) 130px),
- repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0,rgba(255,255,255,.035) 1px,transparent 1px,transparent 4px),var(--bg);font-weight:600}
-button,input,select,textarea{font-family:inherit}
-.app{max-width:1480px;padding:18px 24px 44px}
-.topbar{min-height:58px;margin-bottom:14px;padding:0 4px;border-bottom:3px solid #8b8780;position:relative}
-.topbar:after{content:"";position:absolute;left:0;right:0;bottom:-6px;border-bottom:1px solid rgba(255,255,255,.8)}
-.brand h1{font-size:30px;letter-spacing:.5px;font-weight:900;color:#252525;text-shadow:0 1px 0 #fff}
-.brand p{display:none!important}
-.actions{gap:8px}
-.btn,.add-game{border:1px solid #97928a;border-radius:6px;background:linear-gradient(#fff,#e7e4de);box-shadow:inset 0 1px 0 #fff,0 1px 2px rgba(0,0,0,.25);color:#333;font-weight:800;letter-spacing:.1px}
-.btn:hover,.add-game:hover{background:linear-gradient(#fff8ee,#f0dfc9);border-color:#c87b25}
-.btn:active{transform:translateY(1px);box-shadow:inset 0 2px 4px rgba(0,0,0,.18)}
-.btn.primary{background:linear-gradient(#f5a444,#df7818);border-color:#b65d12;color:white;text-shadow:0 1px 1px rgba(0,0,0,.35)}
-.btn.danger{color:#ad332f}
-.layout{grid-template-columns:286px minmax(0,1fr);gap:16px}
-.sidebar,.update-card,.settings-shell,.metric,.toolbar,.empty{border:1px solid #8f8b84;border-radius:7px;box-shadow:var(--shadow);background:linear-gradient(135deg,#faf9f6,#e9e6df)}
-.sidebar{padding:10px;top:14px}
-.side-head{margin:1px 3px 8px;padding:8px 9px;color:#4a4844;border-bottom:1px solid #aaa59d;font-size:14px;letter-spacing:.5px}
-.game-list{gap:5px}
-.game-row{display:grid;grid-template-columns:20px minmax(0,1fr) 31px;gap:4px;align-items:center;border:1px solid #aaa69f;border-radius:6px;background:linear-gradient(#fdfdfc,#dedbd5);box-shadow:inset 0 1px 0 #fff,0 1px 1px rgba(0,0,0,.15);transition:.12s}
-.game-row.all-game{grid-template-columns:minmax(0,1fr);margin-bottom:5px;border-color:#8e8981}
-.game-row.dragging{opacity:.42}
-.game-row.drag-over{border-color:var(--primary);box-shadow:inset 4px 0 0 var(--primary),0 1px 2px rgba(0,0,0,.2)}
-.game-drag{display:flex;align-items:center;justify-content:center;font-size:17px;color:#77736c;cursor:grab;user-select:none}
-.game-drag:active{cursor:grabbing}
-.game-btn{min-height:44px;border-radius:4px;padding:8px 10px;font-size:15px;font-weight:850;color:#333}
-.game-btn.active{background:linear-gradient(90deg,#fff0dc,#f3dfc7);color:#b95e0d;box-shadow:inset 4px 0 0 var(--primary)}
-.game-btn:hover{background:#f5eee4;color:#a9570d}
-.game-menu{justify-content:center}
-.iconbtn{border-radius:4px;color:#5e5a54;font-weight:900}
-.iconbtn:hover{background:#f1d9bb;color:#9b4d0a}
-.count{border-radius:4px;background:#d3d0ca;border:1px solid #aaa69f;color:#4f4c47;font-weight:800;padding:2px 7px}
-.side-actions{border-top:1px solid #aaa59d;padding-top:10px}
-.add-game{border-style:dashed;padding:10px}
-.metrics{gap:10px;margin-bottom:12px}
-.metric{padding:13px 16px;background:linear-gradient(#faf9f6,#e5e2dc)}
-.metric .label{color:#68645e;font-weight:800;letter-spacing:.4px}
-.metric .value{font-size:27px;margin-top:4px;font-weight:900;color:#2f2e2b}
-.toolbar{padding:9px;margin-bottom:12px;border-radius:7px}
-.input,.select,.field input,.field select,.field textarea{border:1px solid #9b968e!important;border-radius:5px!important;background:#fffefb!important;box-shadow:inset 0 1px 3px rgba(0,0,0,.12);font-weight:650;color:#30302e}
-.section-head{margin:0 4px 7px;padding:0 2px}
-.section-head h2{font-size:19px;font-weight:900;text-shadow:0 1px 0 #fff}
-.update-card{margin-bottom:10px}
-.update-head{padding:12px 14px;border-bottom:1px solid #97928b;background:linear-gradient(#efede8,#d6d2ca);box-shadow:inset 0 1px 0 #fff}
-.update-title{font-size:16px;font-weight:900;letter-spacing:.2px}
-.update-meta{color:#6e6a64;font-weight:700}
-.tasks{padding:3px 7px 6px;background:#f7f5f0}
-.task{min-height:43px;border-radius:4px;padding:7px 8px;border-bottom:1px solid #d4d0c8}
-.task:last-child{border-bottom:0}
-.task:hover{background:#fff0dc}
-.task-check{width:18px;height:18px;accent-color:var(--primary)}
-.task-name{font-weight:800;color:#333}
-.tag{min-width:110px;text-align:center;border-radius:4px;border:1px solid #aaa59e;background:linear-gradient(#eeece7,#d7d3cc);color:#44413d;font-size:13px;font-weight:850;padding:4px 9px;box-shadow:inset 0 1px 0 #fff}
-.settings-shell{grid-template-columns:250px minmax(0,1fr)}
-.settings-games{border-right:1px solid #928e87;background:#ddd9d2;padding:10px}
-.settings-main{padding:17px;background:#f5f3ee}
-.settings-title h2{font-weight:900}
-.category-row{border-top:1px solid #bbb6ad;padding:8px 4px}
-.drag{font-size:18px;color:#65615b}
-.modal-backdrop{background:rgba(25,24,22,.55)}
-.modal{border-radius:8px;border:2px solid #76726c;background:#f2f0eb;box-shadow:0 12px 38px rgba(0,0,0,.45),inset 0 1px 0 #fff}
-.modal h3{padding-bottom:10px;border-bottom:2px solid #aaa59d;font-size:20px;font-weight:900}
-.toast{border-radius:5px;background:#33312e;border:1px solid #111;font-weight:750}
-@media(max-width:820px), (max-width:560px){html,body{min-width:1100px}.app{padding:18px 24px 44px}.layout{grid-template-columns:286px minmax(0,1fr)}.sidebar{position:sticky}.metrics{grid-template-columns:repeat(3,1fr)}.settings-shell{grid-template-columns:250px minmax(0,1fr)}.form-grid{grid-template-columns:1fr 1fr}.field.full{grid-column:1/-1}.topbar{display:flex}.actions{margin-top:0}.update-head{display:flex}.update-actions{margin-top:0}.task{grid-template-columns:auto minmax(0,1fr) auto auto}.task-main{display:flex}.tag{margin-top:0;display:inline-block}.batch-head{display:grid}.batch-row{grid-template-columns:220px minmax(0,1fr) auto}.category-row{grid-template-columns:auto minmax(0,1fr) auto auto auto auto}}
+button,input,select,textarea{font-family:inherit;}
 
+.topbar:after{content:"";position:absolute;left:0;right:0;border-bottom:1px solid rgba(255,255,255,.8);}
 
-/* Bright, lighthearted desktop game-home theme */
-:root{
-  --bg:#f5efec;
-  --panel:rgba(255,255,255,.91);
-  --text:#34353b;
-  --muted:#86848b;
-  --line:#d8d3d4;
-  --primary:#f39a48;
-  --soft:#fff1e5;
-  --danger:#e46970;
-  --shadow:0 7px 22px rgba(98,84,88,.12),inset 0 1px 0 rgba(255,255,255,.96);
-  --r:14px;
-}
+.brand p{display:none!important;}
+
+.btn,.add-game{letter-spacing:.1px;}
+
+.game-row{display:grid;transition:.12s;}
+.game-row.all-game{margin-bottom:5px;}
+.game-row.dragging{opacity:.42;}
+
+.game-drag{display:flex;align-items:center;justify-content:center;cursor:grab;user-select:none;}
+.game-drag:active{cursor:grabbing;}
+
+.iconbtn{font-weight:900;}
+
+.add-game{padding:10px;}
+
+.input,.select,.field input,.field select,.field textarea{border:1px solid #9b968e!important;border-radius:5px!important;background:#fffefb!important;box-shadow:inset 0 1px 3px rgba(0,0,0,.12);font-weight:650;color:#30302e;}
+
+.section-head h2{text-shadow:0 1px 0 #fff;}
+
+.update-head{box-shadow:inset 0 1px 0 #fff;}
+
+.tasks{background:#f7f5f0;}
+
+.tag{min-width:110px;text-align:center;box-shadow:inset 0 1px 0 #fff;}
+
+.drag{font-size:18px;}
+
+.modal h3{padding-bottom:10px;border-bottom:2px solid #aaa59d;font-size:20px;}
+.toast{font-weight:750;}
+@media(max-width:820px), (max-width:560px){html,body{min-width:1100px;}.app{padding:18px 24px 44px;}.layout{grid-template-columns:286px minmax(0,1fr);}.sidebar{position:sticky;}.metrics{grid-template-columns:repeat(3,1fr);}.settings-shell{grid-template-columns:250px minmax(0,1fr);}.form-grid{grid-template-columns:1fr 1fr;}.field.full{grid-column:1/-1;}.topbar{display:flex;}.actions{margin-top:0;}.update-head{display:flex;}.update-actions{margin-top:0;}.task{grid-template-columns:auto minmax(0,1fr) auto auto;}.task-main{display:flex;}.tag{margin-top:0;display:inline-block;}.batch-head{display:grid;}.batch-row{grid-template-columns:220px minmax(0,1fr) auto;}.category-row{grid-template-columns:auto minmax(0,1fr) auto auto auto auto;}}
+
 html{
   min-width:1180px;
-  background:#f4eeeb;
+  
 }
 body{
   min-width:1180px;
-  color:var(--text);
+  
   font-family:"Microsoft YaHei UI","PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
   font-weight:500;
-  background:
-    radial-gradient(circle at 15% 4%,rgba(255,206,215,.58),transparent 25%),
-    radial-gradient(circle at 87% 10%,rgba(198,229,255,.63),transparent 26%),
-    radial-gradient(circle at 68% 92%,rgba(255,229,183,.42),transparent 27%),
-    linear-gradient(135deg,#faf7f4 0%,#f4eeed 48%,#eef5f9 100%);
-  background-attachment:fixed;
+
 }
 body:before{
   content:"";
@@ -120,13 +64,10 @@ body:before{
 .app{
   position:relative;
   z-index:1;
-  max-width:1540px;
-  padding:18px 28px 48px;
+
 }
 .topbar{
-  min-height:70px;
-  padding:0 6px 12px;
-  margin-bottom:16px;
+
   border-bottom:1px solid rgba(169,158,162,.56);
 }
 .topbar:after{
@@ -134,13 +75,10 @@ body:before{
   border-bottom-color:rgba(255,255,255,.95);
 }
 .brand h1{
-  font-size:32px;
-  font-weight:850;
-  letter-spacing:.3px;
-  color:#3d3b42;
+
   text-shadow:0 1px 0 white;
 }
-.actions{gap:9px}
+.actions{gap:9px;}
 .btn,.add-game{
   border:1px solid #d0c8ca;
   border-radius:11px;
@@ -150,27 +88,14 @@ body:before{
   font-weight:700;
 }
 .btn:hover,.add-game:hover{
-  border-color:#efa465;
-  background:linear-gradient(180deg,#fff,#fff3e9);
-  color:#b76524;
+
   transform:translateY(-1px);
 }
 .btn:active{
-  transform:translateY(0);
+  
   box-shadow:inset 0 2px 5px rgba(100,80,86,.12);
 }
-.btn.primary{
-  border-color:#e68a3e;
-  color:white;
-  text-shadow:0 1px 1px rgba(131,74,24,.25);
-  background:linear-gradient(180deg,#ffb769,#ef9141);
-  box-shadow:0 5px 13px rgba(232,133,54,.24),inset 0 1px 0 rgba(255,255,255,.48);
-}
-.btn.danger{color:#d85f66}
-.layout{
-  grid-template-columns:286px minmax(0,1fr);
-  gap:18px;
-}
+
 .sidebar,.update-card,.settings-shell,.metric,.toolbar,.empty{
   border:1px solid rgba(196,186,188,.72);
   border-radius:15px;
@@ -179,86 +104,45 @@ body:before{
   backdrop-filter:blur(10px);
 }
 .sidebar{
-  padding:12px;
+  
   top:14px;
 }
 .side-head{
-  margin:0 4px 10px;
-  padding:9px 8px 11px;
-  color:#6d686d;
-  border-bottom:1px solid #e0d9db;
-  font-size:13px;
+
   letter-spacing:.4px;
 }
-.game-list{gap:7px}
+
 .game-row{
   grid-template-columns:22px minmax(0,1fr) 34px;
   gap:5px;
-  min-height:48px;
-  border:1px solid #ddd6d8;
-  border-radius:12px;
-  background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(247,242,243,.94));
-  box-shadow:0 3px 10px rgba(105,91,95,.08),inset 0 1px 0 white;
+
 }
 .game-row.all-game{
   grid-template-columns:minmax(0,1fr);
   border-color:#d6cccf;
 }
-.game-row.drag-over{
-  border-color:#f0a064;
-  box-shadow:inset 4px 0 0 #f29c58,0 5px 13px rgba(217,137,76,.12);
-}
+
 .game-drag{
-  color:#aaa1a5;
+  
   font-size:18px;
 }
-.game-btn{
-  min-height:46px;
-  padding:8px 10px;
-  color:#4c4a50;
-  font-size:15px;
-  font-weight:700;
-}
-.game-btn.active{
-  color:#b96528;
-  background:linear-gradient(90deg,#fff4ea,#fff9f4);
-  box-shadow:inset 4px 0 0 #f49b4d;
-}
-.game-btn:hover{
-  color:#ae622d;
-  background:#fff6ef;
-}
+
 .iconbtn{
   color:#8d868a;
-  border-radius:9px;
+  
 }
-.iconbtn:hover{
-  color:#bd6a30;
-  background:#fff0e4;
-}
+
 .count{
-  color:#747077;
-  border:1px solid #ddd5d7;
+
   border-radius:999px;
-  background:#f4eff0;
+  
 }
-.side-actions{
-  border-top:1px solid #e2dadd;
-  padding-top:11px;
-}
+
 .add-game{
   border-style:dashed;
   color:#8b8589;
 }
-.metrics{
-  gap:12px;
-  margin-bottom:14px;
-}
-.metric{
-  position:relative;
-  overflow:hidden;
-  padding:15px 18px;
-}
+
 .metric:after{
   content:"";
   position:absolute;
@@ -267,27 +151,15 @@ body:before{
   width:90px;
   height:90px;
   border-radius:50%;
-  background:radial-gradient(circle,rgba(255,195,156,.27),transparent 69%);
+  
 }
-.metric:nth-child(2):after{background:radial-gradient(circle,rgba(173,218,255,.30),transparent 69%)}
-.metric:nth-child(3):after{background:radial-gradient(circle,rgba(255,191,207,.28),transparent 69%)}
-.metric .label{
-  color:#898389;
-  font-size:13px;
-  font-weight:650;
-}
+
 .metric .value{
   position:relative;
   z-index:1;
-  color:#48454b;
-  font-size:28px;
-  font-weight:820;
+
 }
-.toolbar{
-  gap:10px;
-  padding:13px;
-  margin-bottom:16px;
-}
+
 .input,.select,
 .field input,.field select,.field textarea,
 .batch-row input,.batch-row select{
@@ -297,28 +169,10 @@ body:before{
   background:rgba(255,255,255,.88);
   box-shadow:inset 0 1px 3px rgba(101,85,90,.05);
 }
-.input:focus,.select:focus,
-.field input:focus,.field select:focus,.field textarea:focus,
-.batch-row input:focus,.batch-row select:focus{
-  outline:2px solid rgba(242,153,78,.25);
-  border-color:#efa15f;
-}
-.section-head h2{
-  color:#58545a;
-  font-size:19px;
-  font-weight:780;
-}
-.update-card{
-  overflow:hidden;
-  margin-bottom:15px;
-}
-.update-card.archived{opacity:.68}
+
 .update-head{
   position:relative;
-  padding:15px 17px;
-  border-bottom:1px solid #e4dcdf;
-  background:
-    linear-gradient(90deg,rgba(255,241,231,.88),rgba(255,255,255,.96) 28%,rgba(237,247,255,.73));
+
 }
 .update-head:before{
   content:"";
@@ -327,83 +181,28 @@ body:before{
   top:0;
   bottom:0;
   width:5px;
-  background:linear-gradient(#ffb06a,#f18c3a);
+  
 }
-.update-title{
-  color:#49464d;
-  font-size:17px;
-  font-weight:800;
-}
-.update-meta{
-  color:#918a8f;
-  font-size:12px;
-}
-.update-actions{gap:7px}
-.tasks{
-  padding:6px 10px 10px;
-}
-.task{
-  min-height:46px;
-  padding:10px 11px;
-  border-radius:10px;
-  border-bottom:1px solid rgba(224,216,219,.7);
-}
-.task:last-child{border-bottom:0}
-.task:hover{
-  background:linear-gradient(90deg,rgba(255,242,232,.64),rgba(242,249,255,.66));
-}
-.task-check{
-  width:19px;
-  height:19px;
-  accent-color:#f29a4c;
-}
-.task-name{
-  color:#4c4950;
-  font-weight:650;
-}
-.task.done .task-name{
-  color:#aaa3a7;
-}
-.tag{
-  color:#706b70;
-  border:1px solid #dcd4d7;
-  border-radius:8px;
-  background:linear-gradient(#fff,#f3eeef);
-  padding:4px 10px;
-  font-weight:650;
-}
+
+.update-actions{gap:7px;}
+
 .settings-shell{
   grid-template-columns:250px minmax(0,1fr);
 }
-.settings-games{
-  border-right:1px solid #ded6d9;
-  background:rgba(249,244,245,.68);
-}
-.settings-main{padding:22px}
+
+.settings-main{padding:22px;}
 .settings-title h2{
-  color:#4e4a51;
+  
   font-weight:800;
 }
 .category-row{
   border-top:1px solid #e5dde0;
   padding:10px 4px;
 }
-.drag{color:#aba2a7}
-.modal-backdrop{
-  background:rgba(82,71,76,.28);
-  backdrop-filter:blur(4px);
-}
-.modal{
-  border:1px solid rgba(205,194,198,.83);
-  border-radius:18px;
-  background:
-    radial-gradient(circle at 100% 0,rgba(202,231,255,.31),transparent 27%),
-    radial-gradient(circle at 0 100%,rgba(255,211,219,.27),transparent 27%),
-    #fdfafa;
-  box-shadow:0 24px 70px rgba(78,63,70,.24);
-}
+.drag{color:#aba2a7;}
+
 .modal h3{
-  color:#4a474d;
+  
   font-weight:820;
 }
 .field label{
@@ -411,7 +210,7 @@ body:before{
   font-weight:650;
 }
 .empty{
-  color:#8b858a;
+  
   padding:50px 20px;
 }
 .toast{
@@ -421,8 +220,6 @@ body:before{
   box-shadow:0 10px 30px rgba(73,64,69,.2);
 }
 
-
-/* Sidebar alignment fix */
 .game-row{
   align-items:stretch;
 }
@@ -432,7 +229,7 @@ body:before{
   align-items:center;
   width:100%;
   height:100%;
-  padding:8px 10px 8px 10px;
+  
   column-gap:10px;
 }
 .game-btn span:first-child{
@@ -448,7 +245,7 @@ body:before{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  min-width:30px;
+  
   height:22px;
   padding:0 8px;
   line-height:1;
@@ -468,49 +265,29 @@ body:before{
   height:26px;
 }
 
-
-/* Soft sky-blue accent theme */
-:root{
-  --primary:#8fcdf5;
-  --soft:#eef8ff;
-}
-body{
-  background:
-    radial-gradient(circle at 15% 4%,rgba(214,233,255,.52),transparent 25%),
-    radial-gradient(circle at 87% 10%,rgba(189,227,255,.58),transparent 26%),
-    radial-gradient(circle at 68% 92%,rgba(227,242,255,.38),transparent 27%),
-    linear-gradient(135deg,#fbfbfc 0%,#f4f7fb 48%,#edf6fd 100%);
-  background-attachment:fixed;
-}
 .btn:hover,.add-game:hover{
   border-color:#9fcee9;
   background:linear-gradient(180deg,#fff,#f2f9ff);
   color:#4c86ab;
 }
 .btn.primary{
-  border-color:#8fc5e8;
-  color:white;
+
   text-shadow:0 1px 1px rgba(73,126,164,.20);
-  background:linear-gradient(180deg,#a8d9f9,#82c5ef);
-  box-shadow:0 5px 13px rgba(132,194,234,.22),inset 0 1px 0 rgba(255,255,255,.5);
+
 }
 .game-row.drag-over{
   border-color:#9dcdec;
   box-shadow:inset 4px 0 0 #8cc8ef,0 5px 13px rgba(137,193,226,.14);
 }
 .game-btn.active{
-  color:#4f86ab;
-  background:linear-gradient(90deg,#eef8ff,#f8fcff);
+
   box-shadow:inset 4px 0 0 #8dcaf1;
 }
 .game-btn:hover{
   color:#467da3;
   background:#f2f9ff;
 }
-.iconbtn:hover{
-  color:#5289ad;
-  background:#edf7ff;
-}
+
 .metric:after{
   background:radial-gradient(circle,rgba(171,221,252,.30),transparent 69%);
 }
@@ -526,20 +303,10 @@ body{
   outline:2px solid rgba(147,205,244,.26);
   border-color:#8fc9ef;
 }
-.update-head{
-  background:
-    linear-gradient(90deg,rgba(236,247,255,.94),rgba(255,255,255,.96) 28%,rgba(240,249,255,.8));
-}
+
 .update-head:before{
   background:linear-gradient(#a8d9f8,#81c3eb);
 }
-.task:hover{
-  background:linear-gradient(90deg,rgba(240,249,255,.76),rgba(246,251,255,.82));
-}
-.task-check{
-  accent-color:#86c7f1;
-}
-
 
 /* Final task row order: checkbox → category → content */
 .task{
@@ -558,7 +325,6 @@ body{
   min-width:0;
   line-height:1.35;
 }
-
 
 /* Unified update-version management */
 .settings-update-manager{
@@ -581,9 +347,7 @@ body{
   min-height:62px;
   padding:9px 10px;
   border:1px solid #d8e5ee;
-  border-radius:12px;
-  background:linear-gradient(180deg,rgba(255,255,255,.97),rgba(244,250,255,.92));
-  box-shadow:0 3px 10px rgba(91,139,172,.08),inset 0 1px 0 white;
+
 }
 .update-manager-row.is-archived{
   opacity:.66;
@@ -592,10 +356,7 @@ body{
 .update-manager-row.dragging{
   opacity:.42;
 }
-.update-manager-row.drag-over{
-  border-color:#8fc9ef;
-  box-shadow:inset 4px 0 0 #8fcdf5,0 5px 13px rgba(137,193,226,.14);
-}
+
 .update-manager-drag{
   display:flex;
   align-items:center;
@@ -628,20 +389,16 @@ body{
   justify-content:center;
   min-width:66px;
   height:25px;
-  border-radius:999px;
+  
   border:1px solid #d6e4ed;
   font-size:12px;
   font-weight:700;
 }
-.update-status.active{
-  color:#4f86ab;
-  background:#edf8ff;
-}
+
 .update-status.archived{
   color:#888f95;
   background:#f1f3f5;
 }
-
 
 /* Two-level settings structure */
 .settings-games{
@@ -649,38 +406,29 @@ body{
 }
 .settings-side-title{
   margin:2px 6px 10px;
-  color:#7f8d97;
+  
   font-size:12px;
   font-weight:700;
-  letter-spacing:.4px;
+  
 }
 .settings-tabs{
   display:flex;
-  gap:8px;
+  
   margin:4px 0 18px;
   padding-bottom:12px;
-  border-bottom:1px solid #dbe7ef;
+  
 }
 .settings-tab{
-  min-width:112px;
-  border:1px solid #d7e4ed;
-  border-radius:10px;
+
   padding:9px 14px;
-  color:#667782;
-  background:linear-gradient(180deg,#fff,#f5faff);
+
   font-weight:700;
 }
 .settings-tab:hover{
   border-color:#9fcfeb;
-  color:#4f86ab;
-  background:#f2f9ff;
+
 }
-.settings-tab.active{
-  border-color:#8fc9ef;
-  color:#4d84a8;
-  background:linear-gradient(180deg,#eef8ff,#f8fcff);
-  box-shadow:inset 0 -3px 0 #8fcdf5;
-}
+
 .settings-panel-head{
   display:flex;
   justify-content:space-between;
@@ -691,14 +439,13 @@ body{
 .settings-panel-head h3{
   margin:0;
   color:#4a5660;
-  font-size:17px;
+  
 }
 .settings-helper{
   margin-top:4px;
   color:#87949e;
   font-size:12px;
 }
-
 
 /* Game Dashboard quick links */
 .tracker-shell{
@@ -707,17 +454,13 @@ body{
   gap:16px;
   align-items:start;
 }
-.tracker-main{min-width:0}
+.tracker-main{min-width:0;}
 .quicklinks-panel{
-  position:sticky;
+  
   top:14px;
   display:grid;
   gap:10px;
-  padding:14px;
-  border:1px solid #d8e5ee;
-  border-radius:15px;
-  background:linear-gradient(145deg,rgba(255,255,255,.97),rgba(243,250,255,.9));
-  box-shadow:var(--shadow);
+
 }
 .quicklinks-head{
   display:flex;
@@ -725,44 +468,34 @@ body{
   align-items:center;
   gap:10px;
   padding-bottom:10px;
-  border-bottom:1px solid #dde8f0;
+  
 }
-.quicklinks-head h3{margin:0;color:#4b5862;font-size:16px}
-.quicklinks-sub{color:#8d9aa4;font-size:12px;margin-top:3px}
-.quicklinks-list{display:grid;gap:8px}
+.quicklinks-head h3{margin:0;}
+.quicklinks-sub{margin-top:3px;}
+.quicklinks-list{display:grid;}
 .quicklink-item{
   display:grid;
-  grid-template-columns:20px minmax(0,1fr) 14px;
+  
   align-items:center;
   gap:10px;
-  min-height:40px;
-  padding:9px 11px;
-  border:1px solid #d7e4ed;
-  border-radius:11px;
-  color:#4c6273;
+
   text-decoration:none;
-  background:linear-gradient(180deg,#fff,rgba(242,249,255,.88));
+  
 }
-.quicklink-item:hover{
-  border-color:#9fcfeb;
-  background:linear-gradient(180deg,#fff,rgba(233,246,255,.96));
-  color:#3e7aa2;
-}
+
 .quicklink-icon{
-  width:20px;
-  height:20px;
-  border-radius:5px;
+
   object-fit:contain;
-  background:#f2f8fc;
+  
 }
 .quicklink-name{
   min-width:0;
   overflow:hidden;
   text-overflow:ellipsis;
   white-space:nowrap;
-  font-weight:700;
+  
 }
-.quicklink-arrow{color:#9ab2c3;font-size:12px}
+.quicklink-arrow{font-size:12px;}
 .quicklinks-empty{
   padding:18px 12px;
   border:1px dashed #d6e4ed;
@@ -771,7 +504,7 @@ body{
   text-align:center;
   background:rgba(244,250,255,.65);
 }
-.quicklinks-empty button{margin-top:10px}
+.quicklinks-empty button{margin-top:10px;}
 .site-row{
   display:grid;
   grid-template-columns:24px minmax(0,1fr) minmax(0,1fr) auto auto auto;
@@ -788,7 +521,6 @@ body{
   white-space:nowrap;
 }
 
-
 .settings-title{
   display:flex;
   justify-content:space-between;
@@ -801,16 +533,12 @@ body{
   flex-wrap:wrap;
 }
 
-
 /* Performance pass */
-.task{
-  contain:layout paint style;
-}
+
 .game-btn .count,
 .section-pending-count{
   font-variant-numeric:tabular-nums;
 }
-
 
 /* Smooth scrolling / low-paint-cost pass */
 body{
@@ -840,8 +568,7 @@ body::before{
   box-shadow:0 2px 7px rgba(80,125,155,.07) !important;
 }
 .update-card{
-  background:#fbfdff !important;
-  box-shadow:0 1px 5px rgba(80,125,155,.06) !important;
+
   content-visibility:auto;
   contain-intrinsic-size:auto 260px;
 }
@@ -855,10 +582,7 @@ body::before{
 .modal-backdrop{
   -webkit-backdrop-filter:none !important;
   backdrop-filter:none !important;
-  background:rgba(62,74,84,.22) !important;
-}
-.modal{
-  box-shadow:0 12px 34px rgba(60,80,95,.18) !important;
+  
 }
 
 /* Keep button feedback, but avoid transform/compositor churn. */
@@ -869,26 +593,10 @@ body::before{
 .btn:active{
   transform:none !important;
 }
-.btn,
-.add-game{
-  box-shadow:0 1px 4px rgba(80,125,155,.07),inset 0 1px 0 rgba(255,255,255,.8) !important;
-}
-.btn.primary{
-  box-shadow:0 2px 7px rgba(110,177,220,.16),inset 0 1px 0 rgba(255,255,255,.48) !important;
-}
 
 /* Sidebar/navigation cards don't need a blurred/deep shadow per row. */
-.game-row{
-  box-shadow:0 1px 3px rgba(80,125,155,.05),inset 0 1px 0 #fff !important;
-}
-.quicklinks-panel{
-  box-shadow:0 2px 7px rgba(80,125,155,.07) !important;
-}
 
 /* Decorative metric glow is subtle but forces extra painting during scroll. */
-.metric::after{
-  display:none !important;
-}
 
 /* Keep scrolling compositing simple. */
 .sidebar,
@@ -896,20 +604,1312 @@ body::before{
   will-change:auto;
 }
 
+/* =========================================================
+   Blue Archive-inspired preview skin
+   Visual-only layer: no data / behavior changes
+   ========================================================= */
+
+:root{
+  --bg:#eef7fc !important;
+  --panel:#ffffff !important;
+  --text:#24384c !important;
+  --muted:#7690a4 !important;
+  --line:#d3e6f1 !important;
+  --primary:#22aeea !important;
+  --soft:#e8f7ff !important;
+  --danger:#e56778 !important;
+  --shadow:0 4px 12px rgba(47,103,137,.08) !important;
+  --r:10px !important;
+}
+
+html{
+  background:#eef7fc;
+}
+
+body{
+  background:
+    linear-gradient(135deg,rgba(44,178,232,.055) 0 1px,transparent 1px 92px),
+    linear-gradient(45deg,rgba(57,121,165,.035) 0 1px,transparent 1px 128px),
+    #eef7fc !important;
+  color:#24384c !important;
+}
+
+.app{
+  max-width:1450px !important;
+  padding:22px 26px 52px !important;
+}
+
+/* ---------- Header ---------- */
+.topbar{
+  position:relative;
+  margin-bottom:16px !important;
+  
+  border:1px solid #cfe5f2;
+  border-left:5px solid #24b8f2;
+  border-radius:7px;
+  background:#fff;
+  box-shadow:0 3px 9px rgba(45,105,145,.06);
+  overflow:hidden;
+}
+.topbar::after{
+  content:"";
+  position:absolute;
+  right:-34px;
+  top:-42px;
+  width:180px;
+  height:96px;
+  border:2px solid rgba(37,178,234,.16);
+  transform:skewX(-28deg);
+  pointer-events:none;
+}
+.brand h1{
+  position:relative;
+  z-index:1;
+  color:#21394e;
+  
+  font-weight:800 !important;
+  
+}
+.brand h1::after{
+  content:" // PERSONAL NAVIGATION";
+  margin-left:10px;
+  color:#43b9e8;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:1.2px;
+  vertical-align:middle;
+}
+.brand p{
+  position:relative;
+  z-index:1;
+  margin-top:3px !important;
+  color:#7991a4 !important;
+  
+}
+
+/* ---------- Buttons ---------- */
+.btn,
+.add-game{
+  border:1px solid #c9dfeb !important;
+  border-radius:6px !important;
+  background:#fff !important;
+  color:#4c6b80 !important;
+  box-shadow:none !important;
+  font-weight:750 !important;
+  transition:background .12s ease,border-color .12s ease,color .12s ease !important;
+}
+.btn:hover,
+.add-game:hover{
+  border-color:#55bfe9 !important;
+  background:#eefaff !important;
+  color:#168ac2 !important;
+}
+.btn.primary{
+  border-color:#27abe4 !important;
+  background:linear-gradient(135deg,#36bff3,#1f9fdc) !important;
+  color:#fff !important;
+  box-shadow:0 2px 6px rgba(30,150,207,.18) !important;
+}
+.btn.danger{
+  color:#d65367 !important;
+}
+.iconbtn{
+  border-radius:5px !important;
+}
+.iconbtn:hover{
+  background:#e8f7ff !important;
+  color:#168fc7 !important;
+}
+
+/* ---------- Main 3-column structure ---------- */
+.layout{
+  grid-template-columns:274px minmax(0,1fr) !important;
+  gap:14px !important;
+}
+
+/* ---------- Sidebar ---------- */
+.sidebar{
+  padding:12px !important;
+  border:1px solid #cde2ee;
+  border-radius:8px !important;
+  background:#fdfefe !important;
+  box-shadow:0 4px 11px rgba(44,102,137,.065) !important;
+}
+.side-head{
+  position:relative;
+  margin:0 2px 10px !important;
+  padding:7px 10px 8px;
+  border-bottom:1px solid #d6e8f2;
+  color:#36566d;
+  font-size:13px;
+}
+.side-head::before{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-1px;
+  width:44px;
+  height:2px;
+  background:#28afe8;
+}
+.game-list{
+  gap:5px !important;
+}
+.game-row{
+  min-height:43px;
+  border:1px solid transparent;
+  border-radius:6px !important;
+  background:#fff;
+  box-shadow:none !important;
+}
+.game-row:hover{
+  border-color:#d3e7f2;
+  background:#f7fcff;
+}
+.game-btn{
+  border-radius:5px !important;
+  padding:9px 10px !important;
+  color:#557185;
+  font-weight:750;
+}
+.game-btn.active{
+  position:relative;
+  background:linear-gradient(90deg,#ddf5ff 0%,#f6fcff 76%) !important;
+  color:#168dc5 !important;
+}
+.game-btn.active::after{
+  content:"";
+  position:absolute;
+  right:0;
+  top:6px;
+  bottom:6px;
+  width:3px;
+  background:#27afe8;
+}
+.count{
+  min-width:30px;
+  border:1px solid #d5e6ef;
+  background:#f3f8fb !important;
+  color:#70899b !important;
+  font-weight:700;
+}
+.game-btn.active .count{
+  border-color:#b9e5f8;
+  background:#fff !important;
+  color:#1790c8 !important;
+}
+.game-drag{
+  color:#9ab0bf !important;
+}
+.side-actions{
+  border-top:1px solid #d7e8f1;
+  padding-top:10px;
+  margin-top:10px !important;
+}
+
+/* ---------- Metrics ---------- */
+.metrics{
+  gap:10px !important;
+  margin-bottom:12px !important;
+}
+.metric{
+  position:relative;
+  
+  padding:13px 16px 13px 19px !important;
+  border:1px solid #cce3ef;
+  border-radius:7px !important;
+  background:#fff !important;
+  box-shadow:0 3px 9px rgba(43,102,140,.055) !important;
+  overflow:hidden;
+}
+.metric::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  bottom:0;
+  width:5px;
+  background:#24b5ed;
+}
+.metric:nth-child(2)::before{
+  background:#4a91d5;
+}
+.metric:nth-child(3)::before{
+  background:#63c8de;
+}
+.metric .label{
+  color:#6f8799 !important;
+  font-weight:750;
+  
+}
+.metric .value{
+  margin-top:2px !important;
+  color:#2f5974;
+  
+  font-weight:850 !important;
+}
+
+/* ---------- Toolbar ---------- */
+.toolbar{
+  position:relative;
+  gap:8px !important;
+  padding:10px !important;
+  margin-bottom:12px !important;
+  border:1px solid #cfe4ef;
+  border-radius:7px !important;
+  background:#fff !important;
+  box-shadow:0 3px 8px rgba(45,105,140,.05) !important;
+}
+.input,.select,
+.field input,.field select,.field textarea{
+  border:1px solid #cedfe9 !important;
+  border-radius:5px !important;
+  background:#f9fcfe !important;
+  color:#38576d !important;
+}
+.input:focus,.select:focus,
+.field input:focus,.field select:focus,.field textarea:focus{
+  border-color:#39afe0 !important;
+  outline:2px solid rgba(38,175,232,.12);
+}
+
+/* ---------- Section / update cards ---------- */
+.section-head{
+  margin:14px 0 7px !important;
+  padding:0 2px 5px;
+  border-bottom:1px solid #cfe4ef;
+}
+.section-head h2{
+  color:#2c4b62;
+  
+  font-weight:850;
+}
+.section-head small{
+  color:#6e8b9e;
+  font-weight:700;
+}
+.update-card{
+  position:relative;
+  margin-bottom:9px !important;
+  border:1px solid #cfe2ec;
+  border-radius:7px !important;
+  background:#fff !important;
+  box-shadow:0 2px 7px rgba(49,103,136,.045) !important;
+  overflow:hidden;
+}
+.update-card::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:58px;
+  height:3px;
+  background:#27b1e9;
+  z-index:2;
+}
+.update-head{
+  padding:11px 13px 10px 15px !important;
+  border-bottom:1px solid #dceaf2 !important;
+  background:linear-gradient(90deg,#f4fbff,#fff 50%);
+}
+.update-title{
+  color:#34566d;
+  
+  font-weight:850 !important;
+}
+.update-meta{
+  margin-top:2px !important;
+  color:#7a94a6 !important;
+  
+  font-weight:650;
+}
+.update-card.archived{
+  opacity:.62 !important;
+}
+
+/* ---------- Tasks ---------- */
+.tasks{
+  padding:4px 7px 7px !important;
+}
+.task{
+  
+  gap:9px !important;
+  
+  border-bottom:1px solid #edf4f8;
+  border-radius:4px !important;
+}
+.task:last-child{
+  border-bottom:0;
+}
+.task:hover{
+  background:#f2faff !important;
+}
+.task-check{
+  accent-color:#24afe7 !important;
+}
+.task-name{
+  color:#3b5568;
+  
+  font-weight:700 !important;
+}
+.tag{
+  border:1px solid #bfe4f4;
+  border-radius:4px !important;
+  background:#eaf8ff !important;
+  color:#2587b4 !important;
+  
+  font-weight:800;
+  letter-spacing:.2px;
+}
+.task.done .task-name{
+  color:#96a8b4 !important;
+}
+
+/* ---------- Quick links ---------- */
+.quicklinks-panel{
+  padding:11px !important;
+  border:1px solid #cce2ee !important;
+  border-radius:8px !important;
+  background:#fff !important;
+  box-shadow:0 3px 9px rgba(43,103,140,.055) !important;
+}
+.quicklinks-head{
+  padding:4px 4px 9px !important;
+  border-bottom:1px solid #d5e7f0 !important;
+}
+.quicklinks-head h3{
+  color:#345a72 !important;
+  font-size:14px !important;
+  font-weight:850;
+}
+.quicklinks-sub{
+  color:#83a0b2 !important;
+  font-size:10px !important;
+}
+.quicklinks-list{
+  gap:6px !important;
+}
+.quicklink-item{
+  
+  padding:8px 9px !important;
+  border:1px solid #d3e6f0 !important;
+  border-left:3px solid #2bb2e9 !important;
+  border-radius:5px !important;
+  background:#fbfeff !important;
+  color:#476779 !important;
+}
+.quicklink-item:hover{
+  border-color:#6fc8ed !important;
+  border-left-color:#1a9ed9 !important;
+  background:#edf9ff !important;
+  color:#1687bd !important;
+}
+.quicklink-icon{
+  border-radius:3px !important;
+  background:#eef8fc !important;
+}
+.quicklink-name{
+  
+  font-weight:800 !important;
+}
+.quicklink-arrow{
+  color:#43abd7 !important;
+}
+
+/* ---------- Settings ---------- */
+.settings-shell{
+  border:1px solid #cce1ed;
+  border-radius:8px !important;
+  background:#fff !important;
+  box-shadow:0 4px 10px rgba(43,102,138,.055) !important;
+}
+.settings-games{
+  border-right:1px solid #d5e6ef !important;
+  background:#f8fcfe;
+}
+.settings-main{
+  background:#fff;
+}
+.settings-title{
+  padding-bottom:10px;
+  border-bottom:1px solid #d6e7f0;
+}
+.settings-title h2{
+  color:#2f536b;
+}
+.settings-tabs{
+  gap:5px !important;
+  border-bottom:1px solid #d3e5ef !important;
+}
+.settings-tab{
+  min-width:104px !important;
+  border:1px solid #d2e4ed !important;
+  border-radius:5px 5px 0 0 !important;
+  background:#f8fcfe !important;
+  color:#6a8496 !important;
+}
+.settings-tab:hover{
+  background:#eef9ff !important;
+  color:#1788bd !important;
+}
+.settings-tab.active{
+  border-color:#63c7ec !important;
+  border-bottom-color:#fff !important;
+  background:#fff !important;
+  color:#158bc3 !important;
+  box-shadow:inset 0 3px 0 #27b3ea !important;
+}
+.category-row,
+.site-row,
+.update-manager-row{
+  border-color:#e0edf4 !important;
+}
+.update-manager-row{
+  border-radius:6px !important;
+  background:#fbfdff !important;
+  box-shadow:none !important;
+}
+.update-manager-row.drag-over{
+  border-color:#6fc8ec !important;
+  box-shadow:inset 4px 0 0 #29b1e8 !important;
+}
+.update-status{
+  border-radius:4px !important;
+}
+.update-status.active{
+  border-color:#bce4f5 !important;
+  background:#eaf8ff !important;
+  color:#1689bd !important;
+}
+
+/* ---------- Modal ---------- */
+.modal-backdrop{
+  background:rgba(25,55,76,.26) !important;
+}
+.modal{
+  position:relative;
+  border:1px solid #c8e0ec;
+  border-radius:8px !important;
+  background:#fff !important;
+  box-shadow:0 14px 38px rgba(39,81,108,.18) !important;
+}
+.modal::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  width:86px;
+  height:4px;
+  background:#25b3eb;
+}
+.modal h3{
+  color:#2f5269;
+}
+
+/* ---------- Empty state ---------- */
+.empty{
+  border:1px dashed #c7e1ef !important;
+  border-radius:8px !important;
+  background:#fbfeff !important;
+  color:#8299a9 !important;
+  box-shadow:none !important;
+}
+
+/* =========================================================
+   Blue Archive-inspired refined pass
+   Sharper hierarchy, richer HUD details, larger center text
+   ========================================================= */
+
+/* ----- Header: stronger game-HUD identity ----- */
+.topbar{
+  min-height:72px;
+  padding:13px 18px 13px 22px !important;
+}
+.topbar::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  width:116px;
+  height:4px;
+  background:linear-gradient(90deg,#22b9ef 0 64%,#87dff8 64% 82%,transparent 82%);
+}
+.topbar .actions{
+  position:relative;
+  z-index:2;
+  align-items:center;
+}
+.topbar .actions::before{
+  content:"SYSTEM / DASHBOARD";
+  margin-right:5px;
+  color:#79a9c2;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:1.35px;
+  white-space:nowrap;
+}
+.brand h1{
+  font-size:27px !important;
+  letter-spacing:.15px;
+}
+.brand p{
+  font-size:12.5px !important;
+}
+
+/* ----- Buttons: crisper, more game-menu-like ----- */
+.topbar .btn{
+  min-height:38px;
+  padding:9px 14px !important;
+  border-radius:5px !important;
+}
+.topbar .btn.primary{
+  position:relative;
+  padding-right:18px !important;
+}
+.topbar .btn.primary::after{
+  content:"";
+  position:absolute;
+  right:7px;
+  top:7px;
+  width:4px;
+  height:4px;
+  border-top:1px solid rgba(255,255,255,.85);
+  border-right:1px solid rgba(255,255,255,.85);
+}
+
+/* ----- Sidebar: stronger selection rail ----- */
+.sidebar{
+  position:sticky;
+  overflow:hidden;
+}
+.sidebar::before{
+  content:"";
+  position:absolute;
+  right:-50px;
+  top:88px;
+  width:115px;
+  height:115px;
+  border:1px solid rgba(38,177,233,.11);
+  border-radius:50%;
+  pointer-events:none;
+}
+.sidebar::after{
+  content:"";
+  position:absolute;
+  right:13px;
+  top:104px;
+  width:58px;
+  height:1px;
+  background:rgba(38,177,233,.16);
+  transform:rotate(-36deg);
+  pointer-events:none;
+}
+.game-row{
+  position:relative;
+}
+.game-btn{
+  min-height:42px;
+  font-size:13.5px;
+}
+.game-btn.active{
+  padding-left:14px !important;
+}
+.game-btn.active::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:5px;
+  bottom:5px;
+  width:4px;
+  background:#23afe8;
+  clip-path:polygon(0 0,100% 4px,100% calc(100% - 4px),0 100%);
+}
+.game-btn.active span:first-child::after{
+  content:"  // SELECTED";
+  color:#67b8dd;
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:.8px;
+}
+
+/* ----- Central metrics: cleaner information hierarchy ----- */
+.metric{
+  min-height:90px !important;
+}
+.metric .label{
+  font-size:12px !important;
+  text-transform:uppercase;
+  letter-spacing:.75px;
+}
+.metric .value{
+  font-size:29px !important;
+  line-height:1.05;
+}
+.metric::after{
+  display:block !important;
+  content:"";
+  position:absolute;
+  right:13px;
+  bottom:10px;
+  width:36px;
+  height:9px;
+  background:
+    linear-gradient(90deg,#d8eef8 0 20%,transparent 20% 30%,#a8ddf1 30% 54%,transparent 54% 66%,#48bde8 66%);
+  opacity:.8;
+}
+
+/* ----- Toolbar: subtle tactical strip ----- */
+.toolbar::before{
+  content:"FILTER / SEARCH";
+  position:absolute;
+  right:12px;
+  top:-7px;
+  padding:1px 6px;
+  background:#eef7fc;
+  color:#85a7ba;
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:1px;
+}
+.toolbar .input,
+.toolbar .select{
+  min-height:39px;
+  font-size:13.5px;
+}
+
+/* ----- Main content typography: one step larger ----- */
+.section-head h2{
+  font-size:17.5px !important;
+}
+.section-head small{
+  font-size:12.5px !important;
+}
+.update-title{
+  font-size:15.5px !important;
+  letter-spacing:.05px;
+}
+.update-meta{
+  font-size:12px !important;
+}
+.task{
+  min-height:46px !important;
+  padding:9px 10px !important;
+}
+.task-name{
+  font-size:14.5px !important;
+  line-height:1.42;
+  letter-spacing:.03px;
+}
+.tag{
+  font-size:11.5px !important;
+  padding:5px 9px !important;
+}
+.task-check{
+  width:19px !important;
+  height:19px !important;
+}
+
+/* ----- Update cards: more deliberate HUD framing ----- */
+.update-card::after{
+  content:"";
+  position:absolute;
+  right:0;
+  top:0;
+  width:44px;
+  height:13px;
+  border-top:1px solid rgba(37,174,229,.3);
+  border-right:1px solid rgba(37,174,229,.3);
+  clip-path:polygon(28% 0,100% 0,100% 100%,0 100%);
+  pointer-events:none;
+}
+.update-head{
+  min-height:54px;
+}
+.update-actions .btn{
+  min-height:31px;
+  padding:6px 10px !important;
+  font-size:12px !important;
+}
+
+/* ----- Quick links: more polished navigation console ----- */
+.quicklinks-panel{
+  position:sticky;
+  overflow:hidden;
+}
+.quicklinks-panel::before{
+  content:"";
+  position:absolute;
+  right:-28px;
+  bottom:-28px;
+  width:90px;
+  height:90px;
+  border:1px solid rgba(38,177,233,.11);
+  border-radius:50%;
+  pointer-events:none;
+}
+.quicklinks-head{
+  position:relative;
+}
+.quicklinks-head::after{
+  content:"NAV";
+  position:absolute;
+  right:4px;
+  bottom:9px;
+  color:#b0c8d5;
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:1.2px;
+}
+.quicklinks-head .btn{
+  position:relative;
+  z-index:2;
+  margin-right:29px;
+}
+.quicklink-item{
+  min-height:42px !important;
+  grid-template-columns:22px minmax(0,1fr) 14px !important;
+}
+.quicklink-icon{
+  width:22px !important;
+  height:22px !important;
+}
+.quicklink-name{
+  font-size:13px !important;
+}
+.quicklink-item:hover .quicklink-arrow{
+  transform:translateX(1px);
+}
+
+/* ----- Settings: more polished tabs and rows ----- */
+.settings-side-title{
+  color:#6c93aa !important;
+  letter-spacing:.9px !important;
+  text-transform:uppercase;
+}
+.settings-tabs{
+  position:relative;
+}
+.settings-tabs::after{
+  content:"CONFIG";
+  position:absolute;
+  right:3px;
+  bottom:8px;
+  color:#b2c8d4;
+  font-size:8px;
+  font-weight:850;
+  letter-spacing:1.2px;
+}
+.settings-tab{
+  font-size:12.5px !important;
+}
+.settings-panel-head h3{
+  font-size:17px !important;
+}
+.category-row,
+.site-row,
+.update-manager-row{
+  min-height:48px;
+}
+
+/* ----- Small animated-free micro details ----- */
+.side-head span:first-child::after{
+  content:" / LIST";
+  color:#99b4c4;
+  font-size:9px;
+  letter-spacing:.8px;
+}
+.quicklinks-sub,
+.update-meta,
+.settings-helper{
+  line-height:1.35;
+}
+
+
+/* Archived records are paged to keep long-term history responsive. */
+.archive-more-wrap{text-align:center;margin:16px 0 24px}
+.archive-more-wrap .btn{min-width:220px}
+.storage-warning{position:fixed;z-index:80;left:50%;top:15px;transform:translateX(-50%);max-width:750px;background:#fff3ed;border:2px solid #d86b65;border-radius:9px;padding:14px 18px;color:#7e3131;box-shadow:0 12px 35px #3453;font-size:14px;line-height:1.5}
+
+/* ================================================================
+   BA-inspired typography system / small, optional Latin webfonts
+   CJK stays system-native for fast loading and readable Chinese.
+   ================================================================ */
+:root{
+  --font-ui:"Nunito Sans","PingFang SC","Microsoft YaHei UI","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+  --font-hud:"Barlow","Nunito Sans","PingFang SC","Microsoft YaHei UI",sans-serif;
+}
+body{
+  font-family:var(--font-ui) !important;
+  font-size:14px;
+  font-weight:500;
+  line-height:1.46;
+  font-kerning:normal;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+button,input,select,textarea{
+  font-family:var(--font-ui) !important;
+  letter-spacing:0;
+}
+.brand h1{
+  font-family:var(--font-hud) !important;
+  font-size:29px !important;
+  font-weight:800 !important;
+  letter-spacing:.15px !important;
+  line-height:1.08;
+}
+.brand h1::after,
+.topbar .actions::before,
+.side-head span:first-child::after,
+.settings-tabs::after,
+.quicklinks-head::after,
+.toolbar::before{
+  font-family:var(--font-hud);
+  font-weight:700;
+}
+.brand p{
+  font-weight:550;
+  letter-spacing:.04px;
+}
+.btn,.add-game{
+  font-weight:700 !important;
+  font-size:13.5px;
+  line-height:1.35;
+}
+.btn.small{
+  font-size:13px !important;
+  font-weight:700 !important;
+}
+.side-head{
+  font-family:var(--font-ui);
+  font-size:13.5px;
+  font-weight:800;
+}
+.game-btn{
+  font-family:var(--font-ui);
+  font-size:14px !important;
+  font-weight:750;
+  line-height:1.35;
+}
+.count,
+.metric .value{
+  font-family:var(--font-hud) !important;
+  font-variant-numeric:tabular-nums;
+}
+.metric .label{
+  font-size:12.5px !important;
+  font-weight:750;
+}
+.metric .value{
+  font-size:31px !important;
+  font-weight:800 !important;
+  letter-spacing:.15px;
+}
+.section-head h2{
+  font-size:18px !important;
+  font-weight:800;
+}
+.update-title{
+  font-size:16px !important;
+  font-weight:800 !important;
+}
+.task-name{
+  font-size:15px !important;
+  font-weight:650 !important;
+  line-height:1.48;
+}
+.tag{
+  font-size:12px !important;
+  font-weight:750 !important;
+}
+.quicklinks-head h3{
+  font-size:15px !important;
+  font-weight:800 !important;
+}
+.quicklink-name{
+  font-size:13.5px !important;
+  font-weight:750 !important;
+}
+
+/* Settings: text hierarchy closer to an in-game configuration panel. */
+.settings-games{
+  font-family:var(--font-ui);
+}
+.settings-side-title{
+  font-family:var(--font-hud);
+  font-size:12px !important;
+  font-weight:800 !important;
+  letter-spacing:1.15px !important;
+}
+.settings-games .game-btn{
+  font-size:14.5px !important;
+  font-weight:700 !important;
+  letter-spacing:.03px;
+}
+.settings-title h2{
+  font-family:var(--font-ui);
+  font-size:22px !important;
+  font-weight:800 !important;
+  line-height:1.3;
+  letter-spacing:.05px;
+}
+.settings-title > div:first-child > div{
+  font-size:13.5px !important;
+  font-weight:500;
+  line-height:1.5;
+}
+.settings-actions .btn{
+  font-size:13px !important;
+  font-weight:750 !important;
+}
+.settings-tab{
+  font-family:var(--font-ui) !important;
+  font-size:14px !important;
+  font-weight:750 !important;
+  letter-spacing:.04px;
+  min-width:112px !important;
+  padding:10px 15px !important;
+  line-height:1.3;
+}
+.settings-panel-head h3{
+  font-family:var(--font-ui);
+  font-size:18px !important;
+  font-weight:800 !important;
+  color:#365b72;
+  letter-spacing:.07px;
+}
+.settings-helper{
+  font-size:13px !important;
+  font-weight:500;
+  line-height:1.6 !important;
+  color:#728b9d;
+}
+.category-row,
+.site-row,
+.update-manager-row{
+  font-family:var(--font-ui);
+  font-size:14px;
+  line-height:1.45;
+}
+.category-row > span:nth-child(2){
+  font-size:14.5px;
+  font-weight:700;
+  color:#3b5a6e;
+}
+.site-row > span:nth-child(2){
+  font-size:14.5px;
+  font-weight:700;
+  color:#3b5a6e;
+}
+.site-url{
+  font-family:var(--font-ui);
+  font-size:12.5px !important;
+  font-weight:500;
+}
+.update-manager-name{
+  font-size:15px;
+  font-weight:800;
+  letter-spacing:.03px;
+  color:#37566b;
+}
+.update-manager-meta{
+  font-size:12.5px;
+  font-weight:500;
+  line-height:1.5;
+  color:#7b94a5;
+}
+.update-status{
+  font-family:var(--font-ui);
+  font-size:12.5px;
+  font-weight:750;
+  letter-spacing:.04px;
+}
+.modal h3{
+  font-family:var(--font-ui);
+  font-size:20px !important;
+  font-weight:800 !important;
+  color:#31536b;
+}
+.field label{
+  font-size:13.5px !important;
+  font-weight:750 !important;
+  color:#627e91;
+}
+.field input,.field select,.field textarea,
+.batch-row input,.batch-row select{
+  font-size:14.5px;
+  font-weight:550;
+  line-height:1.45;
+}
+/* Use tabular numbers to align version dates and counters neatly. */
+.update-meta,
+.update-manager-meta,
+.section-pending-count{
+  font-variant-numeric:tabular-nums;
+}
 </style></head><body><div class="app"><div class="topbar"><div class="brand"><h1>Game Dashboard</h1><p id="subtitle" aria-hidden="true"></p></div><div class="actions" id="trackerActions"><button class="btn" id="addTaskBtn">＋ 添加待办</button><button class="btn primary" id="addUpdateBtn">＋ 录入游戏更新</button></div></div><div class="layout"><aside class="sidebar"><div class="side-head"><span>游戏</span><span id="gameTotal"></span></div><div class="game-list" id="gameList"></div><div class="side-actions"><button class="add-game" id="addGameBtn">＋ 添加新游戏</button><button class="btn" id="settingsBtn">⚙ 设置</button><button class="btn" id="trackerBtn" style="display:none">← 返回追踪器</button></div></aside><main><section class="page active" id="trackerPage"><div class="tracker-shell"><div class="tracker-main"><div class="metrics"><div class="metric"><div class="label">未完成</div><div class="value" id="pendingCount">0</div></div><div class="metric"><div class="label">活跃更新</div><div class="value" id="updateCount">0</div></div><div class="metric"><div class="label">完成率</div><div class="value" id="completionRate">0%</div></div></div><div class="toolbar"><input class="input search" id="searchInput" placeholder="搜索内容或类别"><select class="select" id="statusFilter"><option value="all" selected>全部</option><option value="pending">未完成</option><option value="done">已完成</option></select><select class="select" id="archiveFilter"><option value="active">Active</option><option value="all">全部更新</option><option value="archived">Archived</option></select></div><div id="mainContent"></div></div><aside class="quicklinks-panel" id="quickLinksPanel"></aside></div></section><section class="page" id="settingsPage"><div class="settings-shell"><div class="settings-games"><div id="settingsGameList"></div></div><div class="settings-main" id="settingsContent"></div></div></section></main></div></div><div class="modal-backdrop" id="modalBackdrop"><div class="modal" id="modal"></div></div><div class="toast" id="toast"></div><input type="file" id="importDataInput" accept=".json,application/json" style="display:none">
 <script>
 const seed={games:[{id:'azur',name:'碧蓝航线 Azur Lane',categories:['舰船','家具','纪念手册','装备','礼包','剧情']},{id:'ark',name:'明日方舟 Arknights',categories:['干员','家具','蚀刻章','组合包','干员密录','剧情']},{id:'r1999',name:'重返未来：1999',categories:['角色','心相','主题套装','头像','旅券集','剧情']}],updates:[{id:'u-az-0723',game:'azur',name:'2026-07-23 更新',date:'2026-07-23',archived:false},{id:'u-ak-0801',game:'ark',name:'2026-08-01 更新',date:'2026-08-01',archived:false},{id:'u-r-0723',game:'r1999',name:'2026-07-23 更新',date:'2026-07-23',archived:true},{id:'u-r-0802',game:'r1999',name:'2026-08-02 更新',date:'2026-08-02',archived:false}],items:[{id:'a1',game:'azur',updateId:'u-az-0723',category:'舰船',name:'华丽',done:false},{id:'a2',game:'azur',updateId:'u-az-0723',category:'舰船',name:'萨里',done:false},{id:'a3',game:'azur',updateId:'u-az-0723',category:'舰船',name:'格里芬',done:false},{id:'a4',game:'azur',updateId:'u-az-0723',category:'家具',name:'废弃住院部',done:false},{id:'a5',game:'azur',updateId:'u-az-0723',category:'纪念手册',name:'怪谈纪实纪念勋章',done:false},{id:'k1',game:'ark',updateId:'u-ak-0801',category:'干员',name:'予愿安洁莉娜',done:false},{id:'k2',game:'ark',updateId:'u-ak-0801',category:'干员',name:'珊比',done:false},{id:'k3',game:'ark',updateId:'u-ak-0801',category:'干员',name:'嘉辛塔',done:false},{id:'k4',game:'ark',updateId:'u-ak-0801',category:'干员',name:'时隙',done:false},{id:'k5',game:'ark',updateId:'u-ak-0801',category:'家具',name:'安洁莉娜的信笺小屋',done:false},{id:'l1',game:'ark',updateId:'',category:'干员密录',name:'妮芙',done:false},{id:'l2',game:'ark',updateId:'',category:'干员密录',name:'渡桥',done:false},{id:'l3',game:'ark',updateId:'',category:'干员密录',name:'天空盒',done:false},{id:'r1',game:'r1999',updateId:'u-r-0723',category:'角色',name:'双生舞伶',done:true},{id:'r2',game:'r1999',updateId:'u-r-0723',category:'角色',name:'诺拉',done:true},{id:'r8',game:'r1999',updateId:'u-r-0802',category:'旅券集',name:'拉普拉斯变换',done:false}]};
 const STORAGE_KEY='gameDashboardV1';
-let state=JSON.parse(localStorage.getItem(STORAGE_KEY)||localStorage.getItem('gameTrackerV3')||'null')||seed;
-state.games=(state.games||[]).map(g=>({...g,sites:Array.isArray(g.sites)?g.sites:[]}));
-let selectedGame='all',currentPage='tracker',settingsGame=state.games[0]?.id;
+const DB_NAME='GameDashboardLocalDB';
+let db=null, state={games:[],updates:[],items:[]};
+let selectedGame='all',currentPage='tracker',settingsGame='';
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
-let indexCache=null;
-function save(){localStorage.setItem(STORAGE_KEY,JSON.stringify(state));indexCache=null}
+let indexCache=null, writeQueue=Promise.resolve(), storageFailed=false;
+let savedSnapshot={games:new Map(),updates:new Map(),items:new Map()};
+const loadedArchivedUpdateIds=new Set();
+let archiveVisibleLimit=8,archiveLoadTicket=0;
+
+function storageError(error){
+  storageFailed=true;
+  console.error('Game Dashboard IndexedDB:',error);
+  if(!$('#storageWarning')){
+    const n=document.createElement('div');n.id='storageWarning';n.className='storage-warning';
+    n.textContent='数据保存发生错误。请不要关闭当前页面；请尝试在设置中导出 JSON 备份，并检查浏览器存储空间或隐私模式。';
+    document.body.appendChild(n);
+  }
+}
+function requestResult(request){return new Promise((resolve,reject)=>{request.onsuccess=()=>resolve(request.result);request.onerror=()=>reject(request.error)})}
+function transactionDone(tx){return new Promise((resolve,reject)=>{tx.oncomplete=()=>resolve();tx.onabort=()=>reject(tx.error||new Error('IndexedDB transaction aborted'));tx.onerror=()=>{};})}
+function openLocalDatabase(){
+  return new Promise((resolve,reject)=>{
+    if(!window.indexedDB)return reject(new Error('此浏览器不支持 IndexedDB'));
+    const request=indexedDB.open(DB_NAME,1);
+    request.onupgradeneeded=()=>{
+      const d=request.result;
+      d.createObjectStore('games',{keyPath:'id'});
+      d.createObjectStore('updates',{keyPath:'id'});
+      const items=d.createObjectStore('items',{keyPath:'id'});
+      items.createIndex('by_bucket','bucket',{unique:false});
+      items.createIndex('by_update','updateId',{unique:false});
+      items.createIndex('by_game','game',{unique:false});
+      d.createObjectStore('meta');
+    };
+    request.onsuccess=()=>{const d=request.result;d.onversionchange=()=>{d.close();storageError(new Error('另一标签页更新了数据库，请刷新页面'))};resolve(d)};
+    request.onerror=()=>reject(request.error);
+    request.onblocked=()=>reject(new Error('数据库被其他标签页阻塞'));
+  });
+}
+function buildRecords(source){
+  const normalized=normalizeImportedState(source);
+  const map=new Map(normalized.updates.map(u=>[u.id,{...u,taskCount:0,pendingCount:0}]));
+  const items=normalized.items.map((item,position)=>{
+    const u=map.get(item.updateId);
+    if(u){u.taskCount++;if(!item.done)u.pendingCount++}
+    return {...item,sortIndex:position,bucket:u?.archived?'archived':'active'};
+  });
+  return {games:normalized.games.map((g,i)=>({...g,sortIndex:i})),updates:[...map.values()].map((u,i)=>({...u,sortIndex:i})),items};
+}
+async function replaceDatabaseContents(data){
+  const tx=db.transaction(['games','updates','items','meta'],'readwrite');
+  const done=transactionDone(tx);
+  const g=tx.objectStore('games'),u=tx.objectStore('updates'),i=tx.objectStore('items'),m=tx.objectStore('meta');
+  g.clear();u.clear();i.clear();
+  data.games.forEach(x=>g.put(x));
+  data.updates.forEach(x=>u.put(x));
+  data.items.forEach(x=>i.put(x));
+  m.put({createdAt:new Date().toISOString(),schema:1},'initialized');
+  await done;
+}
+async function initializeStorage(){
+  db=await openLocalDatabase();
+  const initialized=await requestResult(db.transaction('meta','readonly').objectStore('meta').get('initialized'));
+  if(!initialized){
+    // The original localStorage remains untouched as a recovery copy.
+    let legacy=null;
+    try{
+      const raw=localStorage.getItem(STORAGE_KEY)||localStorage.getItem('gameTrackerV3');
+      if(raw)legacy=JSON.parse(raw);
+    }catch(err){throw new Error('旧数据读取失败；未启动迁移以避免覆盖现有数据')}
+    await replaceDatabaseContents(buildRecords(legacy||seed));
+  }
+  await reloadActiveFromDatabase();
+  render();
+}
+async function reloadActiveFromDatabase(){
+  const tx=db.transaction(['games','updates','items'],'readonly');
+  const done=transactionDone(tx);
+  const gs=requestResult(tx.objectStore('games').getAll());
+  const us=requestResult(tx.objectStore('updates').getAll());
+  const it=requestResult(tx.objectStore('items').index('by_bucket').getAll('active'));
+  const [games,updates,items]=await Promise.all([gs,us,it]);
+  await done;
+  const byOrder=(a,b)=>(a.sortIndex??Number.MAX_SAFE_INTEGER)-(b.sortIndex??Number.MAX_SAFE_INTEGER);
+  state={games:games.sort(byOrder),updates:updates.sort(byOrder),items:items.sort(byOrder)};
+  settingsGame=state.games.some(g=>g.id===settingsGame)?settingsGame:state.games[0]?.id||'';
+  loadedArchivedUpdateIds.clear();indexCache=null;
+  resetSnapshot();
+}
+function resetSnapshot(){
+  for(const type of ['games','updates','items'])savedSnapshot[type]=new Map(state[type].map(x=>[x.id,JSON.stringify(x)]));
+}
+function fullStats(gameId='all'){
+  let total=0,pending=0;
+  for(const item of state.items){
+    if(item.bucket==='archived'||(gameId!=='all'&&item.game!==gameId))continue;
+    total++;if(!item.done)pending++;
+  }
+  for(const u of state.updates){
+    if(!u.archived||(gameId!=='all'&&u.game!==gameId))continue;
+    total+=u.taskCount||0;pending+=u.pendingCount||0;
+  }
+  return {total,pending,done:total-pending};
+}
+function countPendingForGame(gid){return fullStats(gid).pending}
+function updateSummaries(){
+  const totals=new Map();
+  for(const item of state.items){
+    if(!item.updateId)continue;
+    let c=totals.get(item.updateId);
+    if(!c){c={taskCount:0,pendingCount:0};totals.set(item.updateId,c)}
+    c.taskCount++;if(!item.done)c.pendingCount++;
+  }
+  for(const u of state.updates){
+    if(!u.archived||loadedArchivedUpdateIds.has(u.id)){
+      const c=totals.get(u.id)||{taskCount:0,pendingCount:0};
+      u.taskCount=c.taskCount;u.pendingCount=c.pendingCount;
+    }
+  }
+}
+function queueWrite(action){
+  const next=writeQueue.then(action);
+  writeQueue=next.catch(err=>storageError(err));
+  return next;
+}
+function save(){
+  state.games.forEach((g,i)=>g.sortIndex=i);
+  state.updates.forEach((u,i)=>u.sortIndex=i);
+  // Large positive creation-order numbers keep newly entered tasks after historical imports.
+  let nextIndex=Date.now()*100;
+  for(const item of state.items)if(Number.isFinite(item.sortIndex))nextIndex=Math.max(nextIndex,item.sortIndex+1);
+  const archivedIds=new Set(state.updates.filter(u=>u.archived).map(u=>u.id));
+  for(const item of state.items){
+    item.bucket=archivedIds.has(item.updateId)?'archived':'active';
+    if(!Number.isFinite(item.sortIndex))item.sortIndex=nextIndex++;
+  }
+  if(storageFailed){storageError(new Error('Storage is unavailable'));return Promise.resolve()}
+  updateSummaries();
+  indexCache=null;
+  const diffs={};
+  for(const type of ['games','updates','items']){
+    const previous=savedSnapshot[type];
+    const current=new Map();
+    const changed=[];
+    for(const value of state[type]){
+      const json=JSON.stringify(value);
+      current.set(value.id,json);
+      if(previous.get(value.id)!==json)changed.push(JSON.parse(json));
+    }
+    const removed=[...previous.keys()].filter(k=>!current.has(k));
+    diffs[type]={changed,removed};
+    savedSnapshot[type]=current;
+  }
+  if(!Object.values(diffs).some(v=>v.changed.length||v.removed.length))return writeQueue;
+  return queueWrite(async()=>{
+    const tx=db.transaction(['games','updates','items'],'readwrite');
+    const done=transactionDone(tx);
+    for(const type of ['games','updates','items']){
+      const store=tx.objectStore(type);
+      diffs[type].changed.forEach(x=>store.put(x));
+      diffs[type].removed.forEach(id=>store.delete(id));
+    }
+    await done;
+  });
+}
+async function loadArchivedForDisplay(){
+  const desired=state.updates.filter(u=>u.archived&&(selectedGame==='all'||u.game===selectedGame)).slice(0,archiveVisibleLimit);
+  const pending=desired.filter(u=>!loadedArchivedUpdateIds.has(u.id));
+  if(!pending.length)return;
+  await writeQueue;
+  const tx=db.transaction('items','readonly');
+  const done=transactionDone(tx);
+  const idx=tx.objectStore('items').index('by_update');
+  const batches=pending.map(u=>requestResult(idx.getAll(u.id)));
+  const loaded=(await Promise.all(batches)).flat().sort((a,b)=>(a.sortIndex??0)-(b.sortIndex??0));
+  await done;
+  if($('#archiveFilter').value==='active')return;
+  const seen=new Set(state.items.map(x=>x.id));
+  for(const item of loaded)if(!seen.has(item.id)){state.items.push(item);seen.add(item.id)}
+  state.items.sort((a,b)=>(a.sortIndex??0)-(b.sortIndex??0));
+  pending.forEach(u=>loadedArchivedUpdateIds.add(u.id));
+  indexCache=null;
+  resetSnapshot();
+}
+function discardLoadedArchives(){
+  if(!loadedArchivedUpdateIds.size)return;
+  state.items=state.items.filter(i=>i.bucket!=='archived');
+  loadedArchivedUpdateIds.clear();indexCache=null;resetSnapshot();
+}
+function archiveMoreMarkup(){
+  if($('#archiveFilter').value==='active')return '';
+  const n=state.updates.filter(u=>u.archived&&(selectedGame==='all'||u.game===selectedGame)).length;
+  if(archiveVisibleLimit>=n)return '';
+  return `<div class="archive-more-wrap"><button class="btn" id="loadMoreArchived">＋ 加载更多 Archived（${Math.min(archiveVisibleLimit,n)} / ${n} 个版本）</button></div>`;
+}
+let viewTicket=0;
+async function renderTracker(){
+  const ticket=++viewTicket;
+  if($('#archiveFilter').value==='active'){
+    discardLoadedArchives();renderMain();renderQuickLinks();return;
+  }
+  $('#mainContent').innerHTML='<div class="empty">正在读取归档记录…</div>';
+  try{
+    await loadArchivedForDisplay();
+    if(ticket!==viewTicket||currentPage!=='tracker')return;
+    renderMain();renderQuickLinks();
+  }catch(err){storageError(err)}
+}
+async function toggleUpdateArchive(id){
+  const u=updateById(id);if(!u)return;
+  const target=!u.archived;
+  if(target&&u.pendingCount&&!confirm(`这一组还有 ${u.pendingCount} 项未完成，仍然归档吗？`))return;
+  try{
+    await writeQueue;
+    const tx=db.transaction(['updates','items'],'readwrite');
+    const done=transactionDone(tx);
+    const itemsStore=tx.objectStore('items');
+    const req=itemsStore.index('by_update').getAll(id);
+    req.onsuccess=()=>{
+      for(const i of req.result){i.bucket=target?'archived':'active';itemsStore.put(i)}
+      tx.objectStore('updates').put({...u,archived:target});
+    };
+    await done;
+    u.archived=target;
+    await reloadActiveFromDatabase();
+    archiveVisibleLimit=8;
+    render();toast(target?'更新已归档':'更新已恢复');
+  }catch(err){storageError(err)}
+}
+async function deleteUpdateVersion(id){
+  const u=updateById(id);if(!u)return;
+  const affected=u.taskCount||0;
+  const message=affected?`确定删除更新“${u.name}”吗？其下 ${affected} 条待办会保留并移动到该游戏的“未分组待办”。`:`确定删除更新“${u.name}”吗？`;
+  if(!confirm(message))return;
+  try{
+    await writeQueue;
+    const tx=db.transaction(['updates','items'],'readwrite');
+    const done=transactionDone(tx);
+    const itemsStore=tx.objectStore('items');
+    const req=itemsStore.index('by_update').getAll(id);
+    req.onsuccess=()=>{
+      for(const i of req.result){i.updateId='';i.bucket='active';itemsStore.put(i)}
+      tx.objectStore('updates').delete(id);
+    };
+    await done;
+    await reloadActiveFromDatabase();
+    render();toast('更新版本已删除');
+  }catch(err){storageError(err)}
+}
 function getIndex(){
   if(indexCache)return indexCache;
   const gamesById=new Map(state.games.map(g=>[g.id,g]));
-  const updatesById=new Map(state.updates.map(u=>[u.id,u]));
+  const updatesById=new Map();
+  const updatesByGame=new Map(state.games.map(g=>[g.id,[]]));
+  for(const u of state.updates){
+    updatesById.set(u.id,u);
+    if(!updatesByGame.has(u.game))updatesByGame.set(u.game,[]);
+    updatesByGame.get(u.game).push(u);
+  }
   const itemsById=new Map();
   const itemsByGame=new Map(state.games.map(g=>[g.id,[]]));
   const pendingByGame=new Map(state.games.map(g=>[g.id,0]));
@@ -919,9 +1919,9 @@ function getIndex(){
     itemsById.set(item.id,item);
     if(!itemsByGame.has(item.game))itemsByGame.set(item.game,[]);
     itemsByGame.get(item.game).push(item);
-    if(!item.done)pendingByGame.set(item.game,(pendingByGame.get(item.game)||0)+1);
+    if(item.bucket!=='archived'&&!item.done)pendingByGame.set(item.game,(pendingByGame.get(item.game)||0)+1);
   }
-  indexCache={gamesById,updatesById,itemsById,itemsByGame,pendingByGame,categoryOrderByGame};
+  indexCache={gamesById,updatesById,updatesByGame,itemsById,itemsByGame,pendingByGame,categoryOrderByGame};
   return indexCache;
 }
 const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
@@ -960,18 +1960,18 @@ function handleFaviconError(img){
 }
 
 function gameById(id){return getIndex().gamesById.get(id)}function updateById(id){return getIndex().updatesById.get(id)}function toast(m){let t=$('#toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1700)}function openModal(h){$('#modal').innerHTML=h;$('#modalBackdrop').classList.add('show');$$('[data-close]').forEach(b=>b.onclick=closeModal)}function closeModal(){$('#modalBackdrop').classList.remove('show')}
-function gameOptions(sel=''){return state.games.map(g=>`<option value="${g.id}" ${g.id===sel?'selected':''}>${esc(g.name)}</option>`).join('')}function categoryOptions(gid,sel=''){return (gameById(gid)?.categories||[]).map(c=>`<option ${c===sel?'selected':''}>${esc(c)}</option>`).join('')}function updateOptions(gid,sel=''){return `<option value="">不归入具体更新</option>`+state.updates.filter(u=>u.game===gid&&!u.archived).map(u=>`<option value="${u.id}" ${u.id===sel?'selected':''}>${esc(u.name)}</option>`).join('')}
-function render(){renderGames();if(currentPage==='tracker'){renderMain();renderQuickLinks()}else{renderSettings()}}
+function gameOptions(sel=''){return state.games.map(g=>`<option value="${g.id}" ${g.id===sel?'selected':''}>${esc(g.name)}</option>`).join('')}function categoryOptions(gid,sel=''){return (gameById(gid)?.categories||[]).map(c=>`<option ${c===sel?'selected':''}>${esc(c)}</option>`).join('')}function updateOptions(gid,sel=''){return `<option value="">不归入具体更新</option>`+state.updates.filter(u=>u.game===gid&&(!u.archived||u.id===sel)).map(u=>`<option value="${u.id}" ${u.id===sel?'selected':''}>${esc(u.name)}${u.archived?' (Archived)':''}</option>`).join('')}
+function render(){indexCache=null;renderGames();if(currentPage==='tracker')renderTracker();else renderSettings()}
 function renderGames(){
   const idx=getIndex();
   const games=[{id:'all',name:'全部游戏'},...state.games];
-  const totalPending=state.games.reduce((n,g)=>n+(idx.pendingByGame.get(g.id)||0),0);
+  const totalPending=fullStats('all').pending;
   $('#gameTotal').textContent=state.games.length+' 款';
   $('#gameList').innerHTML=games.map(g=>{
-    const n=g.id==='all'?totalPending:(idx.pendingByGame.get(g.id)||0);
+    const n=g.id==='all'?totalPending:countPendingForGame(g.id);
     return `<div class="game-row ${g.id==='all'?'all-game':''}" ${g.id==='all'?'':`draggable="true" data-game-id="${g.id}"`} >${g.id==='all'?'':`<span class="game-drag drag" title="拖拽排序">⠿</span>`}<button class="game-btn ${selectedGame===g.id?'active':''}" data-game="${g.id}"><span>${esc(g.name)}</span><span class="count" data-game-count="${g.id}">${n}</span></button>${g.id==='all'?'':`<div class="game-menu"><button class="iconbtn rename-game" data-id="${g.id}" title="重命名">✎</button></div>`}</div>`
   }).join('');
-  $$('.game-btn').forEach(b=>b.onclick=()=>{selectedGame=b.dataset.game;render()});
+  $$('.game-btn').forEach(b=>b.onclick=()=>{selectedGame=b.dataset.game;archiveVisibleLimit=8;render()});
   $$('.rename-game').forEach(b=>b.onclick=e=>{e.stopPropagation();renameGame(b.dataset.id)});
   let dragId=null;
   $$('.game-row[draggable=true]').forEach(r=>{
@@ -1019,29 +2019,16 @@ function getMainViewData(){
     bucket.push(item);
   }
 
-  return {idx,total,done,pending,grouped};
+  const all=fullStats(selectedGame);
+  return {idx,total:all.total,done:all.done,pending:all.pending,grouped};
 }
 function updateDashboardCounts(){
-  const idx=getIndex();
-  const scope=selectedGame==='all'?state.items:(idx.itemsByGame.get(selectedGame)||[]);
-  let done=0,pending=0;
-  for(const item of scope){if(item.done)done++;else pending++}
-  $('#pendingCount').textContent=pending;
-  $('#completionRate').textContent=scope.length?Math.round(done/scope.length*100)+'%':'0%';
-
-  let activeUpdates=0;
-  for(const u of state.updates){
-    if(!u.archived&&(selectedGame==='all'||u.game===selectedGame))activeUpdates++;
-  }
-  $('#updateCount').textContent=activeUpdates;
-
-  const totalPending=state.games.reduce((n,g)=>n+(idx.pendingByGame.get(g.id)||0),0);
-  const allBadge=$('[data-game-count="all"]');
-  if(allBadge)allBadge.textContent=totalPending;
-  for(const g of state.games){
-    const el=$(`[data-game-count="${g.id}"]`);
-    if(el)el.textContent=idx.pendingByGame.get(g.id)||0;
-  }
+  const counts=fullStats(selectedGame);
+  $('#pendingCount').textContent=counts.pending;
+  $('#completionRate').textContent=counts.total?Math.round(counts.done/counts.total*100)+'%':'0%';
+  $('#updateCount').textContent=state.updates.filter(u=>!u.archived&&(selectedGame==='all'||u.game===selectedGame)).length;
+  const allBadge=$('[data-game-count="all"]');if(allBadge)allBadge.textContent=fullStats('all').pending;
+  for(const g of state.games){const el=$(`[data-game-count="${g.id}"]`);if(el)el.textContent=countPendingForGame(g.id)}
 }
 function renderMain(){
   const {idx,total,done,pending,grouped}=getMainViewData();
@@ -1054,7 +2041,7 @@ function renderMain(){
   $('#completionRate').textContent=total?Math.round(done/total*100)+'%':'0%';
 
   if(!grouped.size){
-    $('#mainContent').innerHTML='<div class="empty">没有符合当前筛选条件的内容。</div>';
+    $('#mainContent').innerHTML='<div class="empty">没有符合当前筛选条件的内容。</div>'+archiveMoreMarkup();
     return;
   }
 
@@ -1063,16 +2050,15 @@ function renderMain(){
     const gameMap=grouped.get(g.id);
     if(!gameMap||!gameMap.size)continue;
 
-    let visibleCount=0,visiblePending=0;
+    let visiblePending=0;
     for(const tasks of gameMap.values()){
-      visibleCount+=tasks.length;
       for(const t of tasks)if(!t.done)visiblePending++;
     }
 
     html+=`<section class="section" data-game-section="${g.id}"><div class="section-head"><h2>${esc(g.name)}</h2><small><span class="section-pending-count">${visiblePending}</span> 项未完成</small></div>`;
 
     const categoryOrder=idx.categoryOrderByGame.get(g.id)||new Map();
-    const updateIds=state.updates.filter(u=>u.game===g.id).map(u=>u.id);
+    const updateIds=(idx.updatesByGame.get(g.id)||[]).map(u=>u.id);
     updateIds.push('');
 
     for(const uid of updateIds){
@@ -1090,7 +2076,7 @@ function renderMain(){
     }
     html+='</section>';
   }
-  $('#mainContent').innerHTML=html;
+  $('#mainContent').innerHTML=html+archiveMoreMarkup();
 }
 function updateTaskDoneFast(id,checked,row){
   const item=getIndex().itemsById.get(id);
@@ -1246,8 +2232,8 @@ function renderGameCategoryManager(g){
 function renderGameUpdateManager(g){
   const updates=state.updates.filter(u=>u.game===g.id);
   const rows=updates.map((u,i)=>{
-    const taskCount=state.items.filter(item=>item.updateId===u.id).length;
-    const pendingCount=state.items.filter(item=>item.updateId===u.id&&!item.done).length;
+    const taskCount=u.taskCount||0;
+    const pendingCount=u.pendingCount||0;
     return `<div class="update-manager-row ${u.archived?'is-archived':''}" draggable="true" data-update-id="${u.id}" data-index="${i}">
       <span class="drag update-manager-drag" title="拖拽排序">⋮⋮</span>
       <div class="update-manager-info">
@@ -1272,15 +2258,7 @@ function renderGameUpdateManager(g){
   `;
 
   $$('.manage-rename-update').forEach(b=>b.onclick=()=>editUpdate(b.dataset.id));
-  $$('.manage-archive-update').forEach(b=>b.onclick=()=>{
-    const u=updateById(b.dataset.id);
-    const pending=state.items.filter(i=>i.updateId===u.id&&!i.done).length;
-    if(!u.archived&&pending&&!confirm(`这一组还有 ${pending} 项未完成，仍然归档吗？`))return;
-    u.archived=!u.archived;
-    save();
-    renderSettings();
-    toast(u.archived?'更新已归档':'更新已恢复');
-  });
+  $$('.manage-archive-update').forEach(b=>b.onclick=()=>toggleUpdateArchive(b.dataset.id));
   $$('.manage-delete-update').forEach(b=>b.onclick=()=>deleteUpdateVersion(b.dataset.id));
 
   let dragId=null;
@@ -1385,21 +2363,48 @@ function deleteSite(gid,siteId){
   g.sites=g.sites.filter(s=>s.id!==siteId);
   save();renderSettings();toast('网站已删除')
 }
-function deleteUpdateVersion(id){
-  const u=updateById(id);
-  if(!u)return;
-  const affected=state.items.filter(i=>i.updateId===id).length;
-  const message=affected
-    ? `确定删除更新“${u.name}”吗？其下 ${affected} 条待办会保留并移动到该游戏的“未分组待办”。`
-    : `确定删除更新“${u.name}”吗？`;
-  if(!confirm(message))return;
-  state.items.forEach(i=>{if(i.updateId===id)i.updateId=''});
-  state.updates=state.updates.filter(x=>x.id!==id);
-  save();
-  renderSettings();
-  toast('更新版本已删除');
+function moveCategory(gid,i,d){
+  const g=gameById(gid),j=i+d;
+  if(!g||j<0||j>=g.categories.length)return;
+  [g.categories[i],g.categories[j]]=[g.categories[j],g.categories[i]];
+  save();renderSettings();
 }
-function moveCategory(gid,i,d){let g=gameById(gid),j=i+d;if(j<0||j>=g.categories.length)return;[g.categories[i],g.categories[j]]=[g.categories[j],g.categories[i]];save();renderSettings()}function editCategory(gid,i=null){let g=gameById(gid),old=i===null?'':g.categories[i];openModal(`<h3>${i===null?'添加类别':'重命名类别'}</h3><div class="field"><label>类别名称</label><input id="catName" value="${esc(old)}"></div><div class="modal-actions"><button class="btn" data-close>取消</button><button class="btn primary" id="saveCat">保存</button></div>`);$('#saveCat').onclick=()=>{let v=$('#catName').value.trim();if(!v)return;if(i===null){if(!g.categories.includes(v))g.categories.push(v)}else{let prev=g.categories[i];g.categories[i]=v;state.items.filter(x=>x.game===gid&&x.category===prev).forEach(x=>x.category=v)}save();closeModal();renderSettings()}}function deleteCategory(gid,i){let g=gameById(gid),c=g.categories[i],used=state.items.filter(x=>x.game===gid&&x.category===c).length;if(used)return toast(`该类别仍被 ${used} 条待办使用`);g.categories.splice(i,1);save();renderSettings()}
+function editCategory(gid,i=null){
+  const g=gameById(gid),old=i===null?'':g.categories[i];
+  openModal(`<h3>${i===null?'添加类别':'重命名类别'}</h3><div class="field"><label>类别名称</label><input id="catName" value="${esc(old)}"></div><div class="modal-actions"><button class="btn" data-close>取消</button><button class="btn primary" id="saveCat">保存</button></div>`);
+  $('#saveCat').onclick=async()=>{
+    const v=$('#catName').value.trim();if(!v)return;
+    if(g.categories.includes(v)&&v!==old)return toast('类别名称已存在');
+    if(i===null){g.categories.push(v);save();closeModal();renderSettings();return}
+    if(v===old){closeModal();return}
+    try{
+      await writeQueue;
+      const tx=db.transaction(['games','items'],'readwrite');
+      const done=transactionDone(tx);
+      const store=tx.objectStore('items');
+      const req=store.index('by_game').getAll(gid);
+      req.onsuccess=()=>{for(const t of req.result)if(t.category===old){t.category=v;store.put(t)}};
+      const revised={...g,categories:g.categories.map(x=>x===old?v:x)};
+      tx.objectStore('games').put(revised);
+      await done;
+      await reloadActiveFromDatabase();
+      closeModal();render();toast('类别已重命名（包含 Archived）');
+    }catch(err){storageError(err)}
+  };
+}
+async function deleteCategory(gid,i){
+  const g=gameById(gid),c=g?.categories?.[i];if(!c)return;
+  try{
+    await writeQueue;
+    const tx=db.transaction('items','readonly');
+    const done=transactionDone(tx);
+    const records=await requestResult(tx.objectStore('items').index('by_game').getAll(gid));
+    await done;
+    const used=records.filter(item=>item.category===c).length;
+    if(used)return toast(`该类别仍被 ${used} 条待办使用（包括 Archived）`);
+    g.categories.splice(i,1);save();renderSettings();
+  }catch(err){storageError(err)}
+}
 function editTask(id){let t=state.items.find(i=>i.id===id);openModal(`<h3>编辑待办</h3><div class="form-grid"><div class="field"><label>游戏</label><select id="taskGame">${gameOptions(t.game)}</select></div><div class="field"><label>类别</label><select id="taskCategory"></select></div><div class="field full"><label>内容名称</label><input id="taskName" value="${esc(t.name)}"></div><div class="field full"><label>所属更新</label><select id="taskUpdate"></select></div></div><div class="modal-actions"><button class="btn" data-close>取消</button><button class="btn primary" id="saveTaskEdit">保存</button></div>`);function sync(){let gid=$('#taskGame').value;$('#taskCategory').innerHTML=categoryOptions(gid,t.game===gid?t.category:'');$('#taskUpdate').innerHTML=updateOptions(gid,t.game===gid?t.updateId:'')}sync();$('#taskGame').onchange=sync;$('#saveTaskEdit').onclick=()=>{let name=$('#taskName').value.trim();if(!name)return;t.game=$('#taskGame').value;t.category=$('#taskCategory').value;t.updateId=$('#taskUpdate').value;t.name=name;save();closeModal();render()}}
 
 function normalizeImportedState(raw){
@@ -1434,19 +2439,28 @@ function normalizeImportedState(raw){
   }));
   return {games,updates,items};
 }
-function exportData(){
-  const payload={exportedAt:new Date().toISOString(),app:'Game Dashboard',version:1,data:state};
-  const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json;charset=utf-8'});
-  const url=URL.createObjectURL(blob);
-  const a=document.createElement('a');
-  const stamp=new Date().toISOString().slice(0,19).replace(/[:T]/g,'-');
-  a.href=url;
-  a.download=`game-dashboard-backup-${stamp}.json`;
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-  URL.revokeObjectURL(url);
-  toast('数据已导出');
+async function exportData(){
+  try{
+    await writeQueue;
+    const tx=db.transaction(['games','updates','items'],'readonly');
+    const done=transactionDone(tx);
+    const gp=requestResult(tx.objectStore('games').getAll());
+    const up=requestResult(tx.objectStore('updates').getAll());
+    const it=requestResult(tx.objectStore('items').getAll());
+    const [games,updates,items]=await Promise.all([gp,up,it]);
+    await done;
+    const payload={exportedAt:new Date().toISOString(),app:'Game Dashboard',version:1,data:{
+      games:games.sort((a,b)=>(a.sortIndex??0)-(b.sortIndex??0)).map(({id,name,categories,sites})=>({id,name,categories,sites})),
+      updates:updates.sort((a,b)=>(a.sortIndex??0)-(b.sortIndex??0)).map(({id,game,name,date,archived})=>({id,game,name,date,archived})),
+      items:items.sort((a,b)=>(a.sortIndex??0)-(b.sortIndex??0)).map(({id,game,updateId,category,name,done})=>({id,game,updateId,category,name,done}))
+    }};
+    const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json;charset=utf-8'});
+    const url=URL.createObjectURL(blob),a=document.createElement('a');
+    const stamp=new Date().toISOString().slice(0,19).replace(/[:T]/g,'-');
+    a.href=url;a.download=`game-dashboard-backup-${stamp}.json`;
+    document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),30000);
+    toast(`已导出 ${items.length} 条待办（包含归档）`);
+  }catch(err){storageError(err);alert('导出失败，请检查浏览器存储状态。')}
 }
 async function handleImportData(file){
   if(!file)return;
@@ -1454,20 +2468,16 @@ async function handleImportData(file){
     const text=await file.text();
     const parsed=JSON.parse(text);
     const incoming=parsed?.data??parsed;
-    const normalized=normalizeImportedState(incoming);
-    if(!confirm('导入会覆盖当前网页中的现有数据，确定继续吗？'))return;
-    state=normalized;
-    selectedGame='all';
-    settingsGame=state.games[0]?.id||'';
-    settingsSection='categories';
-    save();
-    render();
-    toast('数据已导入');
-  }catch(err){
-    alert('导入失败：文件格式无效或内容不受支持。');
-  }finally{
-    $('#importDataInput').value='';
-  }
+    const records=buildRecords(incoming);
+    if(!confirm(`导入会覆盖当前网页的全部数据。文件包含 ${records.games.length} 个游戏、${records.updates.length} 个更新和 ${records.items.length} 条待办。建议先导出当前数据备份。确定覆盖吗？`))return;
+    await writeQueue;
+    await replaceDatabaseContents(records);
+    selectedGame='all';settingsSection='categories';archiveVisibleLimit=8;
+    await reloadActiveFromDatabase();
+    $('#archiveFilter').value='active';$('#statusFilter').value='all';
+    render();toast('导入成功（包含归档记录）');
+  }catch(err){console.error(err);alert('导入失败：文件格式无效或写入数据库失败，原有数据可能未被修改，请核对当前页面。')}
+  finally{$('#importDataInput').value=''}
 }
 function switchPage(p){currentPage=p;$('#trackerPage').classList.toggle('active',p==='tracker');$('#settingsPage').classList.toggle('active',p==='settings');$('#trackerActions').style.display=p==='tracker'?'flex':'none';$('#settingsBtn').style.display=p==='settings'?'none':'block';$('#trackerBtn').style.display=p==='settings'?'block':'none';$('#subtitle').textContent=p==='tracker'?'你的游戏追踪与常用网站导航。':'管理游戏类别、更新版本和常用网站。';render()}
 $('#addGameBtn').onclick=()=>{openModal(`<h3>添加新游戏</h3><div class="form-grid"><div class="field full"><label>游戏名称</label><input id="newGameName"></div><div class="field full"><label>初始类别（每行一个）</label><textarea id="newGameCategories"></textarea></div></div><div class="modal-actions"><button class="btn" data-close>取消</button><button class="btn primary" id="saveGame">添加</button></div>`);$('#saveGame').onclick=()=>{let name=$('#newGameName').value.trim();if(!name)return;let cats=$('#newGameCategories').value.split(/\n/).map(x=>x.trim()).filter(Boolean);let id='g'+Date.now();state.games.push({id,name,categories:cats.length?cats:['其他'],sites:[]});settingsGame=id;save();closeModal();render()}}
@@ -1482,24 +2492,20 @@ $('#searchInput').oninput=()=>{
   searchTimer=setTimeout(renderMain,120);
 };
 $('#statusFilter').onchange=renderMain;
-$('#archiveFilter').onchange=renderMain;
+$('#archiveFilter').onchange=()=>{archiveVisibleLimit=8;renderTracker()};
 
 $('#mainContent').addEventListener('change',e=>{
   const check=e.target.closest('.task-check');
   if(check)updateTaskDoneFast(check.dataset.id,check.checked,check.closest('.task'));
 });
 $('#mainContent').addEventListener('click',e=>{
+  if(e.target.closest('#loadMoreArchived')){archiveVisibleLimit+=8;renderTracker();return}
   const rename=e.target.closest('.rename-update');
   if(rename){editUpdate(rename.dataset.id);return}
 
   const archive=e.target.closest('.archive-update');
   if(archive){
-    const u=updateById(archive.dataset.id);
-    if(!u)return;
-    let n=0;
-    for(const i of state.items)if(i.updateId===u.id&&!i.done)n++;
-    if(!u.archived&&n&&!confirm(`这一组还有 ${n} 项未完成，仍然归档吗？`))return;
-    u.archived=!u.archived;save();render();
+    toggleUpdateArchive(archive.dataset.id);
     return;
   }
 
@@ -1517,5 +2523,6 @@ $('#mainContent').addEventListener('click',e=>{
 $('#modalBackdrop').onclick=e=>{if(e.target===e.currentTarget)closeModal()};
 $('#importDataInput').addEventListener('change',e=>handleImportData(e.target.files?.[0]));
 $('#statusFilter').value='all';
-render();
+$('#mainContent').innerHTML='<div class="empty">正在初始化本地数据库…</div>';
+initializeStorage().catch(storageError);
 </script></body></html>
