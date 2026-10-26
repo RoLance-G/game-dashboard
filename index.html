@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Game Dashboard</title><link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%0A%3Cdefs%3E%0A%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%228%22%20y1%3D%226%22%20x2%3D%2256%22%20y2%3D%2258%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%0A%20%20%20%20%3Cstop%20stop-color%3D%22%23BDE7FF%22%2F%3E%0A%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%237FC6F2%22%2F%3E%0A%20%20%3C%2FlinearGradient%3E%0A%3C%2Fdefs%3E%0A%3Crect%20x%3D%224%22%20y%3D%224%22%20width%3D%2256%22%20height%3D%2256%22%20rx%3D%2215%22%20fill%3D%22url%28%23g%29%22%2F%3E%0A%3Crect%20x%3D%2215%22%20y%3D%2216%22%20width%3D%2221%22%20height%3D%2221%22%20rx%3D%226%22%20fill%3D%22%23F8FCFF%22%20fill-opacity%3D%22.96%22%2F%3E%0A%3Cpath%20d%3D%22M20%2026.5l4.2%204.2L32%2021.8%22%20fill%3D%22none%22%20stroke%3D%22%2374BCEB%22%20stroke-width%3D%224%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%0A%3Cpath%20d%3D%22M41%2021h9M41%2029h9M41%2037h9M16%2045h34%22%20fill%3D%22none%22%20stroke%3D%22%23F8FCFF%22%20stroke-width%3D%224%22%20stroke-linecap%3D%22round%22%2F%3E%0A%3C%2Fsvg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow:wght@600;700;800&family=Nunito+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"><style>
-*{box-sizing:border-box;}body{margin:0;}button,input,select,textarea{font:inherit;}button{cursor:pointer;}.app{margin:auto;}.topbar{display:flex;justify-content:space-between;gap:16px;align-items:center;}.brand h1{margin:0;}.brand p{margin:6px 0 0;}.actions{display:flex;flex-wrap:wrap;}.btn{border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 14px;font-weight:650;color:var(--text);}.btn.small{padding:7px 10px;font-size:13px;}.layout{display:grid;}.sidebar,.card,.update-card,.settings-shell{background:var(--panel);box-shadow:var(--shadow);border-radius:var(--r);}.sidebar{height:max-content;}.side-head{display:flex;justify-content:space-between;font-weight:700;}.game-list{display:grid;}.game-btn{border:0;background:transparent;text-align:left;justify-content:space-between;gap:8px;}.game-btn.active,.game-btn:hover{background:var(--soft);color:var(--primary);}.count{font-size:12px;}.game-menu{gap:4px;}.iconbtn{border:0;background:transparent;padding:5px;}.side-actions{display:grid;gap:8px;}.add-game{border:1px dashed #cfd4df;background:transparent;border-radius:12px;}.metrics{display:grid;grid-template-columns:repeat(3,1fr);}.toolbar{display:flex;flex-wrap:wrap;}.search{flex:1;min-width:200px;}.input,.select{border:1px solid var(--line);background:#fafbfc;border-radius:11px;padding:10px 12px;}.section-head{display:flex;justify-content:space-between;align-items:center;}.section-head h2{margin:0;}.section{margin-bottom:18px;}.update-head{display:flex;justify-content:space-between;align-items:center;gap:14px;}.update-actions{display:flex;align-items:center;}.task{display:grid;align-items:center;}.task.done .task-name{text-decoration:line-through;}.task-main{display:flex;justify-content:space-between;gap:20px;align-items:center;}.tag{white-space:nowrap;}.empty{text-align:center;}.page{display:none;}.page.active{display:block;}.settings-shell{display:grid;overflow:hidden;}.settings-games button{width:100%;text-align:left;}.settings-title{margin-bottom:14px;}.category-row{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto auto auto;gap:8px;align-items:center;}.drag{cursor:grab;}.modal-backdrop{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:20px;z-index:20;}.modal-backdrop.show{display:flex;}.modal{width:min(720px,100%);max-height:90vh;overflow:auto;padding:22px;}.modal h3{margin:0 0 18px;}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}.field{display:grid;gap:7px;}.field.full{grid-column:1/-1;}.field label{font-size:13px;}.field input,.field select,.field textarea{width:100%;border:1px solid var(--line);border-radius:11px;padding:10px 12px;background:#fafbfc;}.modal-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:20px;}.batch-head,.batch-row{display:grid;grid-template-columns:220px minmax(0,1fr) auto;gap:10px;align-items:center;}.batch-head{font-size:12px;color:var(--muted);margin-bottom:6px;}.batch-row{margin-bottom:8px;}.toast{position:fixed;right:24px;bottom:24px;color:#fff;padding:12px 16px;opacity:0;transform:translateY(10px);transition:.2s;pointer-events:none;}.toast.show{opacity:1;transform:none;}
-@media(max-width:820px){.layout{grid-template-columns:1fr;}.sidebar{position:static;}.metrics{grid-template-columns:1fr 1fr;}.settings-shell{grid-template-columns:1fr;}.settings-games{border-right:0;border-bottom:1px solid var(--line);}.form-grid{grid-template-columns:1fr;}.field.full{grid-column:auto;}}@media(max-width:560px){.app{padding:20px 14px 40px;}.topbar{display:block;}.actions{margin-top:14px;}.metrics{grid-template-columns:1fr;}.update-head{display:block;}.update-actions{margin-top:12px;}.task{grid-template-columns:auto minmax(0,1fr) auto;}.task-main{display:block;}.tag{margin-top:5px;display:inline-block;}.task .task-menu{grid-column:3;}.batch-head{display:none;}.batch-row{grid-template-columns:1fr;}.category-row{grid-template-columns:auto minmax(0,1fr) auto auto;}}
+*{box-sizing:border-box;}body{margin:0;}button,input,select,textarea{font:inherit;}button{cursor:pointer;}.app{margin:auto;}.topbar{display:flex;justify-content:space-between;gap:16px;align-items:center;}.brand h1{margin:0;}.brand p{margin:6px 0 0;}.actions{display:flex;flex-wrap:wrap;}.btn{border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 14px;font-weight:650;color:var(--text);}.btn.small{padding:7px 10px;}.layout{display:grid;}.sidebar,.card,.update-card,.settings-shell{background:var(--panel);box-shadow:var(--shadow);border-radius:var(--r);}.sidebar{height:max-content;}.side-head{display:flex;justify-content:space-between;}.game-list{display:grid;}.game-btn{border:0;background:transparent;text-align:left;justify-content:space-between;gap:8px;}.game-btn.active,.game-btn:hover{background:var(--soft);color:var(--primary);}.count{font-size:12px;}.game-menu{gap:4px;}.iconbtn{border:0;background:transparent;padding:5px;}.side-actions{display:grid;gap:8px;}.add-game{border:1px dashed #cfd4df;background:transparent;border-radius:12px;}.metrics{display:grid;grid-template-columns:repeat(3,1fr);}.toolbar{display:flex;flex-wrap:wrap;}.search{flex:1;min-width:200px;}.input,.select{border:1px solid var(--line);background:#fafbfc;border-radius:11px;padding:10px 12px;}.section-head{display:flex;justify-content:space-between;align-items:center;}.section-head h2{margin:0;}.update-head{display:flex;justify-content:space-between;align-items:center;gap:14px;}.update-actions{display:flex;align-items:center;}.task{display:grid;align-items:center;}.task.done .task-name{text-decoration:line-through;}.task-main{display:flex;justify-content:space-between;gap:20px;align-items:center;}.tag{white-space:nowrap;}.empty{text-align:center;}.page{display:none;}.page.active{display:block;}.settings-shell{overflow:hidden;}.category-row{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto auto auto;gap:8px;align-items:center;}.drag{cursor:grab;}.modal-backdrop{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:20px;z-index:20;}.modal-backdrop.show{display:flex;}.modal{width:min(720px,100%);max-height:90vh;overflow:auto;padding:22px;}.modal h3{margin:0 0 18px;}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}.field{display:grid;gap:7px;}.field.full{grid-column:1/-1;}.field input,.field select,.field textarea{width:100%;border:1px solid var(--line);border-radius:11px;padding:10px 12px;background:#fafbfc;}.modal-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:20px;}.batch-head,.batch-row{display:grid;grid-template-columns:220px minmax(0,1fr) auto;gap:10px;align-items:center;}.batch-head{font-size:12px;color:var(--muted);margin-bottom:6px;}.batch-row{margin-bottom:8px;}.toast{position:fixed;right:24px;bottom:24px;color:#fff;padding:12px 16px;opacity:0;transform:translateY(10px);transition:.2s;pointer-events:none;}.toast.show{opacity:1;transform:none;}
+@media(max-width:820px){.layout{grid-template-columns:1fr;}.sidebar{position:static;}.metrics{grid-template-columns:1fr 1fr;}.settings-shell{grid-template-columns:1fr;}.form-grid{grid-template-columns:1fr;}.field.full{grid-column:auto;}}@media(max-width:560px){.app{padding:20px 14px 40px;}.topbar{display:block;}.actions{margin-top:14px;}.metrics{grid-template-columns:1fr;}.update-head{display:block;}.update-actions{margin-top:12px;}.task{grid-template-columns:auto minmax(0,1fr) auto;}.task-main{display:block;}.tag{margin-top:5px;display:inline-block;}.task .task-menu{grid-column:3;}.batch-head{display:none;}.batch-row{grid-template-columns:1fr;}.category-row{grid-template-columns:auto minmax(0,1fr) auto auto;}}
 
 button,input,select,textarea{font-family:inherit;}
 
@@ -34,7 +34,7 @@ button,input,select,textarea{font-family:inherit;}
 
 .drag{font-size:18px;}
 
-.modal h3{padding-bottom:10px;border-bottom:2px solid #aaa59d;font-size:20px;}
+.modal h3{padding-bottom:10px;border-bottom:2px solid #aaa59d;}
 .toast{font-weight:750;}
 @media(max-width:820px), (max-width:560px){html,body{min-width:1100px;}.app{padding:18px 24px 44px;}.layout{grid-template-columns:286px minmax(0,1fr);}.sidebar{position:sticky;}.metrics{grid-template-columns:repeat(3,1fr);}.settings-shell{grid-template-columns:250px minmax(0,1fr);}.form-grid{grid-template-columns:1fr 1fr;}.field.full{grid-column:1/-1;}.topbar{display:flex;}.actions{margin-top:0;}.update-head{display:flex;}.update-actions{margin-top:0;}.task{grid-template-columns:auto minmax(0,1fr) auto auto;}.task-main{display:flex;}.tag{margin-top:0;display:inline-block;}.batch-head{display:grid;}.batch-row{grid-template-columns:220px minmax(0,1fr) auto;}.category-row{grid-template-columns:auto minmax(0,1fr) auto auto auto auto;}}
 
@@ -44,9 +44,6 @@ html{
 }
 body{
   min-width:1180px;
-  
-  font-family:"Microsoft YaHei UI","PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
-  font-weight:500;
 
 }
 body:before{
@@ -101,7 +98,7 @@ body:before{
   border-radius:15px;
   background:linear-gradient(145deg,rgba(255,255,255,.96),rgba(249,245,245,.87));
   box-shadow:var(--shadow);
-  backdrop-filter:blur(10px);
+  backdrop-filter:none;
 }
 .sidebar{
   
@@ -190,25 +187,12 @@ body:before{
   grid-template-columns:250px minmax(0,1fr);
 }
 
-.settings-main{padding:22px;}
-.settings-title h2{
-  
-  font-weight:800;
-}
 .category-row{
   border-top:1px solid #e5dde0;
   padding:10px 4px;
 }
 .drag{color:#aba2a7;}
 
-.modal h3{
-  
-  font-weight:820;
-}
-.field label{
-  color:#837d82;
-  font-weight:650;
-}
 .empty{
   
   padding:50px 20px;
@@ -375,13 +359,11 @@ body:before{
   overflow:hidden;
   text-overflow:ellipsis;
   white-space:nowrap;
-  color:#424b53;
-  font-weight:760;
+
 }
 .update-manager-meta{
   margin-top:4px;
-  color:#87949e;
-  font-size:12px;
+
 }
 .update-status{
   display:inline-flex;
@@ -391,8 +373,7 @@ body:before{
   height:25px;
   
   border:1px solid #d6e4ed;
-  font-size:12px;
-  font-weight:700;
+
 }
 
 .update-status.archived{
@@ -401,29 +382,14 @@ body:before{
 }
 
 /* Two-level settings structure */
-.settings-games{
-  padding:16px;
-}
-.settings-side-title{
-  margin:2px 6px 10px;
-  
-  font-size:12px;
-  font-weight:700;
-  
-}
+
 .settings-tabs{
   display:flex;
   
   margin:4px 0 18px;
-  padding-bottom:12px;
-  
-}
-.settings-tab{
 
-  padding:9px 14px;
-
-  font-weight:700;
 }
+
 .settings-tab:hover{
   border-color:#9fcfeb;
 
@@ -433,18 +399,15 @@ body:before{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  gap:14px;
-  margin-bottom:12px;
+
 }
 .settings-panel-head h3{
   margin:0;
-  color:#4a5660;
-  
+
 }
 .settings-helper{
   margin-top:4px;
-  color:#87949e;
-  font-size:12px;
+
 }
 
 /* Game Dashboard quick links */
@@ -500,9 +463,9 @@ body:before{
   padding:18px 12px;
   border:1px dashed #d6e4ed;
   border-radius:12px;
-  color:#8897a1;
+  
   text-align:center;
-  background:rgba(244,250,255,.65);
+  
 }
 .quicklinks-empty button{margin-top:10px;}
 .site-row{
@@ -515,7 +478,7 @@ body:before{
 }
 .site-url{
   color:#81909a;
-  font-size:12px;
+  
   overflow:hidden;
   text-overflow:ellipsis;
   white-space:nowrap;
@@ -525,11 +488,11 @@ body:before{
   display:flex;
   justify-content:space-between;
   align-items:flex-start;
-  gap:12px;
+  
 }
 .settings-actions{
   display:flex;
-  gap:8px;
+  
   flex-wrap:wrap;
 }
 
@@ -666,17 +629,14 @@ body{
   position:relative;
   z-index:1;
   color:#21394e;
-  
-  font-weight:800 !important;
-  
+
 }
 .brand h1::after{
   content:" // PERSONAL NAVIGATION";
   margin-left:10px;
-  color:#43b9e8;
-  font-size:10px;
+
   font-weight:800;
-  letter-spacing:1.2px;
+  
   vertical-align:middle;
 }
 .brand p{
@@ -741,7 +701,7 @@ body{
   padding:7px 10px 8px;
   border-bottom:1px solid #d6e8f2;
   color:#36566d;
-  font-size:13px;
+  
 }
 .side-head::before{
   content:"";
@@ -770,7 +730,7 @@ body{
   border-radius:5px !important;
   padding:9px 10px !important;
   color:#557185;
-  font-weight:750;
+  
 }
 .game-btn.active{
   position:relative;
@@ -839,14 +799,12 @@ body{
 }
 .metric .label{
   color:#6f8799 !important;
-  font-weight:750;
-  
+
 }
 .metric .value{
   margin-top:2px !important;
   color:#2f5974;
-  
-  font-weight:850 !important;
+
 }
 
 /* ---------- Toolbar ---------- */
@@ -879,18 +837,14 @@ body{
   padding:0 2px 5px;
   border-bottom:1px solid #cfe4ef;
 }
-.section-head h2{
-  color:#2c4b62;
-  
-  font-weight:850;
-}
+
 .section-head small{
   color:#6e8b9e;
-  font-weight:700;
+  
 }
 .update-card{
   position:relative;
-  margin-bottom:9px !important;
+  
   border:1px solid #cfe2ec;
   border-radius:7px !important;
   background:#fff !important;
@@ -912,16 +866,11 @@ body{
   border-bottom:1px solid #dceaf2 !important;
   background:linear-gradient(90deg,#f4fbff,#fff 50%);
 }
-.update-title{
-  color:#34566d;
-  
-  font-weight:850 !important;
-}
+
 .update-meta{
   margin-top:2px !important;
   color:#7a94a6 !important;
-  
-  font-weight:650;
+
 }
 .update-card.archived{
   opacity:.62 !important;
@@ -947,22 +896,14 @@ body{
 .task-check{
   accent-color:#24afe7 !important;
 }
-.task-name{
-  color:#3b5568;
-  
-  font-weight:700 !important;
-}
+
 .tag{
   border:1px solid #bfe4f4;
   border-radius:4px !important;
   background:#eaf8ff !important;
   color:#2587b4 !important;
-  
-  font-weight:800;
+
   letter-spacing:.2px;
-}
-.task.done .task-name{
-  color:#96a8b4 !important;
 }
 
 /* ---------- Quick links ---------- */
@@ -970,95 +911,50 @@ body{
   padding:11px !important;
   border:1px solid #cce2ee !important;
   border-radius:8px !important;
-  background:#fff !important;
-  box-shadow:0 3px 9px rgba(43,103,140,.055) !important;
+
 }
-.quicklinks-head{
-  padding:4px 4px 9px !important;
-  border-bottom:1px solid #d5e7f0 !important;
-}
+
 .quicklinks-head h3{
   color:#345a72 !important;
-  font-size:14px !important;
-  font-weight:850;
+
 }
 .quicklinks-sub{
   color:#83a0b2 !important;
-  font-size:10px !important;
-}
-.quicklinks-list{
-  gap:6px !important;
-}
-.quicklink-item{
   
-  padding:8px 9px !important;
-  border:1px solid #d3e6f0 !important;
-  border-left:3px solid #2bb2e9 !important;
-  border-radius:5px !important;
-  background:#fbfeff !important;
-  color:#476779 !important;
 }
+
 .quicklink-item:hover{
-  border-color:#6fc8ed !important;
+  
   border-left-color:#1a9ed9 !important;
-  background:#edf9ff !important;
-  color:#1687bd !important;
+
 }
 .quicklink-icon{
   border-radius:3px !important;
   background:#eef8fc !important;
 }
-.quicklink-name{
-  
-  font-weight:800 !important;
-}
-.quicklink-arrow{
-  color:#43abd7 !important;
-}
 
 /* ---------- Settings ---------- */
 .settings-shell{
-  border:1px solid #cce1ed;
+  
   border-radius:8px !important;
-  background:#fff !important;
-  box-shadow:0 4px 10px rgba(43,102,138,.055) !important;
+
 }
-.settings-games{
-  border-right:1px solid #d5e6ef !important;
-  background:#f8fcfe;
-}
+
 .settings-main{
   background:#fff;
 }
-.settings-title{
-  padding-bottom:10px;
-  border-bottom:1px solid #d6e7f0;
-}
-.settings-title h2{
-  color:#2f536b;
-}
-.settings-tabs{
-  gap:5px !important;
-  border-bottom:1px solid #d3e5ef !important;
-}
+
 .settings-tab{
-  min-width:104px !important;
+  
   border:1px solid #d2e4ed !important;
   border-radius:5px 5px 0 0 !important;
-  background:#f8fcfe !important;
-  color:#6a8496 !important;
+
 }
 .settings-tab:hover{
   background:#eef9ff !important;
   color:#1788bd !important;
 }
-.settings-tab.active{
-  border-color:#63c7ec !important;
-  border-bottom-color:#fff !important;
-  background:#fff !important;
-  color:#158bc3 !important;
-  box-shadow:inset 0 3px 0 #27b3ea !important;
-}
+
 .category-row,
 .site-row,
 .update-manager-row{
@@ -1102,17 +998,12 @@ body{
   height:4px;
   background:#25b3eb;
 }
-.modal h3{
-  color:#2f5269;
-}
 
 /* ---------- Empty state ---------- */
 .empty{
   border:1px dashed #c7e1ef !important;
   border-radius:8px !important;
-  background:#fbfeff !important;
-  color:#8299a9 !important;
-  box-shadow:none !important;
+
 }
 
 /* =========================================================
@@ -1148,10 +1039,7 @@ body{
   letter-spacing:1.35px;
   white-space:nowrap;
 }
-.brand h1{
-  font-size:27px !important;
-  letter-spacing:.15px;
-}
+
 .brand p{
   font-size:12.5px !important;
 }
@@ -1209,7 +1097,7 @@ body{
 }
 .game-btn{
   min-height:42px;
-  font-size:13.5px;
+  
 }
 .game-btn.active{
   padding-left:14px !important;
@@ -1237,17 +1125,16 @@ body{
   min-height:90px !important;
 }
 .metric .label{
-  font-size:12px !important;
+  
   text-transform:uppercase;
   letter-spacing:.75px;
 }
 .metric .value{
-  font-size:29px !important;
+  
   line-height:1.05;
 }
 .metric::after{
-  display:block !important;
-  content:"";
+
   position:absolute;
   right:13px;
   bottom:10px;
@@ -1278,30 +1165,22 @@ body{
 }
 
 /* ----- Main content typography: one step larger ----- */
-.section-head h2{
-  font-size:17.5px !important;
-}
-.section-head small{
-  font-size:12.5px !important;
-}
+
 .update-title{
-  font-size:15.5px !important;
+  
   letter-spacing:.05px;
 }
-.update-meta{
-  font-size:12px !important;
-}
+
 .task{
   min-height:46px !important;
   padding:9px 10px !important;
 }
 .task-name{
-  font-size:14.5px !important;
-  line-height:1.42;
+
   letter-spacing:.03px;
 }
 .tag{
-  font-size:11.5px !important;
+  
   padding:5px 9px !important;
 }
 .task-check{
@@ -1311,7 +1190,7 @@ body{
 
 /* ----- Update cards: more deliberate HUD framing ----- */
 .update-card::after{
-  content:"";
+  
   position:absolute;
   right:0;
   top:0;
@@ -1363,29 +1242,19 @@ body{
 .quicklinks-head .btn{
   position:relative;
   z-index:2;
-  margin-right:29px;
+  
 }
 .quicklink-item{
-  min-height:42px !important;
+  
   grid-template-columns:22px minmax(0,1fr) 14px !important;
 }
 .quicklink-icon{
   width:22px !important;
   height:22px !important;
 }
-.quicklink-name{
-  font-size:13px !important;
-}
-.quicklink-item:hover .quicklink-arrow{
-  transform:translateX(1px);
-}
 
 /* ----- Settings: more polished tabs and rows ----- */
-.settings-side-title{
-  color:#6c93aa !important;
-  letter-spacing:.9px !important;
-  text-transform:uppercase;
-}
+
 .settings-tabs{
   position:relative;
 }
@@ -1399,12 +1268,7 @@ body{
   font-weight:850;
   letter-spacing:1.2px;
 }
-.settings-tab{
-  font-size:12.5px !important;
-}
-.settings-panel-head h3{
-  font-size:17px !important;
-}
+
 .category-row,
 .site-row,
 .update-manager-row{
@@ -1423,7 +1287,6 @@ body{
 .settings-helper{
   line-height:1.35;
 }
-
 
 /* Archived records are paged to keep long-term history responsive. */
 .archive-more-wrap{text-align:center;margin:16px 0 24px}
@@ -1532,20 +1395,7 @@ button,input,select,textarea{
 }
 
 /* Settings: text hierarchy closer to an in-game configuration panel. */
-.settings-games{
-  font-family:var(--font-ui);
-}
-.settings-side-title{
-  font-family:var(--font-hud);
-  font-size:12px !important;
-  font-weight:800 !important;
-  letter-spacing:1.15px !important;
-}
-.settings-games .game-btn{
-  font-size:14.5px !important;
-  font-weight:700 !important;
-  letter-spacing:.03px;
-}
+
 .settings-title h2{
   font-family:var(--font-ui);
   font-size:22px !important;
@@ -1554,7 +1404,7 @@ button,input,select,textarea{
   letter-spacing:.05px;
 }
 .settings-title > div:first-child > div{
-  font-size:13.5px !important;
+  
   font-weight:500;
   line-height:1.5;
 }
@@ -1568,21 +1418,20 @@ button,input,select,textarea{
   font-weight:750 !important;
   letter-spacing:.04px;
   min-width:112px !important;
-  padding:10px 15px !important;
+  
   line-height:1.3;
 }
 .settings-panel-head h3{
   font-family:var(--font-ui);
   font-size:18px !important;
   font-weight:800 !important;
-  color:#365b72;
+  
   letter-spacing:.07px;
 }
 .settings-helper{
-  font-size:13px !important;
+  
   font-weight:500;
-  line-height:1.6 !important;
-  color:#728b9d;
+
 }
 .category-row,
 .site-row,
@@ -1603,7 +1452,7 @@ button,input,select,textarea{
 }
 .site-url{
   font-family:var(--font-ui);
-  font-size:12.5px !important;
+  
   font-weight:500;
 }
 .update-manager-name{
@@ -1613,9 +1462,9 @@ button,input,select,textarea{
   color:#37566b;
 }
 .update-manager-meta{
-  font-size:12.5px;
+  
   font-weight:500;
-  line-height:1.5;
+  
   color:#7b94a5;
 }
 .update-status{
@@ -1647,7 +1496,386 @@ button,input,select,textarea{
 .section-pending-count{
   font-variant-numeric:tabular-nums;
 }
-</style></head><body><div class="app"><div class="topbar"><div class="brand"><h1>Game Dashboard</h1><p id="subtitle" aria-hidden="true"></p></div><div class="actions" id="trackerActions"><button class="btn" id="addTaskBtn">＋ 添加待办</button><button class="btn primary" id="addUpdateBtn">＋ 录入游戏更新</button></div></div><div class="layout"><aside class="sidebar"><div class="side-head"><span>游戏</span><span id="gameTotal"></span></div><div class="game-list" id="gameList"></div><div class="side-actions"><button class="add-game" id="addGameBtn">＋ 添加新游戏</button><button class="btn" id="settingsBtn">⚙ 设置</button><button class="btn" id="trackerBtn" style="display:none">← 返回追踪器</button></div></aside><main><section class="page active" id="trackerPage"><div class="tracker-shell"><div class="tracker-main"><div class="metrics"><div class="metric"><div class="label">未完成</div><div class="value" id="pendingCount">0</div></div><div class="metric"><div class="label">活跃更新</div><div class="value" id="updateCount">0</div></div><div class="metric"><div class="label">完成率</div><div class="value" id="completionRate">0%</div></div></div><div class="toolbar"><input class="input search" id="searchInput" placeholder="搜索内容或类别"><select class="select" id="statusFilter"><option value="all" selected>全部</option><option value="pending">未完成</option><option value="done">已完成</option></select><select class="select" id="archiveFilter"><option value="active">Active</option><option value="all">全部更新</option><option value="archived">Archived</option></select></div><div id="mainContent"></div></div><aside class="quicklinks-panel" id="quickLinksPanel"></aside></div></section><section class="page" id="settingsPage"><div class="settings-shell"><div class="settings-games"><div id="settingsGameList"></div></div><div class="settings-main" id="settingsContent"></div></div></section></main></div></div><div class="modal-backdrop" id="modalBackdrop"><div class="modal" id="modal"></div></div><div class="toast" id="toast"></div><input type="file" id="importDataInput" accept=".json,application/json" style="display:none">
+
+/* =====================================================================
+   Game Dashboard · UI Refinement v2
+   Controlled presentation layer; no persistence or event logic changes.
+   ===================================================================== */
+:root{
+  --ba-blue:var(--ui-accent);
+  --ba-blue-dark:var(--ui-accent-dark);
+  --ba-blue-tint:#ebf7fd;
+  --ba-ink:var(--ui-ink);
+  --ba-text:#3c5a6d;
+  --ba-secondary:var(--ui-secondary);
+  --ba-hairline:var(--ui-border);
+  --ba-hover:#edf8ff;
+  --ba-danger:var(--ui-danger);
+}
+
+/* One HUD accent is enough. Reduce redundant tiny annotations. */
+.topbar .actions::before,
+.toolbar::before,
+.quicklinks-head::after,
+.settings-tabs::after,
+.side-head span:first-child::after,
+.game-btn.active span:first-child::after{
+  content:none !important;
+  display:none !important;
+}
+.brand h1::after{
+  color:#5a9ebb !important;
+  letter-spacing:1px !important;
+  font-size:10px !important;
+}
+.metric::after{
+  content:none !important;
+  display:none !important;
+}
+.topbar::after{
+  border-color:rgba(36,143,190,.12) !important;
+}
+
+/* Type scale: readable supporting copy, softer visual weight than titles. */
+.section-head h2{color:var(--ba-ink) !important;}
+.section-head small,
+.update-meta,
+.update-manager-meta,
+.settings-helper,
+.settings-title > div:first-child > div,
+.site-url,
+.quicklinks-sub{
+  color:var(--ba-secondary) !important;
+}
+.section-head small{font-size:12.5px !important;font-weight:650 !important;}
+.update-meta{font-size:12.5px !important;font-weight:600 !important;line-height:1.5 !important;}
+.update-manager-meta{font-size:12.5px !important;line-height:1.5 !important;}
+.settings-helper{font-size:13px !important;line-height:1.6 !important;}
+.settings-title > div:first-child > div{font-size:13.5px !important;}
+.site-url{font-size:13px !important;}
+.quicklinks-sub{font-size:11.5px !important;line-height:1.4 !important;}
+
+/* Neutral task markers: task text remains the main scan target. */
+.task .tag{
+  background:#f0f6fa !important;
+  border-color:#d9e7ef !important;
+  color:#466c82 !important;
+  font-size:12px !important;
+  font-weight:700 !important;
+  box-shadow:none !important;
+}
+.task-name{color:#324e62 !important;}
+.task.done .task-name{color:#7e939f !important;}
+.update-card{margin-bottom:12px !important;border-color:#d3e4ed !important;}
+.update-card::after{content:none !important;display:none !important;}
+.section{margin-bottom:24px !important;}
+.update-title{color:#2c5067 !important;}
+.update-actions .btn{color:#54778e !important;}
+.update-actions .btn:hover{color:var(--ba-blue-dark) !important;}
+
+/* Shortcuts: one contained navigation panel, no repeated accent rails. */
+.quicklinks-head{
+  padding:4px 2px 12px !important;
+  border-bottom:1px solid var(--ba-hairline) !important;
+}
+.quicklinks-head .btn{margin-right:0 !important;}
+.quicklinks-panel{
+  border-color:#d2e5f0 !important;
+  background:#fff !important;
+  box-shadow:0 3px 10px rgba(37,98,133,.055) !important;
+}
+.quicklinks-list{gap:1px !important;}
+.quicklink-item{
+  min-height:44px !important;
+  border:1px solid transparent !important;
+  border-radius:5px !important;
+  border-left:1px solid transparent !important;
+  background:transparent !important;
+  color:#3e5d72 !important;
+  box-shadow:none !important;
+  padding:9px 10px !important;
+}
+.quicklink-item + .quicklink-item{border-top:1px solid #eef3f7 !important;}
+.quicklink-item:hover{
+  background:var(--ba-hover) !important;
+  border-color:#d5ebf5 !important;
+  color:var(--ba-blue-dark) !important;
+}
+.quicklink-arrow{color:#668ca5 !important;}
+.quicklink-item:hover .quicklink-arrow{transform:none !important;color:var(--ba-blue-dark) !important;}
+.quicklinks-empty{
+  background:#f7fbfd !important;
+  border-color:#d4e5ef !important;
+  color:var(--ba-secondary) !important;
+  line-height:1.65 !important;
+}
+
+/* Settings: one clear add action, all maintenance actions secondary. */
+.settings-shell{
+  border-color:#d0e3ee !important;
+  box-shadow:0 3px 11px rgba(42,103,138,.06) !important;
+}
+
+.settings-title{
+
+  border-bottom:1px solid #d8e7ef !important;
+}
+
+.settings-tabs{
+  
+  border-bottom:1px solid #dce9f1 !important;
+  padding-bottom:0 !important;
+
+}
+.settings-tab{
+  background:#f5f9fc !important;
+  border-color:#d9e8f1 !important;
+  
+  padding:11px 17px !important;
+}
+.settings-tab.active{
+  background:#fff !important;
+  
+  border-color:#a6dced !important;
+  border-bottom-color:#fff !important;
+  box-shadow:inset 0 3px 0 var(--ba-blue) !important;
+}
+.settings-tab:not(.active):hover{background:#eaf7fd !important;color:var(--ba-blue-dark) !important;}
+
+#settingsPanel .settings-panel-head .btn.primary{
+  border-color:#269ed5 !important;
+  background:var(--ui-accent) !important;
+  color:#fff !important;
+  min-height:36px;
+  padding:8px 14px !important;
+  box-shadow:none !important;
+  white-space:nowrap;
+}
+#settingsPanel .settings-panel-head .btn.primary:hover{
+  border-color:#197dab !important;
+  background:#1688c1 !important;
+}
+.settings-actions .btn{
+  background:var(--ui-surface-soft) !important;
+  border-color:#d6e7ef !important;
+  color:#587387 !important;
+  box-shadow:none !important;
+}
+.settings-actions .btn:hover{background:#eef8fd !important;color:#207da9 !important;}
+
+/* Tidy category, version, and website rows, maintaining familiar controls. */
+#settingsPanel .category-row,
+#settingsPanel .site-row{
+  min-height:56px;
+  gap:9px !important;
+  padding:11px 7px !important;
+  border-top-color:var(--ui-border-light) !important;
+}
+#settingsPanel .update-manager-row{
+  min-height:68px !important;
+
+  background:#fbfdff !important;
+  border-color:#e1ebf2 !important;
+  box-shadow:none !important;
+}
+#settingsPanel .update-manager-row.is-archived{
+  opacity:1 !important;
+  background:#f6f9fb !important;
+}
+#settingsPanel .update-manager-row.is-archived .update-manager-name{color:#5a7182 !important;}
+#settingsPanel .category-row > span:nth-child(2),
+#settingsPanel .site-row > span:nth-child(2),
+#settingsPanel .update-manager-name{
+  color:#354f62 !important;
+  font-size:14.5px !important;
+  font-weight:750 !important;
+}
+#settingsPanel .update-manager-meta{color:#577386 !important;}
+#settingsPanel .drag{color:#718da0 !important;}
+#settingsPanel .drag:hover{color:#238cbd !important;}
+#settingsPanel .btn.small:not(.primary){
+  border-color:transparent !important;
+  background:transparent !important;
+  box-shadow:none !important;
+  
+  border-radius:5px !important;
+  font-size:13px !important;
+  font-weight:700 !important;
+  min-height:32px;
+}
+#settingsPanel .btn.small:not(.primary):hover{
+  border-color:#d8e8f1 !important;
+  background:#edf8fe !important;
+  
+}
+#settingsPanel .cat-up,
+#settingsPanel .cat-down{
+  width:32px !important;
+  min-width:32px;
+  padding:4px 5px !important;
+  font-family:var(--font-hud) !important;
+  font-size:16px !important;
+  color:#658499 !important;
+}
+#settingsPanel .btn.small.cat-up,
+#settingsPanel .btn.small.cat-down{
+  border-color:#e4edf3 !important;
+  background:var(--ui-surface-soft) !important;
+}
+#settingsPanel .cat-up:hover,
+#settingsPanel .cat-down:hover{color:#188ac2 !important;}
+#settingsPanel .btn.danger{
+  color:#837a83 !important;
+}
+#settingsPanel .btn.danger:hover{
+  
+  border-color:#f1dce1 !important;
+  background:#fff3f5 !important;
+}
+#settingsPanel .manage-archive-update{
+  border-color:#d8e7ef !important;
+  background:#f5fafc !important;
+  color:#466a81 !important;
+  padding-inline:11px !important;
+}
+#settingsPanel .update-status{
+  border-radius:5px !important;
+  font-size:12px !important;
+  font-weight:750 !important;
+}
+#settingsPanel .update-status.active{
+  background:#e8f6fc !important;
+  color:#237da7 !important;
+  border-color:#cae8f3 !important;
+}
+#settingsPanel .update-status.archived{
+  background:#eff3f6 !important;
+  color:#576d7b !important;
+  border-color:#dce5ea !important;
+}
+#settingsPanel .site-url{color:var(--ui-secondary) !important;}
+
+/* Clearer empty states, keyboard focus, low-cost interactions. */
+.empty{
+  background:var(--ui-surface-soft) !important;
+  color:#4f7186 !important;
+  border-color:#d8e9f1 !important;
+  line-height:1.65 !important;
+  box-shadow:none !important;
+}
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible{
+  outline:2px solid #269fd9 !important;
+  outline-offset:2px;
+}
+
+/* ===============================================================
+   Game Dashboard / Design System v3
+   Centralized semantic tokens, single game selector and low-cost UI states.
+   =============================================================== */
+:root{
+  --ui-accent:#239fda;
+  --ui-accent-dark:#177fad;
+  --ui-accent-soft:#eaf7fd;
+  --ui-ink:#2c4d62;
+  --ui-body:#354f62;
+  --ui-secondary:#526f83;
+  --ui-muted:#688398;
+  --ui-border:#d9e7f0;
+  --ui-border-light:#e5eff4;
+  --ui-surface:#ffffff;
+  --ui-surface-soft:#f8fbfd;
+  --ui-danger:#ba5465;
+  --ui-space-1:4px;
+  --ui-space-2:8px;
+  --ui-space-3:12px;
+  --ui-space-4:16px;
+  --ui-space-5:20px;
+  --ui-space-6:24px;
+}
+/* Unified settings layout: choose the game once in the persistent sidebar. */
+.settings-shell{
+  display:block !important;
+  background:var(--ui-surface) !important;
+  border:1px solid var(--ui-border) !important;
+}
+.settings-main{padding:var(--ui-space-6) !important;min-width:0}
+.settings-title{
+  gap:var(--ui-space-5) !important;
+  padding-bottom:var(--ui-space-4) !important;
+  margin-bottom:0 !important;
+}
+.settings-title h2{color:var(--ui-ink) !important}
+.settings-title > div:first-child > div{color:var(--ui-secondary) !important}
+.settings-eyebrow{
+  font-family:var(--font-hud),sans-serif;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:1.15px;
+  color:var(--ui-accent-dark);
+  margin-bottom:var(--ui-space-2);
+}
+.settings-eyebrow span{color:var(--ui-muted);font-weight:600}
+.settings-tabs{
+  gap:var(--ui-space-2) !important;
+  margin-top:var(--ui-space-4) !important;
+  margin-bottom:var(--ui-space-5) !important;
+}
+.settings-tab{color:var(--ui-secondary) !important}
+.settings-tab.active{color:var(--ui-accent-dark) !important}
+.settings-panel-head{gap:var(--ui-space-4) !important;margin-bottom:var(--ui-space-4) !important}
+.settings-panel-head h3{color:var(--ui-ink) !important}
+.settings-helper{color:var(--ui-secondary) !important}
+.settings-actions{gap:var(--ui-space-2) !important}
+#settingsPanel .category-row,
+#settingsPanel .site-row{padding:var(--ui-space-3) var(--ui-space-2) !important}
+#settingsPanel .update-manager-row{padding:var(--ui-space-3) !important;gap:var(--ui-space-2) !important}
+#settingsPanel .category-row > span:nth-child(2),
+#settingsPanel .site-row > span:nth-child(2),
+#settingsPanel .update-manager-name{color:var(--ui-body) !important}
+#settingsPanel .update-manager-meta,
+#settingsPanel .site-url{color:var(--ui-secondary) !important}
+#settingsPanel .btn.small:not(.primary){color:var(--ui-secondary) !important}
+#settingsPanel .btn.small:not(.primary):hover{color:var(--ui-accent-dark) !important}
+#settingsPanel .btn.danger:hover{color:var(--ui-danger) !important}
+/* Clear and consistent guidance for empty, loading and read-error states. */
+.ui-state{
+  border:1px dashed var(--ui-border);
+  border-radius:9px;
+  padding:34px 24px;
+  text-align:center;
+  background:var(--ui-surface-soft);
+  color:var(--ui-secondary);
+}
+.ui-state-mark{
+  display:grid;
+  place-items:center;
+  width:40px;
+  height:40px;
+  margin:0 auto var(--ui-space-3);
+  border:1px solid #c9e5f2;
+  border-radius:10px;
+  background:var(--ui-accent-soft);
+  color:var(--ui-accent-dark);
+  font-family:var(--font-hud),sans-serif;
+  font-size:20px;
+  font-weight:700;
+}
+.ui-state-title{font-weight:800;font-size:15px;color:var(--ui-ink);margin:0 0 var(--ui-space-2)}
+.ui-state-detail{font-size:13px;line-height:1.65;margin:0 auto;max-width:450px;color:var(--ui-secondary)}
+.ui-state-actions{margin-top:var(--ui-space-4);display:flex;gap:var(--ui-space-2);justify-content:center}
+.ui-state.error{border-style:solid;border-color:#e8bdc6;background:#fff8fa}
+.ui-state.error .ui-state-mark{border-color:#edccd2;background:#fff0f3;color:var(--ui-danger)}
+.ui-state.loading{border-style:solid;background:#f7fbfd}
+.ui-state.loading .ui-state-mark{font-size:18px}
+/* Accessible focus; no real-time blur, animated shadow, or heavy filters. */
+.settings-tab:focus-visible,
+.game-btn:focus-visible,
+.ui-state .btn:focus-visible{outline:2px solid var(--ui-accent);outline-offset:2px}
+</style></head><body><div class="app"><div class="topbar"><div class="brand"><h1>Game Dashboard</h1><p id="subtitle" aria-hidden="true"></p></div><div class="actions" id="trackerActions"><button class="btn" id="addTaskBtn">＋ 添加待办</button><button class="btn primary" id="addUpdateBtn">＋ 录入游戏更新</button></div></div><div class="layout"><aside class="sidebar"><div class="side-head"><span>游戏</span><span id="gameTotal"></span></div><div class="game-list" id="gameList"></div><div class="side-actions"><button class="add-game" id="addGameBtn">＋ 添加新游戏</button><button class="btn" id="settingsBtn">⚙ 设置</button><button class="btn" id="trackerBtn" style="display:none">← 返回追踪器</button></div></aside><main><section class="page active" id="trackerPage"><div class="tracker-shell"><div class="tracker-main"><div class="metrics"><div class="metric"><div class="label">未完成</div><div class="value" id="pendingCount">0</div></div><div class="metric"><div class="label">活跃更新</div><div class="value" id="updateCount">0</div></div><div class="metric"><div class="label">完成率</div><div class="value" id="completionRate">0%</div></div></div><div class="toolbar"><input class="input search" id="searchInput" placeholder="搜索内容或类别"><select class="select" id="statusFilter"><option value="all" selected>全部</option><option value="pending">未完成</option><option value="done">已完成</option></select><select class="select" id="archiveFilter"><option value="active">Active</option><option value="all">全部更新</option><option value="archived">Archived</option></select></div><div id="mainContent"></div></div><aside class="quicklinks-panel" id="quickLinksPanel"></aside></div></section><section class="page" id="settingsPage"><div class="settings-shell"><div class="settings-main" id="settingsContent"></div></div></section></main></div></div><div class="modal-backdrop" id="modalBackdrop"><div class="modal" id="modal"></div></div><div class="toast" id="toast"></div><input type="file" id="importDataInput" accept=".json,application/json" style="display:none">
 <script>
 const seed={games:[{id:'azur',name:'碧蓝航线 Azur Lane',categories:['舰船','家具','纪念手册','装备','礼包','剧情']},{id:'ark',name:'明日方舟 Arknights',categories:['干员','家具','蚀刻章','组合包','干员密录','剧情']},{id:'r1999',name:'重返未来：1999',categories:['角色','心相','主题套装','头像','旅券集','剧情']}],updates:[{id:'u-az-0723',game:'azur',name:'2026-07-23 更新',date:'2026-07-23',archived:false},{id:'u-ak-0801',game:'ark',name:'2026-08-01 更新',date:'2026-08-01',archived:false},{id:'u-r-0723',game:'r1999',name:'2026-07-23 更新',date:'2026-07-23',archived:true},{id:'u-r-0802',game:'r1999',name:'2026-08-02 更新',date:'2026-08-02',archived:false}],items:[{id:'a1',game:'azur',updateId:'u-az-0723',category:'舰船',name:'华丽',done:false},{id:'a2',game:'azur',updateId:'u-az-0723',category:'舰船',name:'萨里',done:false},{id:'a3',game:'azur',updateId:'u-az-0723',category:'舰船',name:'格里芬',done:false},{id:'a4',game:'azur',updateId:'u-az-0723',category:'家具',name:'废弃住院部',done:false},{id:'a5',game:'azur',updateId:'u-az-0723',category:'纪念手册',name:'怪谈纪实纪念勋章',done:false},{id:'k1',game:'ark',updateId:'u-ak-0801',category:'干员',name:'予愿安洁莉娜',done:false},{id:'k2',game:'ark',updateId:'u-ak-0801',category:'干员',name:'珊比',done:false},{id:'k3',game:'ark',updateId:'u-ak-0801',category:'干员',name:'嘉辛塔',done:false},{id:'k4',game:'ark',updateId:'u-ak-0801',category:'干员',name:'时隙',done:false},{id:'k5',game:'ark',updateId:'u-ak-0801',category:'家具',name:'安洁莉娜的信笺小屋',done:false},{id:'l1',game:'ark',updateId:'',category:'干员密录',name:'妮芙',done:false},{id:'l2',game:'ark',updateId:'',category:'干员密录',name:'渡桥',done:false},{id:'l3',game:'ark',updateId:'',category:'干员密录',name:'天空盒',done:false},{id:'r1',game:'r1999',updateId:'u-r-0723',category:'角色',name:'双生舞伶',done:true},{id:'r2',game:'r1999',updateId:'u-r-0723',category:'角色',name:'诺拉',done:true},{id:'r8',game:'r1999',updateId:'u-r-0802',category:'旅券集',name:'拉普拉斯变换',done:false}]};
 const STORAGE_KEY='gameDashboardV1';
@@ -1658,7 +1886,7 @@ const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 let indexCache=null, writeQueue=Promise.resolve(), storageFailed=false;
 let savedSnapshot={games:new Map(),updates:new Map(),items:new Map()};
 const loadedArchivedUpdateIds=new Set();
-let archiveVisibleLimit=8,archiveLoadTicket=0;
+let archiveVisibleLimit=8;
 
 function storageError(error){
   storageFailed=true;
@@ -1755,7 +1983,16 @@ function fullStats(gameId='all'){
   }
   return {total,pending,done:total-pending};
 }
-function countPendingForGame(gid){return fullStats(gid).pending}
+function pendingCountsByGame(){
+  const counts=new Map(state.games.map(g=>[g.id,0]));
+  for(const item of state.items){
+    if(item.bucket!=='archived'&&!item.done)counts.set(item.game,(counts.get(item.game)||0)+1);
+  }
+  for(const u of state.updates){
+    if(u.archived)counts.set(u.game,(counts.get(u.game)||0)+(u.pendingCount||0));
+  }
+  return counts;
+}
 function updateSummaries(){
   const totals=new Map();
   for(const item of state.items){
@@ -1852,12 +2089,12 @@ async function renderTracker(){
   if($('#archiveFilter').value==='active'){
     discardLoadedArchives();renderMain();renderQuickLinks();return;
   }
-  $('#mainContent').innerHTML='<div class="empty">正在读取归档记录…</div>';
+  $('#mainContent').innerHTML=stateMessage('loading');
   try{
     await loadArchivedForDisplay();
     if(ticket!==viewTicket||currentPage!=='tracker')return;
     renderMain();renderQuickLinks();
-  }catch(err){storageError(err)}
+  }catch(err){console.error('Archived read:',err);if(ticket===viewTicket&&currentPage==='tracker')$('#mainContent').innerHTML=stateMessage('loaderror')}
 }
 async function toggleUpdateArchive(id){
   const u=updateById(id);if(!u)return;
@@ -1961,34 +2198,63 @@ function handleFaviconError(img){
 
 function gameById(id){return getIndex().gamesById.get(id)}function updateById(id){return getIndex().updatesById.get(id)}function toast(m){let t=$('#toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1700)}function openModal(h){$('#modal').innerHTML=h;$('#modalBackdrop').classList.add('show');$$('[data-close]').forEach(b=>b.onclick=closeModal)}function closeModal(){$('#modalBackdrop').classList.remove('show')}
 function gameOptions(sel=''){return state.games.map(g=>`<option value="${g.id}" ${g.id===sel?'selected':''}>${esc(g.name)}</option>`).join('')}function categoryOptions(gid,sel=''){return (gameById(gid)?.categories||[]).map(c=>`<option ${c===sel?'selected':''}>${esc(c)}</option>`).join('')}function updateOptions(gid,sel=''){return `<option value="">不归入具体更新</option>`+state.updates.filter(u=>u.game===gid&&(!u.archived||u.id===sel)).map(u=>`<option value="${u.id}" ${u.id===sel?'selected':''}>${esc(u.name)}${u.archived?' (Archived)':''}</option>`).join('')}
-function render(){indexCache=null;renderGames();if(currentPage==='tracker')renderTracker();else renderSettings()}
+function stateMessage(type,extra=''){
+  const messages={
+    nogames:['＋','还没有游戏','先在左侧添加一款游戏，就可以建立类别、更新和常用网站。'],
+    noitems:['✓','暂时没有待办','你可以使用右上角的“添加待办”或“录入游戏更新”开始记录。'],
+    nomatch:['⌕','没有找到匹配的内容','试试其他关键词，或者清除筛选条件。'],
+    archivedempty:['▤','没有 Archived 记录','这个游戏目前还没有已归档的更新版本。'],
+    noarchiveitems:['▤','暂时没有可显示的归档任务','可以继续加载历史版本，或切换到 Active 查看当前待办。'],
+    loading:['··','正在读取 Archived','历史记录按需加载，请稍候。'],
+    initializing:['··','正在准备本地数据','首次打开可能需要迁移原有数据。'],
+    loaderror:['!','历史记录读取失败','当前数据不会被清除，请重试；如果反复失败，先导出 JSON 备份。'],
+    initerror:['!','本地数据库暂时不可用','请检查浏览器的存储权限或隐私模式；原始数据不会被主动清除。'],
+    nocategories:['＋','还没有类别','点击上方“添加类别”建立第一项。'],
+    noupdates:['▤','还没有更新版本','返回主界面录入第一条游戏更新即可。'],
+    nosites:['↗','还没有常用网站','点击上方“添加网站”建立当前游戏的快捷导航。']
+  };
+  const [icon,title,detail]=messages[type]||messages.nomatch;
+  const action=type==='nomatch'?'<button class="btn small" data-action="clear-filters">清除筛选</button>':
+    type==='loaderror'?'<button class="btn small primary" data-action="retry-archives">重新加载</button>':
+    type==='initerror'?'<button class="btn small primary" data-action="retry-init">重试读取</button>':
+    type==='noupdates'?'<button class="btn small" data-action="new-update">去录入游戏更新</button>':'';
+  return `<div class="ui-state ${type==='loaderror'||type==='initerror'?'error':type==='loading'||type==='initializing'?'loading':''}" role="status" aria-live="polite"><div class="ui-state-mark" aria-hidden="true">${icon}</div><div class="ui-state-title">${title}</div><p class="ui-state-detail">${extra||detail}</p>${action?`<div class="ui-state-actions">${action}</div>`:''}</div>`;
+}
+function render(){renderGames();if(currentPage==='tracker')renderTracker();else renderSettings()}
 function renderGames(){
-  const idx=getIndex();
-  const games=[{id:'all',name:'全部游戏'},...state.games];
-  const totalPending=fullStats('all').pending;
+  const inSettings=currentPage==='settings';
+  const activeGame=inSettings?settingsGame:selectedGame;
+  const games=inSettings?state.games:[{id:'all',name:'全部游戏'},...state.games];
+  const pendingCounts=pendingCountsByGame();
+  const totalPending=[...pendingCounts.values()].reduce((n,v)=>n+v,0);
   $('#gameTotal').textContent=state.games.length+' 款';
+  $('.side-head span:first-child').textContent=inSettings?'选择游戏':'游戏';
   $('#gameList').innerHTML=games.map(g=>{
-    const n=g.id==='all'?totalPending:countPendingForGame(g.id);
-    return `<div class="game-row ${g.id==='all'?'all-game':''}" ${g.id==='all'?'':`draggable="true" data-game-id="${g.id}"`} >${g.id==='all'?'':`<span class="game-drag drag" title="拖拽排序">⠿</span>`}<button class="game-btn ${selectedGame===g.id?'active':''}" data-game="${g.id}"><span>${esc(g.name)}</span><span class="count" data-game-count="${g.id}">${n}</span></button>${g.id==='all'?'':`<div class="game-menu"><button class="iconbtn rename-game" data-id="${g.id}" title="重命名">✎</button></div>`}</div>`
+    const n=g.id==='all'?totalPending:(pendingCounts.get(g.id)||0);
+    return `<div class="game-row ${g.id==='all'?'all-game':''}" ${g.id==='all'?'':`draggable="true" data-game-id="${g.id}"`} >${g.id==='all'?'':`<span class="game-drag drag" title="拖拽排序">⠿</span>`}<button class="game-btn ${activeGame===g.id?'active':''}" data-game="${g.id}" ${activeGame===g.id?'aria-current="true"':''}><span>${esc(g.name)}</span><span class="count" data-game-count="${g.id}">${n}</span></button>${g.id==='all'?'':`<div class="game-menu"><button class="iconbtn rename-game" data-id="${g.id}" title="重命名">✎</button></div>`}</div>`;
   }).join('');
-  $$('.game-btn').forEach(b=>b.onclick=()=>{selectedGame=b.dataset.game;archiveVisibleLimit=8;render()});
-  $$('.rename-game').forEach(b=>b.onclick=e=>{e.stopPropagation();renameGame(b.dataset.id)});
+  $$('#gameList .game-btn').forEach(b=>b.onclick=()=>{
+    if(currentPage==='settings')settingsGame=b.dataset.game;
+    else{selectedGame=b.dataset.game;archiveVisibleLimit=8}
+    render();
+  });
+  $$('#gameList .rename-game').forEach(b=>b.onclick=e=>{e.stopPropagation();renameGame(b.dataset.id)});
   let dragId=null;
-  $$('.game-row[draggable=true]').forEach(r=>{
+  $$('#gameList .game-row[draggable=true]').forEach(r=>{
     r.ondragstart=e=>{dragId=r.dataset.gameId;r.classList.add('dragging');e.dataTransfer.effectAllowed='move'};
-    r.ondragend=()=>{$$('.game-row').forEach(x=>x.classList.remove('dragging','drag-over'));dragId=null};
+    r.ondragend=()=>{$$('#gameList .game-row').forEach(x=>x.classList.remove('dragging','drag-over'));dragId=null};
     r.ondragover=e=>{e.preventDefault();if(r.dataset.gameId!==dragId)r.classList.add('drag-over')};
     r.ondragleave=()=>r.classList.remove('drag-over');
     r.ondrop=e=>{
       e.preventDefault();r.classList.remove('drag-over');
       if(!dragId||dragId===r.dataset.gameId)return;
-      let from=state.games.findIndex(g=>g.id===dragId),to=state.games.findIndex(g=>g.id===r.dataset.gameId);
+      const from=state.games.findIndex(g=>g.id===dragId),to=state.games.findIndex(g=>g.id===r.dataset.gameId);
       if(from<0||to<0)return;
-      let [moved]=state.games.splice(from,1);state.games.splice(to,0,moved);save();render()
-    }
-  })
+      const [moved]=state.games.splice(from,1);state.games.splice(to,0,moved);save();render();
+    };
+  });
 }
-function moveGame(id,d){let i=state.games.findIndex(g=>g.id===id),j=i+d;if(j<0||j>=state.games.length)return;[state.games[i],state.games[j]]=[state.games[j],state.games[i]];save();render()}function renameGame(id){let g=gameById(id);openModal(`<h3>修改游戏名称</h3><div class="field"><label>游戏名称</label><input id="renameGameInput" value="${esc(g.name)}"></div><div class="modal-actions"><button class="btn" data-close>取消</button><button class="btn primary" id="saveGameName">保存</button></div>`);$('#saveGameName').onclick=()=>{let v=$('#renameGameInput').value.trim();if(!v)return;g.name=v;save();closeModal();render();toast('游戏名称已更新')}}
+function renameGame(id){let g=gameById(id);openModal(`<h3>修改游戏名称</h3><div class="field"><label>游戏名称</label><input id="renameGameInput" value="${esc(g.name)}"></div><div class="modal-actions"><button class="btn" data-close>取消</button><button class="btn primary" id="saveGameName">保存</button></div>`);$('#saveGameName').onclick=()=>{let v=$('#renameGameInput').value.trim();if(!v)return;g.name=v;save();closeModal();render();toast('游戏名称已更新')}}
 function getMainViewData(){
   const idx=getIndex();
   const st=$('#statusFilter').value;
@@ -1998,13 +2264,9 @@ function getMainViewData(){
     ? state.items
     : (idx.itemsByGame.get(selectedGame)||[]);
 
-  let total=0,done=0,pending=0;
   const grouped=new Map();
 
   for(const item of scopeItems){
-    total++;
-    if(item.done)done++; else pending++;
-
     const u=item.updateId?idx.updatesById.get(item.updateId):null;
     const archived=!!u?.archived;
     if(st!=='all' && (st==='done'?!item.done:item.done))continue;
@@ -2027,8 +2289,13 @@ function updateDashboardCounts(){
   $('#pendingCount').textContent=counts.pending;
   $('#completionRate').textContent=counts.total?Math.round(counts.done/counts.total*100)+'%':'0%';
   $('#updateCount').textContent=state.updates.filter(u=>!u.archived&&(selectedGame==='all'||u.game===selectedGame)).length;
-  const allBadge=$('[data-game-count="all"]');if(allBadge)allBadge.textContent=fullStats('all').pending;
-  for(const g of state.games){const el=$(`[data-game-count="${g.id}"]`);if(el)el.textContent=countPendingForGame(g.id)}
+  const byGame=pendingCountsByGame();
+  const allBadge=$('[data-game-count="all"]');
+  if(allBadge)allBadge.textContent=[...byGame.values()].reduce((n,v)=>n+v,0);
+  for(const [gameId,pending] of byGame){
+    const el=$(`[data-game-count="${gameId}"]`);
+    if(el)el.textContent=pending;
+  }
 }
 function renderMain(){
   const {idx,total,done,pending,grouped}=getMainViewData();
@@ -2041,7 +2308,10 @@ function renderMain(){
   $('#completionRate').textContent=total?Math.round(done/total*100)+'%':'0%';
 
   if(!grouped.size){
-    $('#mainContent').innerHTML='<div class="empty">没有符合当前筛选条件的内容。</div>'+archiveMoreMarkup();
+    const query=$('#searchInput').value.trim(),status=$('#statusFilter').value,archive=$('#archiveFilter').value;
+    const archivedCount=state.updates.filter(u=>u.archived&&(selectedGame==='all'||u.game===selectedGame)).length;
+    const stateType=query||status!=='all'?'nomatch':archive==='archived'&&archivedCount===0?'archivedempty':archive!=='active'?'noarchiveitems':!state.items.some(i=>i.bucket!=='archived'&&(selectedGame==='all'||i.game===selectedGame))?'noitems':'nomatch';
+    $('#mainContent').innerHTML=stateMessage(stateType)+archiveMoreMarkup();
     return;
   }
 
@@ -2097,13 +2367,12 @@ function updateTaskDoneFast(id,checked,row){
   const section=row?.closest('.section');
   if(section){
     const gameId=section.dataset.gameSection;
-    const pending=(getIndex().itemsByGame.get(gameId)||[]).filter(i=>{
+    const idx=getIndex(),ar=$('#archiveFilter').value,q=$('#searchInput').value.trim().toLowerCase();
+    const pending=(idx.itemsByGame.get(gameId)||[]).filter(i=>{
       if(i.done)return false;
-      const u=i.updateId?getIndex().updatesById.get(i.updateId):null;
+      const u=i.updateId?idx.updatesById.get(i.updateId):null;
       const archived=!!u?.archived;
-      const ar=$('#archiveFilter').value;
       if(ar!=='all' && (ar==='archived'?!archived:archived))return false;
-      const q=$('#searchInput').value.trim().toLowerCase();
       return !q||(i.name+' '+i.category).toLowerCase().includes(q);
     }).length;
     const label=section.querySelector('.section-pending-count');
@@ -2133,58 +2402,38 @@ function editUpdate(id){let u=updateById(id);if(!u)return;openModal(`<h3>重命�
 let settingsSection='categories';
 
 function renderSettings(){
-  let g=gameById(settingsGame)||state.games[0];
+  const g=gameById(settingsGame)||state.games[0];
   if(!g){
-    $('#settingsGameList').innerHTML='';
-    $('#settingsContent').innerHTML='<div class="empty">请先添加一个游戏。</div>';
+    $('#settingsContent').innerHTML=stateMessage('nogames');
     return;
   }
   settingsGame=g.id;
-
-  $('#settingsGameList').innerHTML=
-    `<div class="settings-side-title">选择游戏</div>`+
-    state.games.map(x=>`<button class="game-btn ${x.id===g.id?'active':''}" data-id="${x.id}">${esc(x.name)}</button>`).join('');
-
-  $$('#settingsGameList .game-btn').forEach(b=>b.onclick=()=>{
-    settingsGame=b.dataset.id;
-    renderSettings();
-  });
-
   $('#settingsContent').innerHTML=`
     <div class="settings-title">
       <div>
+        <div class="settings-eyebrow">GAME SETTINGS <span>/ 当前游戏</span></div>
         <h2 style="margin:0">${esc(g.name)}</h2>
-        <div style="color:var(--muted);font-size:13px;margin-top:4px">管理当前游戏的类别、更新版本和常用网站</div>
+        <div style="color:var(--muted);font-size:13px;margin-top:4px">左侧切换游戏，在这里管理对应的类别、版本和常用网站</div>
       </div>
       <div class="settings-actions">
         <button class="btn small" id="exportDataBtn">导出数据</button>
         <button class="btn small" id="importDataBtn">导入数据</button>
       </div>
     </div>
-    <div class="settings-tabs">
-      <button class="settings-tab ${settingsSection==='categories'?'active':''}" data-section="categories">类别列表</button>
-      <button class="settings-tab ${settingsSection==='updates'?'active':''}" data-section="updates">更新版本</button>
-      <button class="settings-tab ${settingsSection==='links'?'active':''}" data-section="links">常用网站</button>
+    <div class="settings-tabs" role="tablist" aria-label="设置内容">
+      <button class="settings-tab ${settingsSection==='categories'?'active':''}" role="tab" aria-selected="${settingsSection==='categories'}" data-section="categories">类别列表</button>
+      <button class="settings-tab ${settingsSection==='updates'?'active':''}" role="tab" aria-selected="${settingsSection==='updates'}" data-section="updates">更新版本</button>
+      <button class="settings-tab ${settingsSection==='links'?'active':''}" role="tab" aria-selected="${settingsSection==='links'}" data-section="links">常用网站</button>
     </div>
-    <div id="settingsPanel"></div>
+    <div id="settingsPanel" role="tabpanel"></div>
   `;
-
-  $$('.settings-tab').forEach(b=>b.onclick=()=>{
-    settingsSection=b.dataset.section;
-    renderSettings();
-  });
+  $$('.settings-tab').forEach(b=>b.onclick=()=>{settingsSection=b.dataset.section;renderSettings()});
   $('#exportDataBtn').onclick=exportData;
   $('#importDataBtn').onclick=()=>$('#importDataInput').click();
-
-  if(settingsSection==='updates'){
-    renderGameUpdateManager(g);
-  }else if(settingsSection==='links'){
-    renderGameLinksManager(g);
-  }else{
-    renderGameCategoryManager(g);
-  }
+  if(settingsSection==='updates')renderGameUpdateManager(g);
+  else if(settingsSection==='links')renderGameLinksManager(g);
+  else renderGameCategoryManager(g);
 }
-
 function renderGameCategoryManager(g){
   $('#settingsPanel').innerHTML=`
     <div class="settings-panel-head">
@@ -2192,10 +2441,10 @@ function renderGameCategoryManager(g){
         <h3>类别列表</h3>
         <div class="settings-helper">拖拽或使用上下按钮调整顺序</div>
       </div>
-      <button class="btn small" id="addCategory">＋ 添加类别</button>
+      <button class="btn small primary" id="addCategory">＋ 添加类别</button>
     </div>
     <div id="categoryList">
-      ${g.categories.map((c,i)=>`
+      ${g.categories.length?g.categories.map((c,i)=>`
         <div class="category-row" draggable="true" data-index="${i}">
           <span class="drag">⋮⋮</span>
           <span>${esc(c)}</span>
@@ -2204,7 +2453,7 @@ function renderGameCategoryManager(g){
           <button class="btn small rename-cat" data-i="${i}">重命名</button>
           <button class="btn small danger delete-cat" data-i="${i}">删除</button>
         </div>
-      `).join('')}
+      `).join(''):stateMessage('nocategories')}
     </div>
   `;
 
@@ -2254,7 +2503,7 @@ function renderGameUpdateManager(g){
         <div class="settings-helper">拖拽调整顺序；删除版本后，其下待办会移至该游戏的“未分组待办”。</div>
       </div>
     </div>
-    <div id="updateManagerList">${rows||'<div class="empty">这个游戏还没有录入任何更新。</div>'}</div>
+    <div id="updateManagerList">${rows||stateMessage('noupdates')}</div>
   `;
 
   $$('.manage-rename-update').forEach(b=>b.onclick=()=>editUpdate(b.dataset.id));
@@ -2311,7 +2560,7 @@ function renderGameLinksManager(g){
         <h3>常用网站</h3>
         <div class="settings-helper">拖拽调整顺序；网站图标会自动读取，读取失败时会自动尝试备用来源。</div>
       </div>
-      <button class="btn small" id="addSiteBtn">＋ 添加网站</button>
+      <button class="btn small primary" id="addSiteBtn">＋ 添加网站</button>
     </div>
     <div id="siteList">${sites.length?sites.map((s,i)=>`
       <div class="site-row" draggable="true" data-index="${i}">
@@ -2322,7 +2571,7 @@ function renderGameLinksManager(g){
         <button class="btn small danger delete-site" data-id="${s.id}">删除</button>
         <a class="btn small" href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">打开</a>
       </div>
-    `).join(''):'<div class="empty">这个游戏还没有添加任何常用网站。</div>'}</div>
+    `).join(''):stateMessage('nosites')}</div>
   `;
   $('#addSiteBtn').onclick=()=>editSite(g.id);
   $$('.edit-site').forEach(b=>b.onclick=()=>editSite(g.id,b.dataset.id));
@@ -2350,7 +2599,7 @@ function editSite(gid,siteId=null){
     const name=$('#siteName').value.trim();
     const url=$('#siteUrl').value.trim();
     if(!name||!url)return toast('请填写网站名称和 URL');
-    try{new URL(url)}catch(e){return toast('请输入有效的 URL，例如 https://example.com')}
+    try{const parsed=new URL(url);if(!['http:','https:'].includes(parsed.protocol))return toast('网站 URL 需要以 https:// 或 http:// 开头')}catch(e){return toast('请输入有效的 URL，例如 https://example.com')}
     if(site){site.name=name;site.url=url}else{(g.sites||(g.sites=[])).push({id:'site'+Date.now(),name,url})}
     save();closeModal();renderSettings();toast(site?'网站已更新':'网站已添加')
   };
@@ -2479,8 +2728,8 @@ async function handleImportData(file){
   }catch(err){console.error(err);alert('导入失败：文件格式无效或写入数据库失败，原有数据可能未被修改，请核对当前页面。')}
   finally{$('#importDataInput').value=''}
 }
-function switchPage(p){currentPage=p;$('#trackerPage').classList.toggle('active',p==='tracker');$('#settingsPage').classList.toggle('active',p==='settings');$('#trackerActions').style.display=p==='tracker'?'flex':'none';$('#settingsBtn').style.display=p==='settings'?'none':'block';$('#trackerBtn').style.display=p==='settings'?'block':'none';$('#subtitle').textContent=p==='tracker'?'你的游戏追踪与常用网站导航。':'管理游戏类别、更新版本和常用网站。';render()}
-$('#addGameBtn').onclick=()=>{openModal(`<h3>添加新游戏</h3><div class="form-grid"><div class="field full"><label>游戏名称</label><input id="newGameName"></div><div class="field full"><label>初始类别（每行一个）</label><textarea id="newGameCategories"></textarea></div></div><div class="modal-actions"><button class="btn" data-close>取消</button><button class="btn primary" id="saveGame">添加</button></div>`);$('#saveGame').onclick=()=>{let name=$('#newGameName').value.trim();if(!name)return;let cats=$('#newGameCategories').value.split(/\n/).map(x=>x.trim()).filter(Boolean);let id='g'+Date.now();state.games.push({id,name,categories:cats.length?cats:['其他'],sites:[]});settingsGame=id;save();closeModal();render()}}
+function switchPage(p){if(p==='settings'&&selectedGame!=='all')settingsGame=selectedGame;currentPage=p;$('#trackerPage').classList.toggle('active',p==='tracker');$('#settingsPage').classList.toggle('active',p==='settings');$('#trackerActions').style.display=p==='tracker'?'flex':'none';$('#settingsBtn').style.display=p==='settings'?'none':'block';$('#trackerBtn').style.display=p==='settings'?'block':'none';$('#subtitle').textContent=p==='tracker'?'你的游戏追踪与常用网站导航。':'管理游戏类别、更新版本和常用网站。';render()}
+$('#addGameBtn').onclick=()=>{openModal(`<h3>添加新游戏</h3><div class="form-grid"><div class="field full"><label>游戏名称</label><input id="newGameName"></div><div class="field full"><label>初始类别（每行一个）</label><textarea id="newGameCategories"></textarea></div></div><div class="modal-actions"><button class="btn" data-close>取消</button><button class="btn primary" id="saveGame">添加</button></div>`);$('#saveGame').onclick=()=>{let name=$('#newGameName').value.trim();if(!name)return;let cats=$('#newGameCategories').value.split(/\n/).map(x=>x.trim()).filter(Boolean);let id='g'+Date.now();state.games.push({id,name,categories:cats.length?cats:['其他'],sites:[]});settingsGame=id;selectedGame=id;save();closeModal();render()}}
 $('#addTaskBtn').onclick=()=>{let initial=selectedGame==='all'?state.games[0]?.id:selectedGame;openModal(`<h3>添加待办</h3><div class="form-grid"><div class="field"><label>游戏</label><select id="taskGame">${gameOptions(initial)}</select></div><div class="field"><label>类别</label><select id="taskCategory"></select></div><div class="field full"><label>内容名称</label><input id="taskName"></div><div class="field full"><label>所属更新</label><select id="taskUpdate"></select></div></div><div class="modal-actions"><button class="btn" data-close>取消</button><button class="btn primary" id="saveTask">保存</button></div>`);let sync=()=>{let g=$('#taskGame').value;$('#taskCategory').innerHTML=categoryOptions(g);$('#taskUpdate').innerHTML=updateOptions(g)};sync();$('#taskGame').onchange=sync;$('#saveTask').onclick=()=>{let name=$('#taskName').value.trim();if(!name)return;state.items.push({id:'i'+Date.now(),game:$('#taskGame').value,category:$('#taskCategory').value,updateId:$('#taskUpdate').value,name,done:false});save();closeModal();render()}}
 $('#addUpdateBtn').onclick=()=>{let initial=selectedGame==='all'?state.games[0]?.id:selectedGame;openModal(`<h3>录入游戏更新</h3><div class="form-grid"><div class="field"><label>游戏</label><select id="updateGame">${gameOptions(initial)}</select></div><div class="field"><label>实装日期</label><input id="updateDate" type="date"></div><div class="field full"><label>更新名称</label><input id="updateName"></div><div class="field full"><label>批量内容</label><div class="batch-head"><span>类别</span><span>具体名称</span><span></span></div><div id="batchRows"></div><button class="btn small" id="addBatchRow">＋ 添加一行</button></div></div><div class="modal-actions"><button class="btn" data-close>取消</button><button class="btn primary" id="saveUpdate">保存更新</button></div>`);function addRow(cat='',name=''){let row=document.createElement('div');row.className='batch-row';row.innerHTML=`<select class="batch-cat">${categoryOptions($('#updateGame').value,cat)}</select><input class="batch-name" value="${esc(name)}" placeholder="输入具体名称"><button class="btn small danger remove-row">删除</button>`;row.querySelector('.remove-row').onclick=()=>row.remove();$('#batchRows').appendChild(row)}addRow();addRow();$('#addBatchRow').onclick=()=>addRow();$('#updateGame').onchange=()=>$$('.batch-cat').forEach(s=>s.innerHTML=categoryOptions($('#updateGame').value));$('#saveUpdate').onclick=()=>{let rows=$$('.batch-row').map(r=>({category:r.querySelector('.batch-cat').value,name:r.querySelector('.batch-name').value.trim()}));if(rows.some(r=>(r.category&&!r.name)||(!r.category&&r.name)))return toast('请补全未完整的行');rows=rows.filter(r=>r.category&&r.name);if(!rows.length)return toast('请至少添加一项内容');let game=$('#updateGame').value,date=$('#updateDate').value,name=$('#updateName').value.trim()||(date?date+' 更新':'未命名更新'),uid='u'+Date.now();state.updates.push({id:uid,game,name,date,archived:false});rows.forEach((r,i)=>state.items.push({id:'i'+Date.now()+i,game,updateId:uid,category:r.category,name:r.name,done:false}));save();closeModal();render()}}
 $('#settingsBtn').onclick=()=>switchPage('settings');
@@ -2499,6 +2748,9 @@ $('#mainContent').addEventListener('change',e=>{
   if(check)updateTaskDoneFast(check.dataset.id,check.checked,check.closest('.task'));
 });
 $('#mainContent').addEventListener('click',e=>{
+  if(e.target.closest('[data-action="clear-filters"]')){$('#searchInput').value='';$('#statusFilter').value='all';$('#archiveFilter').value='active';archiveVisibleLimit=8;renderTracker();return}
+  if(e.target.closest('[data-action="retry-archives"]')){renderTracker();return}
+  if(e.target.closest('[data-action="retry-init"]')){$('#mainContent').innerHTML=stateMessage('initializing');initializeStorage().catch(err=>{console.error('Initialization:',err);$('#mainContent').innerHTML=stateMessage('initerror')});return}
   if(e.target.closest('#loadMoreArchived')){archiveVisibleLimit+=8;renderTracker();return}
   const rename=e.target.closest('.rename-update');
   if(rename){editUpdate(rename.dataset.id);return}
@@ -2520,9 +2772,12 @@ $('#mainContent').addEventListener('click',e=>{
   }
 });
 
+$('#settingsContent').addEventListener('click',e=>{
+  if(e.target.closest('[data-action="new-update"]')){selectedGame=settingsGame;switchPage('tracker');$('#addUpdateBtn').click()}
+});
 $('#modalBackdrop').onclick=e=>{if(e.target===e.currentTarget)closeModal()};
 $('#importDataInput').addEventListener('change',e=>handleImportData(e.target.files?.[0]));
 $('#statusFilter').value='all';
-$('#mainContent').innerHTML='<div class="empty">正在初始化本地数据库…</div>';
-initializeStorage().catch(storageError);
+$('#mainContent').innerHTML=stateMessage('initializing');
+initializeStorage().catch(err=>{console.error('Initialization:',err);$('#mainContent').innerHTML=stateMessage('initerror')});
 </script></body></html>
