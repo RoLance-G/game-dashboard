@@ -1,16 +1,18 @@
 # Game Dashboard
 
-A local-first game update and task dashboard, served as a single static [`index.html`](./index.html) from GitHub Pages. The app stores user records in the browser's IndexedDB, **not** in this Git repository.
+A local-first game update and task dashboard deployed as a single GitHub Pages [`index.html`](./index.html). Personal task records live in browser IndexedDB, **not** in this GitHub repository.
 
-## Documentation for future dashboard development
+## Documentation owned by the Game Dashboard repository
 
-- [Reusable Dashboard Skill blueprint](docs/DASHBOARD_SKILL_BLUEPRINT.md) — portable development workflow and lessons for other dashboards.
-- [Game Dashboard case study](docs/GAME_DASHBOARD_CASE_STUDY.md) — current architecture, decisions, design principles, risks and verified limits.
-- [Iteration log template](docs/iterations/TEMPLATE.md) — mandatory format for future version conversations.
-- [Historical v1–v4 retrospective](docs/iterations/2026-11-14-v1-v4-retrospective.md) — backfilled source-grounded decisions.
-- [Documentation-workflow iteration](docs/iterations/2026-11-14-knowledge-workflow.md) — why the knowledge base was created.
-- [Working agreement for coding assistants](AGENTS.md) — **read before changing this repository**.
+- [Game Dashboard case study](docs/GAME_DASHBOARD_CASE_STUDY.md) — app-specific architecture, data model, UI decisions, backup behavior and known risks.
+- [Iteration log template](docs/iterations/TEMPLATE.md) — required for each feature, UI, performance, storage or docs iteration.
+- [Iteration history](docs/iterations/) — append-only decisions, implementation details, actual tests and verification gaps.
+- [Working agreement](AGENTS.md) — **read before changing the app**.
 
-**Future version rule:** every code/design/feature iteration gets a dated `docs/iterations/YYYY-MM-DD-<slug>.md` capturing its conversation-driven requirements, implementation, test evidence, trade-offs and deployment status, committed to GitHub together with its changes. Logs describe engineering decisions, not verbatim private chat archives.
+## Separate Dashboard Development Skill
 
-**Privacy:** Do not commit personal IndexedDB JSON exports, Google Drive backups, OAuth tokens, Client Secrets or other local browser state.
+Portable lessons will be maintained in an independent repository proposed as `RoLance-G/dashboard-development-skill` (**not yet created** as of this documentation update). The historical [Dashboard Skill blueprint](docs/DASHBOARD_SKILL_BLUEPRINT.md) remains here **temporarily for safe migration**; it is frozen and should not receive new general-purpose material. Once the new repository is created, granted access and verified, move ownership of general guidance there and replace/remove the legacy blueprint here.
+
+**Mandatory sequence for each version:** finish and verify the app change → update **Game Dashboard-specific** Markdown and commit the project → decide whether a transferable lesson is new and sufficiently evidenced → **only if yes**, update the separate Skill repository, with its own dated note and commit. A decision of "no Skill change needed" is valid.
+
+Do not commit personal IndexedDB JSON exports, Google Drive backups, OAuth tokens, Client Secrets or browser state.

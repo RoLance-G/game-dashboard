@@ -62,6 +62,18 @@
 - What surprised us / what we would do differently:
 - Reusable design, architecture, security or testing rule added to the Skill source:
 
-## 9. Source fidelity
+## 9. Skill promotion assessment (required; after project commit)
+
+- **Project code + log committed first?** Link the verified project commit:
+- **Candidate transferable lesson:** (or `none`)
+- **Evidence:** Actual code/tests/production observations; distinguish unverified assumptions:
+- **Applicability:** What would generalize to another dashboard, and what is specific to Game Dashboard?
+- **Already covered?** Explain if this repeats existing Skill guidance:
+- **Decision:** `Promote / No change / Pending evidence or access`:
+- **Reason:**
+- **If promoted:** Separate Skill repo update-log path and commit (after project commit):
+- **If pending:** What needs to happen before promotion?
+
+## 10. Source fidelity
 
 This is an engineering decision/iteration summary, **not** a complete verbatim chat transcript. Quote user requests only where direct text is present. Distinguish source-verified implementation from prior recap claims.

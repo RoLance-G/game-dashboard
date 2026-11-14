@@ -94,3 +94,8 @@ Config key: `localStorage['gameDashboardDriveBackupV1']`. Google OAuth scope: `h
 - Historical discussion: available chat/project narrative; early portions were a **summary** rather than a verbatim log.
 - v4 deployment commit: [`b8540e4`](https://github.com/RoLance-G/game-dashboard/commit/b8540e4ddcc22861416c1d06c007807505e2ad04).
 - Current user-facing GitHub and Google Cloud setup progress: two relevant Google APIs enabled; OAuth and production manual backup pending confirmation.
+## 9. Documentation ownership and Skill promotion (2026-11-14)
+
+This repository is the source of truth for **Game Dashboard-specific** architecture, implementation and migration notes, UI decisions, user requirements, tests and dated version logs. Reusable dashboard development guidance belongs in a distinct `dashboard-development-skill` repository once created. The old `docs/DASHBOARD_SKILL_BLUEPRINT.md` is temporarily retained **as a frozen migration source** and should not be maintained in parallel after the separate repo is accessible.
+
+For each later app iteration, **commit app code and its project-specific log first**, then explicitly decide whether a validated and broadly transferable lesson justifies a separate Skill update. `No change` is an acceptable outcome. If the Skill repo is not yet accessible, mark promotion pending rather than claiming that it happened.

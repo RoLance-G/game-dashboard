@@ -1,34 +1,46 @@
 # Repository working agreement — Game Dashboard
 
-This file is the **repo-local workflow contract** for any coding assistant or human contributor working on this repository.
+This repository owns **the Game Dashboard app and its project-specific engineering history**. Reusable Dashboard-development Skill instructions belong in a **separate** GitHub repository, proposed as `RoLance-G/dashboard-development-skill` (pending user creation and connection access).
 
-## Start here
+## Read first
 
-1. Read `docs/DASHBOARD_SKILL_BLUEPRINT.md` (reusable dashboard-building method).
-2. Read `docs/GAME_DASHBOARD_CASE_STUDY.md` (this app's constraints, architecture, decisions, and known limitations).
-3. Read the latest entries in `docs/iterations/` and inspect the actual `index.html` before designing changes.
-4. Distinguish verified code behavior, prior assistant claims, and unverified real-world integrations.
+1. Inspect the actual `index.html`, current GitHub branch, newest `docs/iterations/` entries, and `docs/GAME_DASHBOARD_CASE_STUDY.md`. Never assume an earlier assistant summary matches live source.
+2. Use `docs/iterations/TEMPLATE.md` for every app, UI, storage, deployment or documentation iteration.
+3. `docs/DASHBOARD_SKILL_BLUEPRINT.md` is a **frozen historical migration source**, not the future home of reusable guidance. Keep it until the new Skill repository is created and its content is verified; then remove it or replace it with a link.
 
-## Non-negotiable rules for every version iteration
+## Mandatory two-stage workflow for each iteration
 
-1. Preserve the user's existing data and functional behavior unless change is explicitly requested. Keep the same IndexedDB database and JSON import/export contract unless a **tested migration** is part of the task.
-2. Avoid unnecessary frameworks, global event listeners, repeated O(n²) scans, huge initial DOMs, needless CSS overrides, and high-cost animation/blur. Prefer clear state management and lazy historical loading.
-3. Back up before risky storage/schema changes; test empty, active, archived, imported, and failure states. Never imply mock tests equal production verification.
-4. Do **not** commit personal OAuth tokens, Client Secrets, user data exports, Google Drive backup JSON files, or local browser settings to the repository.
-5. **Every iteration MUST produce a new Markdown summary** at `docs/iterations/YYYY-MM-DD-<short-slug>.md` based on `docs/iterations/TEMPLATE.md`. Log the user request, decisions, alternatives, actual changes, tests, limitations, and deploy status. A request can include UI-only, performance, storage, cloud backup, or docs-only changes.
-6. Commit that iteration log **together with the code** when possible. If no code changes, commit a documentation-only log. Update reusable guidance or case study when a new pattern or lesson emerges. Do not overwrite the historic log; treat entries as append-only.
-7. Before pushing, inspect the repository and current branch, examine the diff, and avoid replacing unrelated files. Verify GitHub accepted the write and re-read changed paths; do not claim GitHub Pages publication without independent verification.
-8. End each version response with the commit link, concise changes, test outcomes, deployment/verification status, and unresolved risks.
+### Stage 1 — Game Dashboard FIRST
 
-## Delivery checklist
+1. Inspect the current project and explicitly define scope, data compatibility and rollback.
+2. Implement, self-audit, test and verify the change. Distinguish static checks, mocks, browser tests and real third-party integrations.
+3. Produce a **new append-only** `docs/iterations/YYYY-MM-DD-<slug>.md` using the template. Capture the user request, rationale, actual code/UX changes, tests, unresolved risks and **Skill promotion assessment**.
+4. Update `docs/GAME_DASHBOARD_CASE_STUDY.md` when app-specific architecture, validation status, constraints or decisions changed.
+5. Commit project code + project documents and re-fetch changed paths to verify the project commit. Verify GitHub Pages separately when deployment matters.
 
-- [ ] Inspect source and prior iteration notes
-- [ ] Define scope and compatibility guarantees
-- [ ] Implement minimally; review readability/performance/security
-- [ ] Run applicable syntax, behavior, integration, and visual checks; note any gaps
-- [ ] Create dated Markdown iteration note from `TEMPLATE.md`
-- [ ] Update `DASHBOARD_SKILL_BLUEPRINT.md` or case study if lessons generalize
-- [ ] Commit code + docs to the intended branch and re-fetch to verify
-- [ ] Clearly distinguish Git commit success from live-site availability
+### Stage 2 — Only then evaluate the Skill
 
-**Important:** This rule is repository guidance, not a background process. A future assistant must still have this repo and authenticated GitHub access to write a log; nothing runs automatically when nobody initiates an iteration.
+6. Assess whether the completed project iteration produced a durable, evidenced, nonduplicative principle applicable to other dashboards.
+7. Record **Promote / No change / Pending evidence or access** in the project iteration log, including the reasoning. It is normal for many app iterations **not** to change the Skill.
+8. **Only after the project commit is verified**, if warranted, inspect and update the separate Skill repo's `SKILL.md` and/or `references/`; add a dated Skill-side `docs/updates/` entry linking to the source project log and project commit. Commit and re-fetch that repo independently.
+9. If the Skill repo does not exist, is not accessible, or evidence is insufficient, mark the proposed update pending. Do not block the app release or claim the Skill was updated.
+
+## Safety and quality
+
+- Preserve the current IndexedDB database identifier and JSON import/export contract unless a tested migration is requested.
+- Avoid giant eager DOMs, repeated whole-data scans, redundant CSS override layers, unnecessary listeners and expensive animations.
+- Cover active, archived, empty, error, import/export and restore flows when applicable.
+- Never commit real user exports, JSON backups, OAuth tokens, Client Secrets or other private credentials.
+- Do not rewrite historical iteration logs to disguise earlier uncertainty. Append corrections.
+- This is an assistant/contributor workflow, **not** a background automation or guarantee that future chats without repo access can push changes.
+
+## Completion checklist
+
+- [ ] Current code and project docs inspected
+- [ ] Implementation and appropriate tests completed, with gaps stated
+- [ ] Project-specific dated iteration Markdown committed with code (or docs-only commit)
+- [ ] Game Dashboard case study updated when necessary
+- [ ] Project commit and changed files verified from GitHub
+- [ ] Skill promotion decision documented (including valid "no change")
+- [ ] If warranted, Skill repo updated **after** project commit, with evidence and separate changelog
+- [ ] User informed of actual commits, deployment state and remaining risks
