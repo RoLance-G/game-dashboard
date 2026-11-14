@@ -632,7 +632,7 @@ body{
 
 }
 .brand h1::after{
-  content:" // PERSONAL TRACKER";
+  content:" // PERSONAL NAVIGATION";
   margin-left:10px;
 
   font-weight:800;
@@ -1875,7 +1875,51 @@ textarea:focus-visible{
 .settings-tab:focus-visible,
 .game-btn:focus-visible,
 .ui-state .btn:focus-visible{outline:2px solid var(--ui-accent);outline-offset:2px}
-</style></head><body><div class="app"><div class="topbar"><div class="brand"><h1>Game Dashboard</h1><p id="subtitle" aria-hidden="true"></p></div><div class="actions" id="trackerActions"><button class="btn" id="addTaskBtn">＋ 添加待办</button><button class="btn primary" id="addUpdateBtn">＋ 录入游戏更新</button></div></div><div class="layout"><aside class="sidebar"><div class="side-head"><span>游戏</span><span id="gameTotal"></span></div><div class="game-list" id="gameList"></div><div class="side-actions"><button class="add-game" id="addGameBtn">＋ 添加新游戏</button><button class="btn" id="settingsBtn">⚙ 设置</button><button class="btn" id="trackerBtn" style="display:none">← 返回追踪器</button></div></aside><main><section class="page active" id="trackerPage"><div class="tracker-shell"><div class="tracker-main"><div class="metrics"><div class="metric"><div class="label">未完成</div><div class="value" id="pendingCount">0</div></div><div class="metric"><div class="label">活跃更新</div><div class="value" id="updateCount">0</div></div><div class="metric"><div class="label">完成率</div><div class="value" id="completionRate">0%</div></div></div><div class="toolbar"><input class="input search" id="searchInput" placeholder="搜索内容或类别"><select class="select" id="statusFilter"><option value="all" selected>全部</option><option value="pending">未完成</option><option value="done">已完成</option></select><select class="select" id="archiveFilter"><option value="active">Active</option><option value="all">全部更新</option><option value="archived">Archived</option></select></div><div id="mainContent"></div></div><aside class="quicklinks-panel" id="quickLinksPanel"></aside></div></section><section class="page" id="settingsPage"><div class="settings-shell"><div class="settings-main" id="settingsContent"></div></div></section></main></div></div><div class="modal-backdrop" id="modalBackdrop"><div class="modal" id="modal"></div></div><div class="toast" id="toast"></div><input type="file" id="importDataInput" accept=".json,application/json" style="display:none">
+
+/* Google Drive backup: optional and lazy-loaded; no ongoing animations or global listeners. */
+.drive-side-notice[hidden]{display:none!important}
+.drive-side-notice{
+  border:1px solid var(--ui-border);background:var(--ui-accent-soft);
+  border-radius:10px;padding:11px 12px;color:var(--ui-accent-dark);
+  font-size:12.5px;line-height:1.55;
+}
+.drive-side-notice.error{background:#fff5f6;border-color:#e9c1c8;color:var(--ui-danger)}
+.drive-side-notice button{display:block;padding:5px 0 0;color:inherit;border:0;background:none;font-weight:800;text-align:left}
+.drive-settings{display:grid;gap:var(--ui-space-4)}
+.drive-settings h3{margin:0;font-size:18px;color:var(--ui-ink)}
+.drive-settings p{margin:5px 0 0;color:var(--ui-secondary);line-height:1.65;font-size:13px}
+.drive-status{display:flex;align-items:flex-start;gap:12px;padding:16px;
+  background:var(--ui-surface-soft);border:1px solid var(--ui-border);border-radius:12px}
+.drive-status-mark{height:36px;min-width:36px;display:grid;place-items:center;border-radius:10px;
+  background:var(--ui-accent-soft);color:var(--ui-accent-dark);font-family:var(--font-hud),sans-serif;font-weight:800}
+.drive-status-mark.error{background:#fff0f3;color:var(--ui-danger)}
+.drive-status-title{font-size:14px;font-weight:800;color:var(--ui-ink)}
+.drive-status-detail{font-size:12.5px;color:var(--ui-secondary);line-height:1.6;margin-top:3px;overflow-wrap:anywhere}
+.drive-card{border:1px solid var(--ui-border);background:var(--ui-surface);border-radius:12px;padding:18px;display:grid;gap:15px}
+.drive-card-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.drive-card-head h4{font-size:15px;color:var(--ui-ink);margin:0}
+.drive-config-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.drive-field{display:grid;gap:6px;color:var(--ui-body);font-size:12.5px;font-weight:700}
+.drive-field.wide{grid-column:1/-1}
+.drive-field input{width:100%;min-width:0;padding:10px 11px;border:1px solid var(--ui-border);
+  border-radius:9px;color:var(--ui-ink);background:#fff;font-size:13px}
+.drive-field input:focus-visible{outline:2px solid var(--ui-accent);outline-offset:1px}
+.drive-button-row{display:flex;gap:9px;align-items:center;flex-wrap:wrap}
+.drive-button-row .btn:disabled{cursor:wait;opacity:.65}
+.drive-button-row .btn[hidden]{display:none!important}
+.drive-destination{display:flex;justify-content:space-between;gap:15px;align-items:center;
+  border:1px solid var(--ui-border);background:var(--ui-surface-soft);border-radius:9px;padding:12px 14px}
+.drive-folder-name{font-size:14px;font-weight:800;color:var(--ui-ink);overflow-wrap:anywhere}
+.drive-folder-sub{font-size:12px;color:var(--ui-secondary);margin-top:3px}
+.drive-folder-link{font-size:12px;font-weight:800;color:var(--ui-accent-dark);white-space:nowrap}
+.drive-setup{border-top:1px solid var(--ui-border);padding-top:12px;font-size:13px;color:var(--ui-secondary)}
+.drive-setup summary{cursor:pointer;font-weight:800;color:var(--ui-accent-dark)}
+.drive-setup ol{padding-left:18px;line-height:1.85}
+.drive-setup code{font-size:12px;overflow-wrap:anywhere}
+.drive-note{font-size:12px!important;color:var(--ui-secondary)!important}
+.drive-status.error{border-color:#e8bdc6;background:#fff8fa}
+@media(max-width:950px){.drive-config-grid{grid-template-columns:1fr}}
+</style></head><body><div class="app"><div class="topbar"><div class="brand"><h1>Game Dashboard</h1><p id="subtitle" aria-hidden="true"></p></div><div class="actions" id="trackerActions"><button class="btn" id="addTaskBtn">＋ 添加待办</button><button class="btn primary" id="addUpdateBtn">＋ 录入游戏更新</button></div></div><div class="layout"><aside class="sidebar"><div class="side-head"><span>游戏</span><span id="gameTotal"></span></div><div class="game-list" id="gameList"></div><div class="side-actions"><button class="add-game" id="addGameBtn">＋ 添加新游戏</button><button class="btn" id="settingsBtn">⚙ 设置</button><button class="btn" id="trackerBtn" style="display:none">← 返回追踪器</button><div id="driveBackupNotice" class="drive-side-notice" hidden></div></div></aside><main><section class="page active" id="trackerPage"><div class="tracker-shell"><div class="tracker-main"><div class="metrics"><div class="metric"><div class="label">未完成</div><div class="value" id="pendingCount">0</div></div><div class="metric"><div class="label">活跃更新</div><div class="value" id="updateCount">0</div></div><div class="metric"><div class="label">完成率</div><div class="value" id="completionRate">0%</div></div></div><div class="toolbar"><input class="input search" id="searchInput" placeholder="搜索内容或类别"><select class="select" id="statusFilter"><option value="all" selected>全部</option><option value="pending">未完成</option><option value="done">已完成</option></select><select class="select" id="archiveFilter"><option value="active">Active</option><option value="all">全部更新</option><option value="archived">Archived</option></select></div><div id="mainContent"></div></div><aside class="quicklinks-panel" id="quickLinksPanel"></aside></div></section><section class="page" id="settingsPage"><div class="settings-shell"><div class="settings-main" id="settingsContent"></div></div></section></main></div></div><div class="modal-backdrop" id="modalBackdrop"><div class="modal" id="modal"></div></div><div class="toast" id="toast"></div><input type="file" id="importDataInput" accept=".json,application/json" style="display:none">
 <script>
 const seed={games:[{id:'azur',name:'碧蓝航线 Azur Lane',categories:['舰船','家具','纪念手册','装备','礼包','剧情']},{id:'ark',name:'明日方舟 Arknights',categories:['干员','家具','蚀刻章','组合包','干员密录','剧情']},{id:'r1999',name:'重返未来：1999',categories:['角色','心相','主题套装','头像','旅券集','剧情']}],updates:[{id:'u-az-0723',game:'azur',name:'2026-07-23 更新',date:'2026-07-23',archived:false},{id:'u-ak-0801',game:'ark',name:'2026-08-01 更新',date:'2026-08-01',archived:false},{id:'u-r-0723',game:'r1999',name:'2026-07-23 更新',date:'2026-07-23',archived:true},{id:'u-r-0802',game:'r1999',name:'2026-08-02 更新',date:'2026-08-02',archived:false}],items:[{id:'a1',game:'azur',updateId:'u-az-0723',category:'舰船',name:'华丽',done:false},{id:'a2',game:'azur',updateId:'u-az-0723',category:'舰船',name:'萨里',done:false},{id:'a3',game:'azur',updateId:'u-az-0723',category:'舰船',name:'格里芬',done:false},{id:'a4',game:'azur',updateId:'u-az-0723',category:'家具',name:'废弃住院部',done:false},{id:'a5',game:'azur',updateId:'u-az-0723',category:'纪念手册',name:'怪谈纪实纪念勋章',done:false},{id:'k1',game:'ark',updateId:'u-ak-0801',category:'干员',name:'予愿安洁莉娜',done:false},{id:'k2',game:'ark',updateId:'u-ak-0801',category:'干员',name:'珊比',done:false},{id:'k3',game:'ark',updateId:'u-ak-0801',category:'干员',name:'嘉辛塔',done:false},{id:'k4',game:'ark',updateId:'u-ak-0801',category:'干员',name:'时隙',done:false},{id:'k5',game:'ark',updateId:'u-ak-0801',category:'家具',name:'安洁莉娜的信笺小屋',done:false},{id:'l1',game:'ark',updateId:'',category:'干员密录',name:'妮芙',done:false},{id:'l2',game:'ark',updateId:'',category:'干员密录',name:'渡桥',done:false},{id:'l3',game:'ark',updateId:'',category:'干员密录',name:'天空盒',done:false},{id:'r1',game:'r1999',updateId:'u-r-0723',category:'角色',name:'双生舞伶',done:true},{id:'r2',game:'r1999',updateId:'u-r-0723',category:'角色',name:'诺拉',done:true},{id:'r8',game:'r1999',updateId:'u-r-0802',category:'旅券集',name:'拉普拉斯变换',done:false}]};
 const STORAGE_KEY='gameDashboardV1';
@@ -1953,6 +1997,7 @@ async function initializeStorage(){
   }
   await reloadActiveFromDatabase();
   render();
+  checkWeeklyDriveBackup();
 }
 async function reloadActiveFromDatabase(){
   const tx=db.transaction(['games','updates','items'],'readonly');
@@ -2220,7 +2265,7 @@ function stateMessage(type,extra=''){
     type==='noupdates'?'<button class="btn small" data-action="new-update">去录入游戏更新</button>':'';
   return `<div class="ui-state ${type==='loaderror'||type==='initerror'?'error':type==='loading'||type==='initializing'?'loading':''}" role="status" aria-live="polite"><div class="ui-state-mark" aria-hidden="true">${icon}</div><div class="ui-state-title">${title}</div><p class="ui-state-detail">${extra||detail}</p>${action?`<div class="ui-state-actions">${action}</div>`:''}</div>`;
 }
-function render(){renderGames();if(currentPage==='tracker')renderTracker();else renderSettings()}
+function render(){renderGames();if(currentPage==='tracker')renderTracker();else renderSettings();paintDriveBackupNotice()}
 function renderGames(){
   const inSettings=currentPage==='settings';
   const activeGame=inSettings?settingsGame:selectedGame;
@@ -2403,17 +2448,17 @@ let settingsSection='categories';
 
 function renderSettings(){
   const g=gameById(settingsGame)||state.games[0];
-  if(!g){
+  if(!g&&settingsSection!=='backup'){
     $('#settingsContent').innerHTML=stateMessage('nogames');
     return;
   }
-  settingsGame=g.id;
+  if(g)settingsGame=g.id;
   $('#settingsContent').innerHTML=`
     <div class="settings-title">
       <div>
-        <div class="settings-eyebrow">GAME SETTINGS <span>/ 当前游戏</span></div>
-        <h2 style="margin:0">${esc(g.name)}</h2>
-        <div style="color:var(--muted);font-size:13px;margin-top:4px">左侧切换游戏，在这里管理对应的类别、版本和常用网站</div>
+        <div class="settings-eyebrow">${settingsSection==='backup'?'DATA SAFETY':'GAME SETTINGS'} <span>/ ${settingsSection==='backup'?'所有游戏':'当前游戏'}</span></div>
+        <h2 style="margin:0">${settingsSection==='backup'?'数据备份':esc(g.name)}</h2>
+        <div style="color:var(--muted);font-size:13px;margin-top:4px">${settingsSection==='backup'?'自动备份全部游戏及归档记录，支持恢复原有 JSON 格式':'左侧切换游戏，在这里管理对应的类别、版本和常用网站'}</div>
       </div>
       <div class="settings-actions">
         <button class="btn small" id="exportDataBtn">导出数据</button>
@@ -2424,13 +2469,15 @@ function renderSettings(){
       <button class="settings-tab ${settingsSection==='categories'?'active':''}" role="tab" aria-selected="${settingsSection==='categories'}" data-section="categories">类别列表</button>
       <button class="settings-tab ${settingsSection==='updates'?'active':''}" role="tab" aria-selected="${settingsSection==='updates'}" data-section="updates">更新版本</button>
       <button class="settings-tab ${settingsSection==='links'?'active':''}" role="tab" aria-selected="${settingsSection==='links'}" data-section="links">常用网站</button>
+      <button class="settings-tab ${settingsSection==='backup'?'active':''}" role="tab" aria-selected="${settingsSection==='backup'}" data-section="backup">数据备份${isDriveBackupDue()&&driveConfig.enabled?' · 到期':''}</button>
     </div>
     <div id="settingsPanel" role="tabpanel"></div>
   `;
   $$('.settings-tab').forEach(b=>b.onclick=()=>{settingsSection=b.dataset.section;renderSettings()});
   $('#exportDataBtn').onclick=exportData;
   $('#importDataBtn').onclick=()=>$('#importDataInput').click();
-  if(settingsSection==='updates')renderGameUpdateManager(g);
+  if(settingsSection==='backup')renderDriveBackupSettings();
+  else if(settingsSection==='updates')renderGameUpdateManager(g);
   else if(settingsSection==='links')renderGameLinksManager(g);
   else renderGameCategoryManager(g);
 }
@@ -2688,28 +2735,373 @@ function normalizeImportedState(raw){
   }));
   return {games,updates,items};
 }
+// Google Drive backup uses the browser-only Google Identity Services token model.
+// Access tokens are intentionally memory-only; consent always starts from a user click.
+const DRIVE_BACKUP_CONFIG_KEY='gameDashboardDriveBackupV1';
+const DRIVE_SCOPE='https://www.googleapis.com/auth/drive.file';
+const DRIVE_INTERVAL_MS=7*24*60*60*1000;
+const DRIVE_FOLDER_MIME='application/vnd.google-apps.folder';
+const DRIVE_ENDPOINT='https://www.googleapis.com/drive/v3';
+const DRIVE_UPLOAD_ENDPOINT='https://www.googleapis.com/upload/drive/v3';
+function readDriveBackupConfig(){
+  const defaults={clientId:'',apiKey:'',projectNumber:'',enabled:true,folderId:'',folderName:'',lastSuccessAt:'',lastBackupId:'',lastBackupName:'',lastError:''};
+  try{
+    const data=JSON.parse(localStorage.getItem(DRIVE_BACKUP_CONFIG_KEY)||'{}');
+    if(!data||typeof data!=='object')return defaults;
+    return {...defaults,...Object.fromEntries(Object.entries(data).filter(([k])=>k in defaults))};
+  }catch(e){return defaults}
+}
+let driveConfig=readDriveBackupConfig();
+let driveToken='',driveTokenExpiry=0,driveBusy=false,driveAuthPending=false;
+let drivePickerLoad=null,driveGISLoad=null;
+function persistDriveConfig(){
+  try{localStorage.setItem(DRIVE_BACKUP_CONFIG_KEY,JSON.stringify(driveConfig))}
+  catch(err){console.error('Backup configuration:',err);toast('备份设置保存失败：浏览器本地存储不可用')}
+  paintDriveBackupNotice();paintDriveBackupStatus();
+}
+function isDriveBackupDue(now=Date.now()){
+  const stamp=Date.parse(driveConfig.lastSuccessAt||'');
+  return !Number.isFinite(stamp)||now-stamp>=DRIVE_INTERVAL_MS||now<stamp;
+}
+function hasValidDriveToken(){return !!driveToken&&Date.now()+60000<driveTokenExpiry}
+function driveStamp(value){
+  if(!value||!Number.isFinite(Date.parse(value)))return '尚未备份';
+  return new Date(value).toLocaleString('zh-CN',{year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'});
+}
+function driveFolderUrl(){return driveConfig.folderId?'https://drive.google.com/drive/u/0/folders/'+encodeURIComponent(driveConfig.folderId):''}
+function checkWeeklyDriveBackup(){
+  paintDriveBackupNotice();paintDriveBackupStatus();
+  // A fresh page load has no valid token. Never open OAuth windows automatically.
+  if(!driveConfig.enabled||!isDriveBackupDue()||!driveConfig.folderId||!hasValidDriveToken()||driveBusy)return;
+  doDriveBackup(true);
+}
+function paintDriveBackupNotice(){
+  const notice=$('#driveBackupNotice');if(!notice)return;
+  const visible=driveConfig.enabled&&!!driveConfig.folderId&&isDriveBackupDue();
+  notice.hidden=!visible;
+  if(!visible){notice.replaceChildren();return}
+  notice.classList.toggle('error',!!driveConfig.lastError);
+  const label=document.createElement('div');
+  label.textContent=driveConfig.lastError?'云端备份失败，仍需处理':'每周 Google Drive 备份已到期';
+  const btn=document.createElement('button');btn.type='button';
+  btn.textContent='打开备份设置 →';
+  btn.onclick=()=>{settingsSection='backup';switchPage('settings')};
+  notice.replaceChildren(label,btn);
+}
+function driveLoadScript(url){
+  return new Promise((resolve,reject)=>{
+    const script=document.createElement('script');script.src=url;script.async=true;
+    let completed=false;
+    const timeout=setTimeout(()=>finish(new Error('Google 脚本加载超时')),16000);
+    function finish(err){if(completed)return;completed=true;clearTimeout(timeout);if(err){script.remove();reject(err)}else resolve()}
+    script.onload=()=>finish();script.onerror=()=>finish(new Error('无法加载 Google 授权组件，请检查网络或浏览器拦截设置'));
+    document.head.appendChild(script);
+  });
+}
+function loadDriveGIS(){
+  if(window.google?.accounts?.oauth2?.initTokenClient)return Promise.resolve();
+  if(!driveGISLoad)driveGISLoad=driveLoadScript('https://accounts.google.com/gsi/client').then(()=>{
+    if(!window.google?.accounts?.oauth2?.initTokenClient)throw new Error('Google 授权组件不可用');
+  }).catch(err=>{driveGISLoad=null;throw err});
+  return driveGISLoad;
+}
+function loadDrivePicker(){
+  if(window.google?.picker?.PickerBuilder)return Promise.resolve();
+  if(!drivePickerLoad){
+    drivePickerLoad=driveLoadScript('https://apis.google.com/js/api.js').then(()=>new Promise((resolve,reject)=>{
+      if(!window.gapi?.load)return reject(new Error('Google Picker API 不可用'));
+      window.gapi.load('picker',{callback:resolve,onerror:()=>reject(new Error('Google Picker 加载失败')),timeout:15000,ontimeout:()=>reject(new Error('Google Picker 加载超时'))});
+    })).catch(err=>{drivePickerLoad=null;throw err});
+  }
+  return drivePickerLoad;
+}
+function validateDriveSettings(){
+  if(!/^\S+\.apps\.googleusercontent\.com$/.test(driveConfig.clientId))throw new Error('请先填写有效的 OAuth Web Client ID');
+  if(location.protocol!=='https:'&&location.hostname!=='localhost')throw new Error('请在已部署的 HTTPS 网站使用 Google 授权；本地 file:// 预览不支持');
+}
+function saveDriveInputSettings(){
+  const clientId=$('#driveClientId')?.value.trim()||'';
+  const apiKey=$('#driveApiKey')?.value.trim()||'';
+  const projectNumber=$('#driveProjectNumber')?.value.trim()||'';
+  const enabled=!!$('#driveEnabled')?.checked;
+  if(clientId!==driveConfig.clientId){
+    driveToken='';driveTokenExpiry=0;
+    driveConfig.folderId='';driveConfig.folderName='';driveConfig.lastSuccessAt='';driveConfig.lastBackupId='';driveConfig.lastBackupName='';
+  }
+  driveConfig.clientId=clientId;driveConfig.apiKey=apiKey;driveConfig.projectNumber=projectNumber;
+  driveConfig.enabled=enabled;
+  driveConfig.lastError='';
+  persistDriveConfig();
+}
+function paintDriveBackupStatus(){
+  const status=$('#driveBackupStatus');if(!status)return;
+  const folder=!!driveConfig.folderId;
+  const due=isDriveBackupDue();
+  let title,detail,mark='✓',error=false;
+  if(driveBusy||driveAuthPending){title='正在处理备份操作';detail='请在 Google 授权窗口完成操作，或等待 Drive 响应';mark='…'}
+  else if(driveConfig.lastError){title='上次云端备份失败';detail=driveConfig.lastError;mark='!';error=true}
+  else if(!driveConfig.clientId){title='尚未配置 Google Drive';detail='展开下方 Google Cloud 配置，保存 Client ID 后即可连接';mark='+'}
+  else if(!folder){title='还没有选择备份文件夹';detail='连接 Google Drive 后选择已有文件夹，或创建新的专用文件夹';mark='+'}
+  else if(!driveConfig.enabled){title='每周自动检查已关闭';detail='仍然可以点击“立即备份”手动保存';mark='Ⅱ'}
+  else if(due){title='每周备份已到期';detail=hasValidDriveToken()?'可以立即备份':'需要点击“立即备份”重新授权并上传';mark='!'}
+  else{title='云端备份正常';detail='下次到期后，打开 Dashboard 会检查并提示备份';mark='✓'}
+  const last=driveConfig.lastSuccessAt?`上次成功：${driveStamp(driveConfig.lastSuccessAt)} · ${driveConfig.lastBackupName||'JSON'}`:'尚无成功上传的云端备份';
+  status.classList.toggle('error',error);
+  status.innerHTML=`<div class="drive-status-mark ${error?'error':''}" aria-hidden="true">${mark}</div><div><div class="drive-status-title">${esc(title)}</div><div class="drive-status-detail">${esc(detail)}</div><div class="drive-status-detail">${esc(last)}</div></div>`;
+  const folderUI=$('#driveDestination');
+  if(folderUI){
+    folderUI.innerHTML=folder?`<div><div class="drive-folder-name">${esc(driveConfig.folderName||'已选择文件夹')}</div><div class="drive-folder-sub">后续 JSON 备份均保存到此处</div></div><a class="drive-folder-link" href="${driveFolderUrl()}" target="_blank" rel="noopener noreferrer">在 Drive 打开 ↗</a>`:
+      '<div><div class="drive-folder-name">尚未选择备份位置</div><div class="drive-folder-sub">支持 Google Picker 选择现有文件夹</div></div>';
+  }
+  const busyButtons=$$('#settingsPanel .drive-command');
+  busyButtons.forEach(btn=>btn.disabled=driveBusy||driveAuthPending);
+  const connected=$('#driveSessionStatus');
+  if(connected)connected.textContent=hasValidDriveToken()?'本次会话已授权':'未授权或授权已过期';
+  const retry=$('#driveRetryBackup');if(retry)retry.hidden=!driveConfig.lastError;
+}
+function renderDriveBackupSettings(){
+  $('#settingsPanel').innerHTML=`
+    <section class="drive-settings" aria-label="Google Drive 云端备份">
+      <div class="settings-panel-head"><div><h3>Google Drive 云端备份</h3><div class="settings-helper">完整备份所有游戏、更新版本和 Archived 记录，使用现有 JSON 导入格式。</div></div></div>
+      <div class="drive-status" id="driveBackupStatus" role="status" aria-live="polite"></div>
+      <div class="drive-card">
+        <div class="drive-card-head"><h4>备份位置</h4><span id="driveSessionStatus" class="drive-folder-sub"></span></div>
+        <div class="drive-destination" id="driveDestination"></div>
+        <div class="drive-button-row">
+          <button type="button" class="btn small drive-command" id="driveConnect">连接 / 重新授权</button>
+          <button type="button" class="btn small drive-command" id="drivePickFolder">选择已有文件夹</button>
+          <button type="button" class="btn small drive-command" id="driveCreateFolder">新建专用文件夹</button>
+        </div>
+        <div class="drive-button-row"><button type="button" class="btn primary drive-command" id="driveBackupNow">立即备份 JSON</button><button type="button" class="btn small drive-command" id="driveRetryBackup">重试备份</button></div>
+        <label style="display:flex;align-items:center;gap:9px;font-size:13px;color:var(--ui-ink);font-weight:700"><input type="checkbox" id="driveEnabled" ${driveConfig.enabled?'checked':''}> 每周到期时检查备份（7 天）</label>
+        <p class="drive-note">到期后打开 Dashboard 会提示。若当前会话仍有有效授权，将直接上传；否则需要你点击授权按钮。关闭网页期间不执行备份。手动备份不受间隔限制。</p>
+      </div>
+      <div class="drive-card"><div class="drive-card-head"><h4>Google Cloud 配置</h4><span class="drive-folder-sub">仅保存在本浏览器</span></div>
+        <div class="drive-config-grid">
+          <label class="drive-field wide">OAuth Web Client ID<input id="driveClientId" spellcheck="false" autocomplete="off" value="${esc(driveConfig.clientId)}" placeholder="xxxx.apps.googleusercontent.com"></label>
+          <label class="drive-field">Google Picker API Key<input id="driveApiKey" spellcheck="false" autocomplete="off" value="${esc(driveConfig.apiKey)}" placeholder="AIza..."></label>
+          <label class="drive-field">Cloud 项目编号（Project number）<input id="driveProjectNumber" spellcheck="false" autocomplete="off" inputmode="numeric" value="${esc(driveConfig.projectNumber)}" placeholder="数字编号"></label>
+        </div>
+        <div class="drive-button-row"><button type="button" class="btn small" id="driveSaveConfig">保存配置</button></div>
+        <details class="drive-setup"><summary>首次配置指南（Google Cloud Console）</summary>
+          <ol><li>创建或选择 Google Cloud 项目，启用 Google Drive API 和 Google Picker API。</li>
+            <li>配置 Google Auth platform 同意屏幕；个人测试时把自己的 Google 账号加入测试用户。</li>
+            <li>创建 Web Application 类型的 OAuth Client ID。Authorized JavaScript origins 添加 <code>${esc(location.origin)}</code>（GitHub Pages 原域名，不附带路径）。</li>
+            <li>创建 API Key。允许网站来源包含你的 GitHub Pages 域名及 <code>https://docs.google.com/*</code>，并将 API 限制为 Picker / Drive。</li>
+            <li>如果只需要新建专用文件夹，填 OAuth Client ID 即可；要选择已有文件夹，再填写 Picker API Key 和 Project number。</li>
+          </ol><p>只申请 <code>drive.file</code> 权限；不保存 Client Secret 或 OAuth 访问令牌。更换设备或浏览器需重新配置授权。</p>
+        </details>
+      </div>
+    </section>`;
+  $('#driveSaveConfig').onclick=()=>{saveDriveInputSettings();toast('Google Drive 配置已保存');renderDriveBackupSettings()};
+  $('#driveEnabled').onchange=()=>{driveConfig.enabled=$('#driveEnabled').checked;persistDriveConfig();checkWeeklyDriveBackup()};
+  $('#driveConnect').onclick=()=>driveWithAuthorization('connect');
+  $('#drivePickFolder').onclick=()=>driveWithAuthorization('pick');
+  $('#driveCreateFolder').onclick=()=>driveWithAuthorization('create');
+  $('#driveBackupNow').onclick=()=>driveWithAuthorization('backup');
+  $('#driveRetryBackup').onclick=()=>driveWithAuthorization('backup');
+  paintDriveBackupStatus();
+  // Load Google scripts only when this tab is opened (not on every main dashboard visit).
+  loadDriveGIS().catch(err=>{console.warn('Google Drive GIS:',err.message);paintDriveBackupStatus()});
+}
+function driveWithAuthorization(action){
+  if(driveBusy||driveAuthPending)return;
+  // Save freshly typed credentials before continuing, even if Save was not clicked.
+  if($('#driveClientId')&&(
+    $('#driveClientId').value.trim()!==driveConfig.clientId||
+    $('#driveApiKey').value.trim()!==driveConfig.apiKey||
+    $('#driveProjectNumber').value.trim()!==driveConfig.projectNumber
+  ))saveDriveInputSettings();
+  try{validateDriveSettings()}catch(err){toast(err.message);return}
+  if(action==='pick'&&(!driveConfig.apiKey||!driveConfig.projectNumber)){
+    toast('选择已有文件夹需要先填写 API Key 和项目编号');return;
+  }
+  if(action==='backup'&&!driveConfig.folderId){toast('请先选择或创建备份文件夹');return}
+  if(hasValidDriveToken()){runDriveAction(action);return}
+  if(!window.google?.accounts?.oauth2?.initTokenClient){
+    toast('Google 授权组件正在加载，请稍后再点击');loadDriveGIS().catch(err=>toast(err.message));return;
+  }
+  driveAuthPending=true;paintDriveBackupStatus();
+  const client=google.accounts.oauth2.initTokenClient({
+    client_id:driveConfig.clientId,scope:DRIVE_SCOPE,
+    callback:(response)=>{
+      driveAuthPending=false;
+      if(response?.error||!response?.access_token){
+        driveConfig.lastError='Google 授权未成功，请重新尝试';persistDriveConfig();return;
+      }
+      driveToken=response.access_token;
+      driveTokenExpiry=Date.now()+Math.max(1,Number(response.expires_in)||3600)*1000;
+      persistDriveConfig();runDriveAction(action);
+    },
+    error_callback:(err)=>{driveAuthPending=false;driveConfig.lastError='Google 登录窗口未完成：'+(err?.type||'请重试');persistDriveConfig()}
+  });
+  try{client.requestAccessToken({prompt:''})}
+  catch(err){driveAuthPending=false;driveConfig.lastError='Google 授权未启动：'+err.message;persistDriveConfig()}
+  // Closing a popup may not invoke the callback; allow the user to retry.
+  if(driveAuthPending)setTimeout(()=>{if(driveAuthPending){driveAuthPending=false;paintDriveBackupStatus()}},90000);
+}
+async function runDriveAction(action,automatic=false){
+  if(driveBusy)return;
+  driveBusy=true;paintDriveBackupStatus();
+  try{
+    if(action==='connect'){
+      driveConfig.lastError='';persistDriveConfig();toast('已连接 Google Drive（本次会话）');
+      if(driveConfig.enabled&&driveConfig.folderId&&isDriveBackupDue())await performDriveBackup(true);
+    } else if(action==='pick'){
+      const selected=await chooseDriveFolder();
+      if(selected&&driveConfig.enabled&&driveConfig.folderId&&isDriveBackupDue())await performDriveBackup(true);
+    } else if(action==='create'){
+      const created=await createDriveBackupFolder();
+      if(created&&driveConfig.enabled&&driveConfig.folderId&&isDriveBackupDue())await performDriveBackup(true);
+    }
+    else if(action==='backup')await performDriveBackup(automatic);
+  }catch(err){
+    driveConfig.lastError=err.message||'备份操作失败';persistDriveConfig();
+    console.error('Google Drive backup:',err);toast('Google Drive：'+driveConfig.lastError);
+  }finally{driveBusy=false;paintDriveBackupStatus();paintDriveBackupNotice()}
+}
+async function driveApiRequest(url,{method='GET',body,headers={}}={}){
+  if(!hasValidDriveToken())throw new Error('Google 授权已过期，请重新授权');
+  let response;
+  try{response=await fetch(url,{method,headers:{Authorization:'Bearer '+driveToken,...headers},body,cache:'no-store'})}
+  catch(err){throw new Error('无法连接 Google Drive，请检查网络后重试')}
+  if(!response.ok){
+    if(response.status===401){driveToken='';driveTokenExpiry=0}
+    let message='';try{message=(await response.json())?.error?.message||''}catch(e){}
+    throw new Error(`Google Drive API ${response.status}${message?'：'+message.slice(0,180):''}`);
+  }
+  return response.json();
+}
+async function chooseDriveFolder(){
+  await loadDrivePicker();
+  const folder=await new Promise((resolve,reject)=>{
+    try{
+      const view=new google.picker.DocsView(google.picker.ViewId.FOLDERS)
+        .setIncludeFolders(true).setSelectFolderEnabled(true).setMimeTypes(DRIVE_FOLDER_MIME);
+      const picker=new google.picker.PickerBuilder().addView(view)
+        .setDeveloperKey(driveConfig.apiKey).setAppId(driveConfig.projectNumber)
+        .setOAuthToken(driveToken).setCallback(data=>{
+          const action=data[google.picker.Response.ACTION];
+          if(action===google.picker.Action.CANCEL){resolve(null);return}
+          if(action!==google.picker.Action.PICKED)return;
+          const doc=data[google.picker.Response.DOCUMENTS]?.[0];
+          if(!doc){reject(new Error('没有选中有效文件夹'));return}
+          resolve({id:doc[google.picker.Document.ID],name:doc[google.picker.Document.NAME]});
+        }).build();
+      picker.setVisible(true);
+    }catch(err){reject(err)}
+  });
+  if(!folder)return false;
+  if(!folder.id)throw new Error('Google Picker 未返回文件夹 ID');
+  const details=await driveApiRequest(`${DRIVE_ENDPOINT}/files/${encodeURIComponent(folder.id)}?fields=id,name,mimeType,capabilities(canAddChildren)&supportsAllDrives=true`);
+  if(details.mimeType!==DRIVE_FOLDER_MIME)throw new Error('请选择一个文件夹');
+  if(details.capabilities?.canAddChildren===false)throw new Error('没有向此文件夹添加文件的权限');
+  setDriveFolder(details.id,details.name||folder.name||'已选择文件夹');
+  toast('已选择备份位置：'+driveConfig.folderName);
+  return true;
+}
+function setDriveFolder(id,name){
+  if(id!==driveConfig.folderId){
+    driveConfig.lastSuccessAt='';driveConfig.lastBackupId='';driveConfig.lastBackupName='';
+  }
+  driveConfig.folderId=id;driveConfig.folderName=name;driveConfig.lastError='';
+  persistDriveConfig();
+}
+async function createDriveBackupFolder(){
+  if(driveConfig.folderId&&!confirm('你已指定备份文件夹。确定还要创建一个新的专用文件夹，并将后续备份切换过去吗？'))return false;
+  const folder=await driveApiRequest(`${DRIVE_ENDPOINT}/files?fields=id,name,mimeType`,{
+    method:'POST',headers:{'Content-Type':'application/json; charset=UTF-8'},
+    body:JSON.stringify({name:'Game Dashboard Backups',mimeType:DRIVE_FOLDER_MIME})
+  });
+  if(!folder.id)throw new Error('Drive 未确认文件夹创建');
+  setDriveFolder(folder.id,folder.name||'Game Dashboard Backups');
+  toast('已创建专用文件夹');
+  return true;
+}
+async function uploadDriveJson(jsonBlob,metadata){
+  // Google recommends multipart for <=5 MB and resumable for larger files.
+  if(jsonBlob.size<=4*1024*1024){
+    const boundary='GD'+Date.now().toString(36)+Math.random().toString(36).slice(2);
+    const body=new Blob([
+      `--${boundary}\r\nContent-Type: application/json; charset=UTF-8\r\n\r\n`,JSON.stringify(metadata),'\r\n',
+      `--${boundary}\r\nContent-Type: application/json; charset=UTF-8\r\n\r\n`,jsonBlob,'\r\n',
+      `--${boundary}--\r\n`
+    ],{type:`multipart/related; boundary=${boundary}`});
+    return driveApiRequest(`${DRIVE_UPLOAD_ENDPOINT}/files?uploadType=multipart&fields=id,name,parents,size`,{
+      method:'POST',headers:{'Content-Type':`multipart/related; boundary=${boundary}`},body
+    });
+  }
+  if(!hasValidDriveToken())throw new Error('Google 授权已过期，请重新连接');
+  // Larger backups use a two-request resumable upload (no extra background work).
+  let init;
+  try{init=await fetch(`${DRIVE_UPLOAD_ENDPOINT}/files?uploadType=resumable&fields=id,name,parents,size`,{
+    method:'POST',cache:'no-store',headers:{Authorization:'Bearer '+driveToken,'Content-Type':'application/json; charset=UTF-8',
+      'X-Upload-Content-Type':'application/json','X-Upload-Content-Length':String(jsonBlob.size)},body:JSON.stringify(metadata)
+  })}catch(err){throw new Error('无法初始化大文件上传，请检查网络')}
+  if(!init.ok)throw new Error('Google Drive 创建上传会话失败：HTTP '+init.status);
+  const url=init.headers.get('Location');
+  if(!url||!url.startsWith('https://www.googleapis.com/'))throw new Error('Google Drive 没有返回有效的上传地址');
+  let response;
+  try{response=await fetch(url,{method:'PUT',cache:'no-store',headers:{Authorization:'Bearer '+driveToken,
+    'Content-Type':'application/json','Content-Range':`bytes 0-${jsonBlob.size-1}/${jsonBlob.size}`},body:jsonBlob})}
+  catch(err){throw new Error('大文件上传中断，请使用重试按钮重新备份')}
+  if(!response.ok)throw new Error('Google Drive 大文件上传未完成：HTTP '+response.status+'，请重试');
+  return response.json();
+}
+async function performDriveBackup(automatic){
+  if(!driveConfig.folderId)throw new Error('请先指定备份文件夹');
+  const payload=await buildCompleteBackupPayload();
+  if(!payload.data?.games||!payload.data?.updates||!payload.data?.items)throw new Error('本地 JSON 备份结构不完整');
+  const stamp=payload.exportedAt.replace(/[:.]/g,'-');
+  const fileName=`GameDashboard_${stamp}.json`;
+  const content=JSON.stringify(payload,null,2);
+  const contentBlob=new Blob([content],{type:'application/json'});
+  const metadata={name:fileName,parents:[driveConfig.folderId],mimeType:'application/json',description:'Game Dashboard complete JSON backup including archived items'};
+  const uploaded=await uploadDriveJson(contentBlob,metadata);
+  if(!uploaded.id||!uploaded.parents?.includes(driveConfig.folderId))throw new Error('Drive 未确认文件保存在指定的文件夹中');
+  const verified=await driveApiRequest(`${DRIVE_ENDPOINT}/files/${encodeURIComponent(uploaded.id)}?fields=id,name,parents,size&supportsAllDrives=true`);
+  if(verified.id!==uploaded.id||verified.name!==fileName||!verified.parents?.includes(driveConfig.folderId)||Number(verified.size)<contentBlob.size){
+    throw new Error('上传后完整性检查未通过，最后成功备份时间未更新');
+  }
+  driveConfig.lastSuccessAt=payload.exportedAt;
+  driveConfig.lastBackupId=verified.id;driveConfig.lastBackupName=verified.name;
+  driveConfig.lastError='';
+  persistDriveConfig();
+  toast(`${automatic?'每周自动':'手动'}备份成功：${payload.data.items.length} 条待办（包含归档）`);
+}
+async function doDriveBackup(automatic=false){
+  if(driveBusy||!hasValidDriveToken())return;
+  return runDriveAction('backup',automatic);
+}
+
+async function buildCompleteBackupPayload(){
+  if(storageFailed||!db)throw new Error('本地数据存储不可用，已停止备份以避免上传不完整的数据');
+  await writeQueue;
+  if(storageFailed)throw new Error('有未成功保存的操作，请先处理本地存储错误');
+  const tx=db.transaction(['games','updates','items'],'readonly');
+  const done=transactionDone(tx);
+  const gp=requestResult(tx.objectStore('games').getAll());
+  const up=requestResult(tx.objectStore('updates').getAll());
+  const it=requestResult(tx.objectStore('items').getAll());
+  const [games,updates,items]=await Promise.all([gp,up,it]);
+  await done;
+  const byOrder=(a,b)=>(a.sortIndex??0)-(b.sortIndex??0);
+  return {exportedAt:new Date().toISOString(),app:'Game Dashboard',version:1,data:{
+    games:games.sort(byOrder).map(({id,name,categories,sites})=>({id,name,categories,sites})),
+    updates:updates.sort(byOrder).map(({id,game,name,date,archived})=>({id,game,name,date,archived})),
+    items:items.sort(byOrder).map(({id,game,updateId,category,name,done})=>({id,game,updateId,category,name,done}))
+  }};
+}
 async function exportData(){
   try{
-    await writeQueue;
-    const tx=db.transaction(['games','updates','items'],'readonly');
-    const done=transactionDone(tx);
-    const gp=requestResult(tx.objectStore('games').getAll());
-    const up=requestResult(tx.objectStore('updates').getAll());
-    const it=requestResult(tx.objectStore('items').getAll());
-    const [games,updates,items]=await Promise.all([gp,up,it]);
-    await done;
-    const payload={exportedAt:new Date().toISOString(),app:'Game Dashboard',version:1,data:{
-      games:games.sort((a,b)=>(a.sortIndex??0)-(b.sortIndex??0)).map(({id,name,categories,sites})=>({id,name,categories,sites})),
-      updates:updates.sort((a,b)=>(a.sortIndex??0)-(b.sortIndex??0)).map(({id,game,name,date,archived})=>({id,game,name,date,archived})),
-      items:items.sort((a,b)=>(a.sortIndex??0)-(b.sortIndex??0)).map(({id,game,updateId,category,name,done})=>({id,game,updateId,category,name,done}))
-    }};
+    const payload=await buildCompleteBackupPayload();
     const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json;charset=utf-8'});
     const url=URL.createObjectURL(blob),a=document.createElement('a');
     const stamp=new Date().toISOString().slice(0,19).replace(/[:T]/g,'-');
     a.href=url;a.download=`game-dashboard-backup-${stamp}.json`;
     document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),30000);
-    toast(`已导出 ${items.length} 条待办（包含归档）`);
-  }catch(err){storageError(err);alert('导出失败，请检查浏览器存储状态。')}
+    toast(`已导出 ${payload.data.items.length} 条待办（包含归档）`);
+  }catch(err){console.error('Backup export:',err);alert('导出失败：'+err.message)}
 }
 async function handleImportData(file){
   if(!file)return;
