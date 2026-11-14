@@ -11,7 +11,7 @@ A local-first game update and task dashboard deployed as a single GitHub Pages [
 
 ## Separate Dashboard Development Skill
 
-Portable lessons will be maintained in an independent repository proposed as `RoLance-G/dashboard-development-skill` (**not yet created** as of this documentation update). The historical [Dashboard Skill blueprint](docs/DASHBOARD_SKILL_BLUEPRINT.md) remains here **temporarily for safe migration**; it is frozen and should not receive new general-purpose material. Once the new repository is created, granted access and verified, move ownership of general guidance there and replace/remove the legacy blueprint here.
+Reusable development guidance now lives in the independent **[Dashboard Development Skill repository](https://github.com/RoLance-G/dashboard-development-skill)**. Its [SKILL.md](https://github.com/RoLance-G/dashboard-development-skill/blob/main/SKILL.md), [Playbook](https://github.com/RoLance-G/dashboard-development-skill/blob/main/references/PLAYBOOK.md), and [Patterns](https://github.com/RoLance-G/dashboard-development-skill/blob/main/references/PATTERNS.md) are the authoritative cross-project sources. The old generic blueprint was migrated and removed from this project; historical commits still preserve it.
 
 **Mandatory sequence for each version:** finish and verify the app change → update **Game Dashboard-specific** Markdown and commit the project → decide whether a transferable lesson is new and sufficiently evidenced → **only if yes**, update the separate Skill repository, with its own dated note and commit. A decision of "no Skill change needed" is valid.
 
