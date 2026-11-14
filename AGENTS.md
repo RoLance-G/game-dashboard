@@ -1,12 +1,12 @@
 # Repository working agreement — Game Dashboard
 
-This repository owns **the Game Dashboard app and its project-specific engineering history**. Reusable Dashboard-development Skill instructions belong in a **separate** GitHub repository, proposed as `RoLance-G/dashboard-development-skill` (pending user creation and connection access).
+This repository owns **the Game Dashboard app and its project-specific engineering history**. Reusable Dashboard-development Skill guidance belongs in the verified [separate Skill repository](https://github.com/RoLance-G/dashboard-development-skill), not here.
 
 ## Read first
 
 1. Inspect the actual `index.html`, current GitHub branch, newest `docs/iterations/` entries, and `docs/GAME_DASHBOARD_CASE_STUDY.md`. Never assume an earlier assistant summary matches live source.
 2. Use `docs/iterations/TEMPLATE.md` for every app, UI, storage, deployment or documentation iteration.
-3. `docs/DASHBOARD_SKILL_BLUEPRINT.md` is a **frozen historical migration source**, not the future home of reusable guidance. Keep it until the new Skill repository is created and its content is verified; then remove it or replace it with a link.
+3. Read the [Dashboard Development Skill](https://github.com/RoLance-G/dashboard-development-skill/blob/main/SKILL.md) for transferable principles only when applicable. The former local generic blueprint has been migrated; project-specific documents remain here.
 
 ## Mandatory two-stage workflow for each iteration
 
